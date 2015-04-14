@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{164F2EBB-0EE9-FCE7-899B-53D049AAFFF4}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp-Editor</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_6_1;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Skill\Editor\AI\AccessLimitDecoratorItem.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\Action.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\ActionItem.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\Behavior.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\BehaviorList.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\BehaviorTreeAsset.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\BehaviorTreeCompiler.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\BehaviorTreeData.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\BehaviorTreeEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\BehaviorTreeEditorWindow.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\BehaviorTreeStateItem.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\ChangeState.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\ChangeStateItem.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\Composite.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\CompositeItem.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\ConcurrentSelectorItem.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\Condition.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\ConditionItem.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\Decorator.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\DecoratorItem.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\IBehaviorItem.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\LoopSelectorItem.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\Parameter.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\PrioritySelectorItem.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\RandomSelectorItem.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\SequenceSelectorItem.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\SharedAccessKeysAsset.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\SharedAccessKeysCompiler.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\SharedAccessKeysData.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\SharedAccessKeysEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\StateEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\TreeViewEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\TreeViewFolder.cs" />
+     <Compile Include="Assets\Skill\Editor\AI\TreeViewItem.cs" />
+     <Compile Include="Assets\Skill\Editor\AboutSkill.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimNode.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimNodeAdditiveBlending.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimNodeAdditiveBlendingItem.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimNodeBlend1D.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimNodeBlend1DItem.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimNodeBlend2D.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimNodeBlend2DItem.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimNodeBlendByIndex.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimNodeBlendByIndexItem.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimNodeItem.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimNodeOverride.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimNodeOverrideItem.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimNodeSequence.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimNodeSequenceItem.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimationClip.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimationClipEditorWindow.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimationSelectorWindow.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimationTreeAsset.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimationTreeCompiler.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimationTreeData.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimationTreeEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimationTreeEditorWindow.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimationTreeParameter.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimationTreeProfile.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimationTreeRoot.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\AnimationTreeRootItem.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\Connection.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\Connector.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\GraphEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\Keyframe.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\MixingTransform.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\ParameterEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\ProfileEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\RootMotion.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\SkinMeshAsset.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\SkinMeshData.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\SkinMeshEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\Animation\Triangulator.cs" />
+     <Compile Include="Assets\Skill\Editor\AnimationCopy.cs" />
+     <Compile Include="Assets\Skill\Editor\Audio\AudioControllerEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\Audio\AudioControllerEditorWindow.cs" />
+     <Compile Include="Assets\Skill\Editor\Audio\AudioStateGraphEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\Audio\AudioStateNode.cs" />
+     <Compile Include="Assets\Skill\Editor\Audio\AudioTriggerEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\AudioClipSubtitleEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\BatchMeshEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\BrushProjector.cs" />
+     <Compile Include="Assets\Skill\Editor\CRSpline3DEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\CacheGroupEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\CacheObjectField.cs" />
+     <Compile Include="Assets\Skill\Editor\ChildCounterEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\AnimationTreeClass.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\BehaviorTreeClass.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\Builder.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\CSharpCodeGenerator.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\Class.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\ClassDataClass.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\CommentWriter.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\Document.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\EnumClass.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\ICodeGenerator.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\IPartialCode.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\Method.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\Modifiers.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\Namespace.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\Property.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\SaveDataClass.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\SharedAccessKeysClass.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\SkinMeshClass.cs" />
+     <Compile Include="Assets\Skill\Editor\CodeGeneration\Variable.cs" />
+     <Compile Include="Assets\Skill\Editor\Commands.cs" />
+     <Compile Include="Assets\Skill\Editor\CopyComponentsWindow.cs" />
+     <Compile Include="Assets\Skill\Editor\CreateEmptyChildObjectDialog.cs" />
+     <Compile Include="Assets\Skill\Editor\CreateGroupDialog.cs" />
+     <Compile Include="Assets\Skill\Editor\Curve\CurveEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\Curve\CurveEditorWindow.cs" />
+     <Compile Include="Assets\Skill\Editor\Curve\CurveKey.cs" />
+     <Compile Include="Assets\Skill\Editor\Curve\CurveKeyContextMenu.cs" />
+     <Compile Include="Assets\Skill\Editor\Curve\CurveKeyProperties.cs" />
+     <Compile Include="Assets\Skill\Editor\Curve\CurveKeyTangent.cs" />
+     <Compile Include="Assets\Skill\Editor\Curve\CurvePreset.cs" />
+     <Compile Include="Assets\Skill\Editor\Curve\CurveTrack.cs" />
+     <Compile Include="Assets\Skill\Editor\Curve\CurveTrackContextMenu.cs" />
+     <Compile Include="Assets\Skill\Editor\Curve\TimeLineCurveView.cs" />
+     <Compile Include="Assets\Skill\Editor\Curve\TimeLineGrid.cs" />
+     <Compile Include="Assets\Skill\Editor\Curve3DEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\CurveUtility.cs" />
+     <Compile Include="Assets\Skill\Editor\DataFile.cs" />
+     <Compile Include="Assets\Skill\Editor\Diagnostics\BehaviorTreeStateDebugger.cs" />
+     <Compile Include="Assets\Skill\Editor\DictionaryEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\DictionaryEditorWindow.cs" />
+     <Compile Include="Assets\Skill\Editor\DictionaryTranslateWindow.cs" />
+     <Compile Include="Assets\Skill\Editor\Distance.cs" />
+     <Compile Include="Assets\Skill\Editor\EditorListItem.cs" />
+     <Compile Include="Assets\Skill\Editor\ExplosionEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\Exporter.cs" />
+     <Compile Include="Assets\Skill\Editor\HandleHelper.cs" />
+     <Compile Include="Assets\Skill\Editor\IEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\IO\ClassData.cs" />
+     <Compile Include="Assets\Skill\Editor\IO\PropertyData.cs" />
+     <Compile Include="Assets\Skill\Editor\IO\SaveData.cs" />
+     <Compile Include="Assets\Skill\Editor\IO\SaveDataAsset.cs" />
+     <Compile Include="Assets\Skill\Editor\IO\SaveDataCompiler.cs" />
+     <Compile Include="Assets\Skill\Editor\IO\SaveDataEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\IO\SaveDataEditorWindow.cs" />
+     <Compile Include="Assets\Skill\Editor\ImplantAsset.cs" />
+     <Compile Include="Assets\Skill\Editor\ImplantAssetEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\ImplantEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\ImplantObject.cs" />
+     <Compile Include="Assets\Skill\Editor\ImplantObjectField.cs" />
+     <Compile Include="Assets\Skill\Editor\LineDrawer.cs" />
+     <Compile Include="Assets\Skill\Editor\MeterEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\MoveWindow.cs" />
+     <Compile Include="Assets\Skill\Editor\PaintColorEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\PasteTextField.cs" />
+     <Compile Include="Assets\Skill\Editor\PickTextWindow.cs" />
+     <Compile Include="Assets\Skill\Editor\PrimitiveData.cs" />
+     <Compile Include="Assets\Skill\Editor\Resources.cs" />
+     <Compile Include="Assets\Skill\Editor\ScreenShotEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\ScriptableObjectUtility.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\AnimationTrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\AnimatorTrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\BaseTrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\BooleanTrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\ColorTrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\ContinuousTrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\CurveTrackTreeView.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\DiscreteTrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\EventOrientedTrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\EventTrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\FloatTrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\IntegerTrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\KeyView.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\MatineeEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\PropertyTrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\PropertyTrackProperties.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\QuaternionTrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\SoundTrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\TrackTreeView.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\TrackTreeViewGroup.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\TrackTreeViewItem.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\Vector2TrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\Vector3TrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\Sequence\Vector4TrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\SkillMenu.cs" />
+     <Compile Include="Assets\Skill\Editor\SpawnAssetEditor.cs" />
+     <Compile Include="Assets\Skill\Editor\SpawnObjectField.cs" />
+     <Compile Include="Assets\Skill\Editor\TextureBrush.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\AudioClipCurveData.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\AudioPreviewCurve.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\AudioPreviewImage.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\BoundsField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\ChangeCheck.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\ColorField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\Connection.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\ConnectionHost.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\Connector.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\ContextMenu.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\CurveField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\CustomPropertyField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\DirectConnection.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\DirectConnectionPanel.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\DragThumb.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\DropShadowLabel.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\EditorControl.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\EditorFrame.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\EnumMaskField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\EnumPopup.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\ExposeProperties.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\FloatField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\FolderView.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\Foldout.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\GridSplitter.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\HelpBox.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\InspectorHelper.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\InspectorProperties.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\InspectorTitlebar.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\IntField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\IntPopup.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\IntSlider.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\LabelField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\LayerField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\LayerMaskField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\MaskField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\MediaButton.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\MenuBar.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\MinMaxSlider.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\MultiFloatField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\ObjectField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\PasswordField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\Popup.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\PopupOption.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\PrefixLabel.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\PreviewTexture.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\ProgressBar.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\PropertyField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\PropertyGrid.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\RectField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\Rectangle.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\Selectable.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\SelectableLabel.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\SelectionField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\SerializedPropertySlider.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\Slider.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\TabHeader.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\TagField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\TextArea.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\TextField.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\TextureBrushGrid.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\TimeBar.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\TimeLine.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\TimeLineView.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\ToggleButton.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\TrackBar.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\TrackBarView.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\TreeView.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\Vector2Field.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\Vector3Field.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\Vector4Field.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\VerticalExpander.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\XYZComponent.cs" />
+     <Compile Include="Assets\Skill\Editor\UI\ZoomPanel.cs" />
+     <None Include="Assets\Projectors\Guidelines.txt" />
+     <None Include="Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
+     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\Projectors\Sources\Shaders\Projector Light.shader" />
+     <None Include="Assets\Skill\Plugins\Skill.Framework.xml" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/Editor/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+ <Reference Include="Skill.Diagnostics">
+ <HintPath>C:/Users/Hannah/Documents/KTH/KEX/AI_Tutorial4/Assets/Skill/Plugins/Skill.Diagnostics.dll</HintPath>
+ </Reference>
+ <Reference Include="Skill.Net">
+ <HintPath>C:/Users/Hannah/Documents/KTH/KEX/AI_Tutorial4/Assets/Skill/Plugins/Skill.Net.dll</HintPath>
+ </Reference>
+ <Reference Include="Skill.DataModels">
+ <HintPath>C:/Users/Hannah/Documents/KTH/KEX/AI_Tutorial4/Assets/Skill/Plugins/Skill.DataModels.dll</HintPath>
+ </Reference>
+ <Reference Include="Skill.Editor">
+ <HintPath>C:/Users/Hannah/Documents/KTH/KEX/AI_Tutorial4/Assets/Skill/Editor/Skill.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Skill.Framework">
+ <HintPath>C:/Users/Hannah/Documents/KTH/KEX/AI_Tutorial4/Assets/Skill/Plugins/Skill.Framework.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{D05E645D-4C41-BA4F-06A1-0032DD0B5984}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript.unityproj">
+      <Project>{BD5F4FD9-6E1D-FBC2-9522-12C1FDC6D7F3}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
