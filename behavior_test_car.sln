@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{55620D0E-566D-C2A0-3F87-2D67F20E176E}") = "behavior_test_car", "Assembly-CSharp-firstpass.csproj", "{95287453-F008-6CEB-6F0F-B557EBDE85EF}"
 EndProject
-Project("{55620D0E-566D-C2A0-3F87-2D67F20E176E}") = "behavior_test_car", "Assembly-CSharp.csproj", "{6311DEF1-FADA-4E1F-6FC0-A265F3F30061}"
-EndProject
 Project("{55620D0E-566D-C2A0-3F87-2D67F20E176E}") = "behavior_test_car", "Assembly-CSharp-Editor-firstpass.csproj", "{F6ED6DC9-4B1F-9D78-0FEE-891B26426008}"
 EndProject
 Project("{55620D0E-566D-C2A0-3F87-2D67F20E176E}") = "behavior_test_car", "Assembly-UnityScript.unityproj", "{CD1C5D5B-952A-54E8-FDF5-90339400D027}"
@@ -19,10 +17,6 @@ Global
 		{95287453-F008-6CEB-6F0F-B557EBDE85EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95287453-F008-6CEB-6F0F-B557EBDE85EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95287453-F008-6CEB-6F0F-B557EBDE85EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6311DEF1-FADA-4E1F-6FC0-A265F3F30061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6311DEF1-FADA-4E1F-6FC0-A265F3F30061}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6311DEF1-FADA-4E1F-6FC0-A265F3F30061}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6311DEF1-FADA-4E1F-6FC0-A265F3F30061}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F6ED6DC9-4B1F-9D78-0FEE-891B26426008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F6ED6DC9-4B1F-9D78-0FEE-891B26426008}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6ED6DC9-4B1F-9D78-0FEE-891B26426008}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,7 +29,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-													GlobalSection(MonoDevelopProperties) = preSolution
+															GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

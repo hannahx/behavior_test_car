@@ -61,7 +61,6 @@
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Projectors\Sources\Shaders\Projector Light.shader" />
      <None Include="Assets\Plugins\BehaviourMachine\Readme!!!.txt" />
-     <None Include="Assets\Skill\Plugins\Skill.Framework.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -69,28 +68,10 @@
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/Editor/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="BehaviourMachineRuntime">
- <HintPath>C:/Users/Hannah/Documents/KTH/KEX/behavior_test_car/Assets/Plugins/BehaviourMachine/BehaviourMachineRuntime.dll</HintPath>
+ <HintPath>C:/Users/Hannah/Documents/GitHub/behavior_test_car/Assets/Plugins/BehaviourMachine/BehaviourMachineRuntime.dll</HintPath>
  </Reference>
  <Reference Include="BehaviourMachineEditor">
- <HintPath>C:/Users/Hannah/Documents/KTH/KEX/behavior_test_car/Assets/Plugins/Editor/BehaviourMachineEditor/BehaviourMachineEditor.dll</HintPath>
- </Reference>
- <Reference Include="Skill.Editor">
- <HintPath>C:/Users/Hannah/Documents/KTH/KEX/behavior_test_car/Assets/Skill/Editor/Skill.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Skill.DataModels">
- <HintPath>C:/Users/Hannah/Documents/KTH/KEX/behavior_test_car/Assets/Skill/Plugins/Skill.DataModels.dll</HintPath>
- </Reference>
- <Reference Include="Skill.Diagnostics">
- <HintPath>C:/Users/Hannah/Documents/KTH/KEX/behavior_test_car/Assets/Skill/Plugins/Skill.Diagnostics.dll</HintPath>
- </Reference>
- <Reference Include="Skill.Framework">
- <HintPath>C:/Users/Hannah/Documents/KTH/KEX/behavior_test_car/Assets/Skill/Plugins/Skill.Framework.dll</HintPath>
- </Reference>
- <Reference Include="Skill.Net">
- <HintPath>C:/Users/Hannah/Documents/KTH/KEX/behavior_test_car/Assets/Skill/Plugins/Skill.Net.dll</HintPath>
- </Reference>
- <Reference Include="Skill">
- <HintPath>C:/Users/Hannah/Documents/KTH/KEX/behavior_test_car/Assets/Skill_UI/Scripts/Skill.dll</HintPath>
+ <HintPath>C:/Users/Hannah/Documents/GitHub/behavior_test_car/Assets/Plugins/Editor/BehaviourMachineEditor/BehaviourMachineEditor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>

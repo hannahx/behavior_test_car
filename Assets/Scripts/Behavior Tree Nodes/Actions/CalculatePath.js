@@ -33,33 +33,27 @@ public class CalculatePath extends ActionNode {
 		path.push(startPoint);
     	
     	destinationFound = 0;
+    	
     }
      
     // This function is called when the node is in execution
     function Update () : Status {
-        // Do stuff
+        Debug.Log("path?");
         findPath();     
         
-		if(destinationFound == 1)
+		car.setPath(path);
+		//Debug.Log("Path found:");	
+		var pathString = "";	
+		for(p in path)
 		{
-			car.setPath(path);
-			//Debug.Log("Path found:");	
-			var pathString = "";		
-			for(p in path)
-			{
-				pathString = pathString + p + " ";
-			}
-			Debug.Log(pathString);
-			return Status.Success;
+			pathString = pathString + p + " ";
 		}
-		else
-		{
-			//Debug.Log("Path not found :(");
-			Update(); //start over and find a path
-		}
+		Debug.Log(pathString);
+		return Status.Success;
+
 
         // Never forget to set the node status
-        return Status.Running;
+        //return Status.Running;
     }
  
     // Called when the node ends its execution
@@ -126,5 +120,17 @@ public class CalculatePath extends ActionNode {
 			}
 			x++;
 		}
+		
+		if(destinationFound == 0)
+		{
+			Debug.Log("Path not found :(");
+			findPath();
+		}
+		else
+		{
+			Debug.Log("Path found :)");
+		}
     }
+    
+    
 }
