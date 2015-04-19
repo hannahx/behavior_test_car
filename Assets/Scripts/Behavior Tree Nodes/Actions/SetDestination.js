@@ -21,20 +21,29 @@ public class SetDestination extends ActionNode {
 		points = car.getPointArray();
     	if(car.getStartPoint()==null)
     	{
-    		car.setStartPoint(points[0]); //<---- this will be a random point, where the car is placed. For now, the car is placed behing point1
-    		car.setDestinationPoint(points[points.length - 2]); //<---- this will be a random point
+    		
+			var max1 : int = points.length - 1;
+			var rand1 : int = Mathf.Floor(Random.Range(0,max1+1));
+			car.setStartPoint(points[rand1]);
+			rand1 = Mathf.Floor(Random.Range(0,max1+1));
+			car.setDestinationPoint(points[rand1]);
+			
+			car.transform.position = car.getStartPoint().transform.position;
+			car.transform.rotation = Quaternion.identity;
+			
+    		//car.setStartPoint(points[0]); //<---- this will be a random point, where the car is placed. For now, the car is placed behing point1
+    		//car.setDestinationPoint(points[points.length - 2]); //<---- this will be a random point
     	}
     	else
     	{
     		car.setStartPoint(car.getDestinationPoint());
-    		
     		var max : int = points.length - 1;
 			var rand : int = Mathf.Floor(Random.Range(0,max+1)); //TODO: should not be same as startpoint or destination - fix!
-
     		car.setDestinationPoint(points[rand]);
     	}
+    	//car.getRigidbody().transform.position = car.getStartpoint();//
     	
-    	Debug.Log("Start: " + car.getStartPoint() + "  Destination: " + car.getDestinationPoint());
+    	//Debug.Log("Start: " + car.getStartPoint() + "  Destination: " + car.getDestinationPoint());
     	car.setIndexInPath(0);
     	car.setNextPoint(car.getStartPoint());
     }

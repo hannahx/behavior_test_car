@@ -1,15 +1,14 @@
 ﻿//#pragma strict
 
 import BehaviourMachine;
- 
-public class UpdateNextPoint extends ActionNode {
+
+/** This class rotates the car to the correct direction (is called after the car has been generated in order to not point backwards) */
+public class RotateCar extends ActionNode {
      
 	var car : AICar_Script;
- 	private var carPos : Vector3;
+    private var path;
+    private var startPoint : Point;
     private var nextPoint : Point;
-    private var currentNextPoint : Point;
-    private var path : Array;
-    private var indexInPath;
      
     // Called once when the node is created
     function Awake () {}
@@ -21,27 +20,18 @@ public class UpdateNextPoint extends ActionNode {
     function Start () 
     {
     	path = car.getPath();
+    	startPoint = path[0];
+    	nextPoint = path[1];
+    	
+    	var dir : Vector3 = (nextPoint.transform.position - startPoint.transform.position).normalized;
+    	car.transform.rotation = Quaternion.LookRotation(dir);
+    	
     }
      
     // This function is called when the node is in execution
-    function Update () : Status
-    {
-        indexInPath = car.getIndexInPath();
-        carPos = car.getRigidbody().transform.position;
-        currentNextPoint = car.getNextPoint();
-        if (Vector3.Distance(carPos, currentNextPoint.transform.position)< car.distance) 			
-		{
-			nextPoint = path[indexInPath];
-			car.setNextPoint(nextPoint);
-			if(indexInPath+1<=path.length)
-			{
-				car.setIndexInPath(indexInPath+1);
-				//Debug.Log("Next point updated: next point is " + car.getNextPoint());
-				return Status.Success;
-			}
-		}
-         
-        // Never forget to set the node status
+    function Update () : Status {
+        if(startPoint!=null)
+        	return Status.Success;
         return Status.Running;
     }
  
@@ -56,4 +46,5 @@ public class UpdateNextPoint extends ActionNode {
  
     // Called when the script is loaded or a value is changed in the inspector (Called in the editor only)
     function OnValidate () {}
+    
 }

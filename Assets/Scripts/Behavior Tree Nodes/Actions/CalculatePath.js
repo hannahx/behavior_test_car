@@ -43,7 +43,7 @@ public class CalculatePath extends ActionNode {
 		if(destinationFound == 1)
 		{
 			car.setPath(path);
-			Debug.Log("Path found:");	
+			//Debug.Log("Path found:");	
 			var pathString = "";		
 			for(p in path)
 			{
@@ -54,7 +54,7 @@ public class CalculatePath extends ActionNode {
 		}
 		else
 		{
-			Debug.Log("Path not found :(");
+			//Debug.Log("Path not found :(");
 			Update(); //start over and find a path
 		}
 

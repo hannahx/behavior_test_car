@@ -2,12 +2,11 @@
 
 import BehaviourMachine;
  
-public class MoveTowardsNextPoint extends ActionNode {
+public class StopOrDrive extends ActionNode {
      
- 	var car : AICar_Script;
- 	private var carPos : Vector3;
-    private var nextPoint : Point;
-     
+    var car : AICar_Script;
+    private var brakePower : float;
+    
     // Called once when the node is created
     function Awake () {}
  
@@ -17,25 +16,23 @@ public class MoveTowardsNextPoint extends ActionNode {
     // Called when the node starts its execution
     function Start () 
     {
-    	nextPoint = car.getNextPoint();
+    	if (car.getBrakePower() != 0.0)
+    	{
+    		car.setBrakePower(20);
+    	}
+    	else
+    	{
+    	    car.setBrakePower(120);
+
+    	}
     }
      
     // This function is called when the node is in execution
     function Update () : Status {
         // Do stuff
-        nextPoint = car.getNextPoint();
-        if(nextPoint != null)
-        {
-	        car.Drive(nextPoint.transform.position);
-	        
-	        carPos = car.getRigidbody().transform.position;
-	        if (Vector3.Distance(carPos, nextPoint.transform.position)< 6) 			
-			{
-				return Status.Success;
-			}
-        }
+         
         // Never forget to set the node status
-        return Status.Running;
+        return Status.Success;
     }
  
     // Called when the node ends its execution

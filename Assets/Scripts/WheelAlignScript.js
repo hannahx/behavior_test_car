@@ -23,9 +23,14 @@ function Update () {
 	
 	// now set the wheel rotation to the rotation of the collider combined with a new rotation value. This new value
 	// is the rotation around the axle, and the rotation from steering input.
-	transform.rotation = CorrespondingCollider.transform.rotation * Quaternion.Euler( RotationValue, CorrespondingCollider.steerAngle, 0);
+	if(float.IsNaN(RotationValue)==false)
+		transform.rotation = CorrespondingCollider.transform.rotation * Quaternion.Euler( RotationValue, CorrespondingCollider.steerAngle, 0);
 	// increase the rotation value by the rotation speed (in degrees per second)
-	RotationValue += CorrespondingCollider.rpm * ( 360/60 ) * Time.deltaTime;
+	RotationValue += CorrespondingCollider.rpm * ( 360/60 ) * Time.deltaTime;//TODO: problem here - is NaN somethimes (and <0)
+	if(RotationValue<0)// || RotationValue.isNaN()==true) //fixar problemet?
+		RotationValue = 0.0;
+	
+		
 	
 	// define a wheelhit object, this stores all of the data from the wheel collider and will allow us to determine
 	// the slip of the tire.
