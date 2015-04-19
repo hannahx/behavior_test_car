@@ -38,7 +38,7 @@ public class CalculatePath extends ActionNode {
      
     // This function is called when the node is in execution
     function Update () : Status {
-        Debug.Log("path?");
+        //Debug.Log("path?");
         findPath();     
         
 		car.setPath(path);
@@ -123,13 +123,13 @@ public class CalculatePath extends ActionNode {
 		
 		if(destinationFound == 0)
 		{
-			Debug.Log("Path not found :(");
+			//Debug.Log("Path not found :(");
 			findPath();
 		}
-		else
-		{
-			Debug.Log("Path found :)");
-		}
+//		else
+//		{
+//			//Debug.Log("Path found :)");
+//		}
     }
     
     

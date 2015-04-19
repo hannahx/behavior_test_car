@@ -87,6 +87,10 @@ function FixedUpdate ()
      
     // finally, apply the values to the wheels. The torque applied is divided by the current gear, and
     // multiplied by the calculated AI input variable.
+    if(GearRatio[CurrentGear] == 0)
+    	GearRatio[CurrentGear] = 1;
+    if(inputTorque == 0)
+    	inputTorque = 1;
     FrontLeftWheel.motorTorque = EngineTorque / GearRatio[CurrentGear] * inputTorque;
     FrontRightWheel.motorTorque = EngineTorque / GearRatio[CurrentGear] * inputTorque;
      
@@ -135,12 +139,19 @@ function Drive (pos) {
     var RelativeWaypointPosition : Vector3 = transform.InverseTransformPoint(pos);                                                                                     
                                                                                                                                       
     // by dividing the horizontal position by the magnitude, we get a decimal percentage of the turn angle that we can use to drive the wheels
-    inputSteer = RelativeWaypointPosition.x / RelativeWaypointPosition.magnitude;
+    //Debug.Log(RelativeWaypointPosition.magnitude);
+    if(RelativeWaypointPosition.magnitude == 0)
+    	inputSteer = RelativeWaypointPosition.x;
+	else
+    	inputSteer = RelativeWaypointPosition.x / RelativeWaypointPosition.magnitude;
      
     // now we do the same for torque, but make sure that it doesn't apply any engine torque when going around a sharp turn...
     if ( Mathf.Abs( inputSteer ) < 0.5 ) 
     {
-        inputTorque = RelativeWaypointPosition.z / RelativeWaypointPosition.magnitude - Mathf.Abs( inputSteer );
+    	if(RelativeWaypointPosition.magnitude == 0)
+    		inputTorque = RelativeWaypointPosition.z - Mathf.Abs( inputSteer );
+    	else
+        	inputTorque = RelativeWaypointPosition.z / RelativeWaypointPosition.magnitude - Mathf.Abs( inputSteer );
     }
     else
     {

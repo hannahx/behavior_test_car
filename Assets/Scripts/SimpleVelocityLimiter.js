@@ -67,6 +67,8 @@ function FixedUpdate(){
 	var vSqr = v.sqrMagnitude;
 
 	if(vSqr > sqrDragStartVelocity){
+		if(sqrDragVelocityRange == 0)
+			sqrDragVelocityRange = 1;
 		rigidbody.drag = Mathf.Lerp(originalDrag, maxDrag, Mathf.Clamp01((vSqr - sqrDragStartVelocity)/sqrDragVelocityRange));
 
 		// Clamp the velocity, if necessary
