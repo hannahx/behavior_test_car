@@ -15,7 +15,7 @@ public class ReachedDestination extends ConditionNode {
             
 	    if (Vector3.Distance(car.getRigidbody().transform.position, destinationPoint.transform.position)< car.distance+2)
 		{
-			Debug.Log("Destination is reached!");
+			//Debug.Log("Destination is reached!");
 			i = 1;
 		}
 		else

@@ -48,7 +48,7 @@ public class CalculatePath extends ActionNode {
 		{
 			pathString = pathString + p + " ";
 		}
-		Debug.Log(pathString);
+		//Debug.Log(pathString);
 		return Status.Success;
 
 
