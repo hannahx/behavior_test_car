@@ -8,6 +8,7 @@ public class SetDestination extends ActionNode {
 	var car : AICar_Script;
     //private var path : Array;
     private var points;
+    var I : int;
      
     // Called once when the node is created
     function Awake () {}
@@ -18,37 +19,40 @@ public class SetDestination extends ActionNode {
     // Called when the node starts its execution
     function Start () 
     {
+    	I = 0;
+    	//Debug.Log("Set destination for " + car);
 		points = car.getPointArray();
 		if(points.length>1)
 		{
+			var max : int = points.length - 1;
+			var rand : int;
+			I = 1;
 	    	if(car.getDestinationPoint()==null && car.getStartPoint()==null)//this means the "original car"
-	    	{	    		
-				var max1 : int = points.length - 1;
-				var rand1 : int = Mathf.Floor(Random.Range(0,max1+1));
-				car.setStartPoint(points[rand1]);
-				rand1 = Mathf.Floor(Random.Range(0,max1+1));
-				car.setDestinationPoint(points[rand1]);
+	    	{	
+	    		//Debug.Log("case 1");    		
+				rand = Mathf.Floor(Random.Range(0,max+1));
+				car.setStartPoint(points[rand]);
+				rand = Mathf.Floor(Random.Range(0,max+1));
+				car.setDestinationPoint(points[rand]);
 				
 				car.transform.position = car.getStartPoint().transform.position;
 				//Debug.Log(car.getStartPoint().transform.position);
 				car.transform.rotation = Quaternion.identity;
 				
-	    		//car.setStartPoint(points[0]); //<---- this will be a random point, where the car is placed. For now, the car is placed behing point1
-	    		//car.setDestinationPoint(points[points.length - 2]); //<---- this will be a random point
 	    	}
 	    	else if(car.getDestinationPoint()==null && car.getStartPoint()!= null)//this means "nyss genererad bil"
 	    	{
-	    		var max2 : int = points.length - 1;
-	    		var rand2 : int = Mathf.Floor(Random.Range(0,max1+1));
-	    		car.setDestinationPoint(points[rand2]);
+	    		//Debug.Log("case 2");    
+	    		rand = Mathf.Floor(Random.Range(0,max+1));
+	    		car.setDestinationPoint(points[rand]);
 	    		//Debug.Log(car.getStartPoint().transform.position);
 	    		car.transform.position = car.getStartPoint().transform.position;
 	    	}
 	    	else //this means that the car has reached its destination
 	    	{
+	    		//Debug.Log("case 3");    
 	    		car.setStartPoint(car.getDestinationPoint());
-	    		var max : int = points.length - 1;
-				var rand : int = Mathf.Floor(Random.Range(0,max+1)); //TODO: should not be same as startpoint or destination - fix!
+				rand = Mathf.Floor(Random.Range(0,max+1)); //TODO: should not be same as startpoint or destination - fix!
 	    		car.setDestinationPoint(points[rand]);
 	    	}
 	    	//car.getRigidbody().transform.position = car.getStartpoint();//
@@ -65,9 +69,10 @@ public class SetDestination extends ActionNode {
      
     // This function is called when the node is in execution
     function Update () : Status {
-        // Do stuff
-        //return Status.Running
-        return Status.Success;
+        if(I==1)
+       		return Status.Success;
+		else
+			return Status.Running;
         
     }
  
