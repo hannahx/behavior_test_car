@@ -3,7 +3,7 @@ import BehaviourMachine;
  
 public class CloseToLight extends ConditionNode {
      
-    private var i:int;
+    private var i : int;
     var car : AICar_Script;
     var trafficLightContainer : GameObject; //this is an object that contains all the traffic lights!
     var gos : TrafficLight[];
@@ -12,22 +12,13 @@ public class CloseToLight extends ConditionNode {
     private var trafficLights : Array;
     var closestTrafficLight : TrafficLight;    
  	private var dir : Vector3;
- 	
- 	// Saving in case we should use the angle between light and car instead...
-// 			var targetDir : Vector3;
-// 			var forward : Vector3;
-// 			targetDir = trafficLightPos - carPos;
-//     		forward = car.transform.forward;
-//     		var angle = Vector3.Angle(targetDir, forward);
-//    		Debug.Log ('angle  ' + angle);
- 	
-// Red,Green,YellowLight måste få veta vilket traffic light som är aktuellt. Har inte fått det att funka än!	
-// har 120 som break power i Stop. 	
+ 	var distToLight : float;
+ 	var dotProduct : float;
+
     function Update () : Status {
   			carPos = car.getRigidbody().transform.position;
             trafficLights = trafficLightContainer.GetComponentsInChildren( TrafficLight );
-            //gos = UnityEngine.GameObject.GetComponentsInChildren( TrafficLight ); 
-            //Debug.Log(gos);
+
             for(light in trafficLights)
             {
             	closestTrafficLight = light;
@@ -41,12 +32,23 @@ public class CloseToLight extends ConditionNode {
             	var crossProd : Vector3 ;
             	var carDir = carPos.forward.normalized;
             	crossProd = Vector3.Cross(dir,carDir);
+            	dotProduct = Vector3.Dot(-dir,carDir);
     			//Debug.Log("" + light + crossProd.y);
+            	//Debug.Log("Dot:  " + light + dotProduct);
+            	distToLight = Vector3.Distance(carPos, trafficLightPos);
+//            	Debug.Log("Dist to " + light + ":  " + distToLight);
+
             	
-            	
-	            if (Vector3.Distance(carPos, trafficLightPos)< car.distance+2 && crossProd.y > 0)
+ 				if (distToLight < car.distance+7 && crossProd.y > 0 && dotProduct < 0.97 && dotProduct > -0.57)
 				{
-					Debug.Log("Closest light:   " + closestTrafficLight);
+					Debug.Log("Closest lightW:   " + closestTrafficLight + " in  " + distToLight);
+					car.setClosestTrafficLight(closestTrafficLight);
+					i = 1;
+					break;
+				}
+				else if (distToLight < car.distance+7 && dotProduct < 0.97 && dotProduct > -0.87)
+				{
+					Debug.Log("Closest lightQ:   " + closestTrafficLight + " in  " + distToLight);
 					car.setClosestTrafficLight(closestTrafficLight);
 					i = 1;
 					break;

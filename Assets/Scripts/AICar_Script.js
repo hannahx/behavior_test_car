@@ -25,7 +25,8 @@ private var EngineRPM : float = 0.0;
 
 var distance : float = 6.0; //global distance variable for att mäta avstånd....!?
 private var closestTrafficLight : TrafficLight;
-
+private var distToLight : float;
+private var dotProduct : float;
 //Points
 var pointContainer : GameObject;
 var points;								//array with all points
@@ -455,4 +456,13 @@ function getClosestTrafficLight()
 function setClosestTrafficLight(t)
 {
 	closestTrafficLight = t;
+}
+function getLightDistance()
+{
+	return distToLight;
+}
+
+function getDotProduct()
+{
+	return dotProduct;
 }
