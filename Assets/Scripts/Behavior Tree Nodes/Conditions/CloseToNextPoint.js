@@ -10,21 +10,23 @@ public class CloseToNextPoint extends ConditionNode {
     private var nextPoint : Point;
  
     function Update () : Status {
-  			carPos = car.getRigidbody().transform.position;
-            nextPoint = car.getNextPoint();
-            
-            if (Vector3.Distance(carPos, nextPoint.transform.position)< car.distance)	
-			{
-				//Debug.Log("CLOSE to next point: " + nextPoint);
-				i = 1;
-			}
-			else
-			{
-				i = -1;
-			}
+		carPos = car.getRigidbody().transform.position;
+    	nextPoint = car.getNextPoint();
+    
+    	if(Vector3.Distance(carPos, nextPoint.transform.position)< car.distance)	
+		{
+			//Debug.Log("CLOSE to next point: " + nextPoint);
+			i = 1;
+			
+		}
+		else
+		{
+			i = -1;
+		}
         
         if (i > 0) {
             // Send event?
+            //car.setUpdatePoint(0);
             
             if (onSuccess.id != 0)
                 owner.root.SendEvent(onSuccess.id);

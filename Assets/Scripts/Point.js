@@ -24,3 +24,18 @@ function OnDrawGizmos()
 	}
 
 }
+
+//function OnTriggerEnter(c : Collider)
+//{
+//	var parentparent = c.gameObject.transform.parent.gameObject;
+//	var car : AICar_Script = parentparent.GetComponent(AICar_Script);
+//	//Debug.Log(car.getPath());
+//	
+//	//Debug.Log(this);
+//	
+//	//updatera nästa punkt OM punkten finns i bilens path.
+//	//car.setNextPoint(this);
+//	
+//	car.setUpdatePoint(1);
+//	//Debug.Log(1);
+//}

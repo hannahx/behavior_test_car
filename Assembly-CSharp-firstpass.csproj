@@ -46,12 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Plugins\BehaviourMachine\Sample Scenes\4 - Controllers\5 - ThirdPerson (Mecanim + CharacterController)\Crouch.cs" />
-     <Compile Include="Assets\Plugins\BehaviourMachine\Sample Scenes\4 - Controllers\5 - ThirdPerson (Mecanim + CharacterController)\Jump.cs" />
-     <Compile Include="Assets\Plugins\BehaviourMachine\Sample Scenes\4 - Controllers\5 - ThirdPerson (Mecanim + CharacterController)\Motion.cs" />
-     <Compile Include="Assets\Plugins\BehaviourMachine\Sample Scenes\7 - Games\Roll-a-Ball\Move.cs" />
-     <Compile Include="Assets\Plugins\BehaviourMachine\Sample Scenes\7 - Games\Roll-a-Ball\ProcessTrigger.cs" />
-     <Compile Include="Assets\Plugins\BehaviourMachine\Sample Scenes\7 - Games\Roll-a-Ball\UpdateGUI.cs" />
      <Compile Include="Assets\Plugins\BehaviourMachine\Wrapper\ActionState.cs" />
      <Compile Include="Assets\Plugins\BehaviourMachine\Wrapper\AnyState.cs" />
      <Compile Include="Assets\Plugins\BehaviourMachine\Wrapper\BehaviourTree.cs" />

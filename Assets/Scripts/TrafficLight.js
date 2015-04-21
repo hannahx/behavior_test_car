@@ -2,17 +2,20 @@
 
 private var color; //can be green, yellow or red
 var material : Material;
-var rend: Renderer;
-var colorRed : Color = Color.red;
-var colorGreen : Color = Color.green;
-var colorYellow : Color = Color.yellow;
-var currentColor : Color;
-
-//var shader : Shader;
+private var rend: Renderer;
+private var colorRed : Color = Color.red;
+private var colorGreen : Color = Color.green;
+private var colorYellow : Color = Color.yellow;
+private var currentColor : Color;
+var StartTimerLater : boolean;
 
 function Start() {
 	rend = GetComponent.<Renderer>();
-	//shader = Shader.Find("Transparent/Diffuse");
+	
+	if(StartTimerLater==true)
+	{
+		yield new WaitForSeconds(3.5);
+	}
 	
 	var i = 1;
 	while (i==1)
