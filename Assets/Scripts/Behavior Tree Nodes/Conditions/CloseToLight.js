@@ -41,14 +41,14 @@ public class CloseToLight extends ConditionNode {
             	
  				if (distToLight < car.distance+7 && crossProd.y > 0 && dotProduct < 0.97 && dotProduct > -0.57)
 				{
-					Debug.Log("Closest lightW:   " + closestTrafficLight + " in  " + distToLight);
+					//Debug.Log("Closest lightW:   " + closestTrafficLight + " in  " + distToLight);
 					car.setClosestTrafficLight(closestTrafficLight);
 					i = 1;
 					break;
 				}
 				else if (distToLight < car.distance+7 && dotProduct < 0.97 && dotProduct > -0.87)
 				{
-					Debug.Log("Closest lightQ:   " + closestTrafficLight + " in  " + distToLight);
+					//Debug.Log("Closest lightQ:   " + closestTrafficLight + " in  " + distToLight);
 					car.setClosestTrafficLight(closestTrafficLight);
 					i = 1;
 					break;
@@ -57,7 +57,7 @@ public class CloseToLight extends ConditionNode {
 				{
 					if(car.getClosestTrafficLight() != null)
 					{
-						Debug.Log("No light close!");
+						//dDebug.Log("No light close!");
 						car.setClosestTrafficLight(null);
 					}
 					i = -1;

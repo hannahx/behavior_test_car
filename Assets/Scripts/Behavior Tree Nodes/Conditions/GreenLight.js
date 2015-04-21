@@ -20,7 +20,7 @@ public class GreenLight extends ConditionNode {
 	    		i = 1;
 				if(car.getClosestTrafficLight() != null)
 				{
-					Debug.Log("No light close!");
+					//Debug.Log("No light close!");
 					car.setClosestTrafficLight(null);
 				}
 	    	}
