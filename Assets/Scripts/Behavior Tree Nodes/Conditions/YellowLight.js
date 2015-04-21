@@ -19,6 +19,8 @@ public class YellowLight extends ConditionNode {
 	    	if(light.getCurrentColor() == Color.yellow)
 	    	{
 	    		i = 1;
+	    		//Debug.Log("Yellow for " + light + "!!");
+
 	    	}
 	    	else
 	    	{

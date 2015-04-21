@@ -16,15 +16,16 @@ public class StopOrDrive extends ActionNode {
     // Called when the node starts its execution
     function Start () 
     {
-    	if (car.getBrakePower() != 0.0)
+    	brakePower = car.getBrakePower();
+    	if (brakePower == 0)
     	{
-    		car.setBrakePower(20);
+    		Debug.Log("Break power shifted up");
     	}
     	else
     	{
-    	    car.setBrakePower(120);
-
+    	    Debug.Log("Break power shifted down");
     	}
+    	car.setBrakePower(60);
     }
      
     // This function is called when the node is in execution
