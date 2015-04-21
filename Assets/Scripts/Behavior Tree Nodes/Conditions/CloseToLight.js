@@ -21,7 +21,7 @@ public class CloseToLight extends ConditionNode {
 
             for(light in trafficLights)
             {
-            	closestTrafficLight = light;
+            	closestTrafficLight = light as TrafficLight;
             	var trafficLightPos = closestTrafficLight.transform.position;
             	
             	// Calculating the cross product between directional vector to the traffic light 
