@@ -13,6 +13,9 @@ public class CalculatePath extends ActionNode {
     private var points;
     private var pointMatrix;
     private var destinationFound; //1 if found, 0 if not	
+    
+    private var dist : Array;
+    private var prev : Array;
 
      
     // Called once when the node is created
@@ -33,6 +36,9 @@ public class CalculatePath extends ActionNode {
 		path.push(startPoint);
     	
     	destinationFound = 0;
+    	
+   		dist = new Array(points.length);
+    	prev = new Array(points.length);
     	
     }
      
@@ -135,45 +141,48 @@ public class CalculatePath extends ActionNode {
     
 }
 
-//
+
 ///** Finds the shortest path with Dijksta's Agorithm */
 //function Dijkstra(Graph, source)
 //{
+//	var m : float = 10000; //"inf"
 //       //dist[source] ← 0                       // Distance from source to source
-//       var dist : float = 0; 
-//       
-//       //prev[source] ← undefined               // Previous node in optimal path initialization
-//       var prev : float;
+//       dist[source] = 0;
+//	  //prev[source] ← undefined               // Previous node in optimal path initialization
+//       prev[source] = -1; //-1 = undefined...?
 // 
-//       //for each vertex v in Graph:  // Initialization
-//       
+//       //for each vertex v in Graph:  // Initialization   
 //	for(p in pointMatrix)
 //	{
 //		for(v in p)
 //		{
-//		
+////           if v ≠ source            // Where v has not yet been removed from Q (unvisited nodes)
+//			if(v != source)
+//			{
+//				//dist[v] ← infinity             // Unknown distance function from source to v
+//				dist[v] = m;
+//				//prev[v] ← undefined            // Previous node in optimal path from source
+//				prev[v] = -1;
+//			}
+////          add v to Q                     // All nodes initially in Q (unvisited nodes)
+////      end for
 //		}
 //	}
 //       
-//           if v ≠ source            // Where v has not yet been removed from Q (unvisited nodes)
-//              dist[v] ← infinity             // Unknown distance function from source to v
-//               prev[v] ← undefined            // Previous node in optimal path from source
-//          end if 
-//          add v to Q                     // All nodes initially in Q (unvisited nodes)
-//      end for
-//      
-//      while Q is not empty:
-//          u ← vertex in Q with min dist[u]  // Source node in first case
-//          remove u from Q 
-//          
-//          for each neighbor v of u:           // where v is still in Q.
-//              alt ← dist[u] + length(u, v)
-//              if alt < dist[v]:               // A shorter path to v has been found
-//                  dist[v] ← alt 
-//                  prev[v] ← u 
-//              end if
-//          end for
-//      end while
 //
-//      return dist[], prev[]
+////      
+////      while Q is not empty:
+////          u ← vertex in Q with min dist[u]  // Source node in first case
+////          remove u from Q 
+////          
+////          for each neighbor v of u:           // where v is still in Q.
+////              alt ← dist[u] + length(u, v)
+////              if alt < dist[v]:               // A shorter path to v has been found
+////                  dist[v] ← alt 
+////                  prev[v] ← u 
+////              end if
+////          end for
+////      end while
+////
+////      return dist[], prev[]
 //}

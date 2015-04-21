@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AICar_Script.js" />
      <Compile Include="Assets\Scripts\Antiroll_Bar.js" />
+     <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidCollision.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\CalculatePath.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\Drive.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\MoveTowardsNextPoint.js" />
