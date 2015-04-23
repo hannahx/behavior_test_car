@@ -104,7 +104,7 @@ function Update ()
  
 function ShiftGears() {
     // this funciton shifts the gears of the vehcile, it loops through all the gears, checking which will make
-    // the engine RPM fall within the desiyellow range. The gear is then set to this "appropriate" value.
+    // the engine RPM fall within the desired range. The gear is then set to this "appropriate" value.
     if ( EngineRPM >= MaxEngineRPM ) {
         var AppropriateGear : int = CurrentGear;
          
@@ -189,7 +189,7 @@ function Sensors()
 				flag++;  
 				RearLeftWheel.brakeTorque = decellarationSpeed;  
 				RearRightWheel.brakeTorque = decellarationSpeed;  
-				Debug.DrawLine(pos,hit.point,Color.yellow);  
+				Debug.DrawLine(pos,hit.point,Color.red);  
 			}  
 		}  
 		else 
@@ -210,7 +210,7 @@ function Sensors()
 				}  
 				flag++;  
 				avoidSensitivity -= 1;    
-				Debug.DrawLine(pos,hit.point,Color.yellow);  
+				Debug.DrawLine(pos,hit.point,Color.red);  
 			}  
 		}  
 		
@@ -225,12 +225,9 @@ function Sensors()
 					{
 						setCloseCar(true, hit.transform.gameObject);
 					}
-					else
-					{
-						avoidSensitivity -= 0.1;   
-						flag++;
-					}  
-					Debug.DrawLine(pos,hit.point,Color.yellow);  
+					avoidSensitivity -= 0.1;   
+					flag++;  
+					Debug.DrawLine(pos,hit.point,Color.red);  
 				} 
 			}
 		}
@@ -246,7 +243,7 @@ function Sensors()
 			{  
 				flag++;  
 				avoidSensitivity += 1;   
-				Debug.DrawLine(pos,hit.point,Color.yellow);  
+				Debug.DrawLine(pos,hit.point,Color.red);  
 				if (hit.transform.tag == "AI")
 				{
 					setCloseCar(true, hit.transform.gameObject);
@@ -265,12 +262,9 @@ function Sensors()
 					{
 						setCloseCar(true, hit.transform.gameObject);
 					}
-					else
-					{
-						avoidSensitivity -= 0.1;   
-						flag++;
-					}  
-					Debug.DrawLine(pos,hit.point,Color.yellow);  
+					avoidSensitivity -= 0.1;   
+					flag++;  
+					Debug.DrawLine(pos,hit.point,Color.red);  
 				} 
 			}
 		}
@@ -282,7 +276,7 @@ function Sensors()
 			{  
 				flag++;  
 				avoidSensitivity -= 0.5;  
-				Debug.DrawLine(transform.position,hit.point,Color.yellow);  
+				Debug.DrawLine(transform.position,hit.point,Color.red);  
 			}  
 		}  
 		   
@@ -293,7 +287,7 @@ function Sensors()
 			{  
 				flag++;  
 				avoidSensitivity += 0.5;  
-				Debug.DrawLine(transform.position,hit.point,Color.yellow);  
+				Debug.DrawLine(transform.position,hit.point,Color.red);  
 			}  
 		}  
 		 
@@ -315,7 +309,7 @@ function Sensors()
 						avoidSensitivity = -1;  
 					else  
 						avoidSensitivity = 1;  
-						Debug.DrawLine(pos,hit.point,Color.yellow);  
+						Debug.DrawLine(pos,hit.point,Color.red);  
 				}  
 			}  
 		}  
