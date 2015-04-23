@@ -1,21 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AICar_Script.js">
-    <Files>
-      <File FileName="Assets/Scripts/BrakeZone.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/AICar_Script.js" Line="1" Column="1" />
-=======
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidCollision.js">
     <Files>
-      <File FileName="Assets\Scripts\AICar_Script.js" Line="79" Column="22" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidCollision.js" Line="29" Column="12" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\CarClose.js" Line="21" Column="25" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\CloseToLight.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\Drive.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\GreenLight.js" Line="38" Column="11" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\RedLight.js" Line="1" Column="1" />
->>>>>>> origin/master
+      <File FileName="Assets\Scripts\AICar_Script.js" Line="392" Column="5" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidCollision.js" Line="27" Column="12" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\CarClose.js" Line="21" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
