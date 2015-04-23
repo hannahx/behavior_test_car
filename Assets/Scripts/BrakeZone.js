@@ -17,27 +17,23 @@ function Start() {
 function OnTriggerEnter (c : Collider) {
 	var parentparent = c.gameObject.transform.parent.gameObject;
 	car = parentparent.GetComponent(AICar_Script);
-		Debug.Log(car.name + "  enters!");
+	Debug.Log(car.name + "  enters!");
 
-	car.BrakePower = (brakingPower);
-	car.EngineTorque = (enginePower);
+	
+	car.setActiveZone(this);
+	car.setZoneEntered(true);
+	//Debug.Log(car.getZoneEntered());
+
 	insideZone.Push(car);
 	
 	
 }
-function OnTriggerStay (other : Collider) {
-	if (insideZone.length != 1)
-	{
-		car.BrakePower = 0;
-		car.EngineTorque = (Mathf.Lerp(enginePower, 300, Time.deltaTime));
-		Debug.Log("OnTriggerStay");
-	}
-}
+
 function OnTriggerExit (other : Collider) {
 
 	car.BrakePower = 0;
 	car.EngineTorque = (Mathf.Lerp(enginePower, 600, Time.deltaTime));
-	Debug.Log("What is this for?");
+	//Debug.Log("What is this for?");
 	
 	for(var k : int = 0; k < insideZone.length; k++)
 	{
@@ -47,4 +43,15 @@ function OnTriggerExit (other : Collider) {
 			insideZone.RemoveAt(k);
 		}
 	}
+	
+	car.setActiveZone(null);
+	car.setZoneEntered(false);
+	
+	//Debug.Log(car.getZoneEntered());
+	
+}
+
+function getCarsInZone()
+{
+	return insideZone;
 }

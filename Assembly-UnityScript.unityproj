@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\CloseToNextPoint.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\CloseToTrafficLight.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\GreenLight.js" />
+     <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\InBrakeZone.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\ReachedDestination.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\RedLight.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\YellowLight.js" />
