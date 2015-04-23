@@ -18,11 +18,6 @@ public class GreenLight extends ConditionNode {
 	    	if(light.getCurrentColor() == Color.green)
 	    	{
 	    		i = 1;
-				if(car.getClosestTrafficLight() != null)
-				{
-					//Debug.Log("No light close!");
-					car.setClosestTrafficLight(null);
-				}
 	    	}
 	    	else
 	    	{

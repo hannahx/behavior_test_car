@@ -55,11 +55,11 @@ public class CloseToLight extends ConditionNode {
 				}
 				else //if (crossProd.y < 0)
 				{
-					if(car.getClosestTrafficLight() != null)
-					{
-						//dDebug.Log("No light close!");
-						car.setClosestTrafficLight(null);
-					}
+//					if(car.getClosestTrafficLight() != null)
+//					{
+//						//dDebug.Log("No light close!");
+//						//car.setClosestTrafficLight(null);
+//					}
 					i = -1;
 				}
 			}

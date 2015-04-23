@@ -53,6 +53,10 @@ var sidewaySensorLength : float = 5;
 private var flag : int = 0;
  
 var decellarationSpeed : float = 2000; 
+private var carClose : boolean = false;
+
+private var inBrakeZone : boolean = false;
+private var activeBrakeZone : BrakeZone;
 
 function Start () 
 {
@@ -72,6 +76,7 @@ function FixedUpdate ()
     rigidbody.drag = rigidbody.velocity.magnitude / 250;
      
     //Add sensors to the car
+    carClose = false;
     Sensors();
      
     // Compute the engine RPM based on the average RPM of the two wheels, then call the shift gear function
@@ -162,148 +167,178 @@ function Drive (pos) {
  
 function Sensors()
 {
-if(SENSORS == true)
-{
-flag = 0;
- 
-var pos : Vector3;
-var hit : RaycastHit;
-var rightAngle = Quaternion.AngleAxis(frontSensorAngle, transform.up)*transform.forward;
-var rightAngle2 = Quaternion.AngleAxis((frontSensorAngle+20), transform.up)*transform.forward;
-var leftAngle = Quaternion.AngleAxis(-frontSensorAngle, transform.up)*transform.forward;
-var leftAngle2 = Quaternion.AngleAxis((-frontSensorAngle-20), transform.up)*transform.forward;
-var avoidSensitivity : float = 0;
- 
-pos = transform.position;  
-pos += transform.forward*frontSensorStartPoint;  
-   
-//BRAKING SENSOR  
-if (Physics.Raycast(pos,transform.forward,hit,sensorLength)){  
-if (hit.transform.tag != "DriveThrough"){  
-flag++;  
-RearLeftWheel.brakeTorque = decellarationSpeed;  
-RearRightWheel.brakeTorque = decellarationSpeed;  
-Debug.DrawLine(pos,hit.point,Color.red);  
-}  
-}  
-else {  
-RearLeftWheel.brakeTorque = 0;  
-RearRightWheel.brakeTorque = 0;  
-}
- 
-////Front Mid Sensor  
-//pos = transform.position;  
-//pos += transform.forward*frontSensorStartPoint;  
-//if (Physics.Raycast(pos,transform.forward,hit,sensorLength)){  
-//  
-//Debug.DrawLine(pos,hit.point,Color.red);  
-//}  
-   
-//Front Straight Right Sensor  
-pos += transform.right*frontSensorSideDist;  
-   
-if (Physics.Raycast(pos,transform.forward,hit,sensorLength)){  
-if (hit.transform.tag != "DriveThrough"){  
-flag++;  
-avoidSensitivity -= 1;   
-////Debug.Log("Avoiding");  
-Debug.DrawLine(pos,hit.point,Color.red);  
-}  
-}  
-else if (Physics.Raycast(pos,rightAngle,hit,sensorLength)){  //angle(RIGHT)
-if (hit.transform.tag != "DriveThrough"){  
-avoidSensitivity -= 0.5;   
-flag++;  
-Debug.DrawLine(pos,hit.point,Color.red);  
-}  
-}  
-else if (Physics.Raycast(pos,rightAngle2,hit,sensorLength)){  //angle2(RIGHT)
-if (hit.transform.tag != "DriveThrough"){  
-avoidSensitivity -= 0.5;   
-flag++;  
-Debug.DrawLine(pos,hit.point,Color.blue);  
-}  
-}  
- 
- 
-   
-//Front Straight left Sensor  
-pos = transform.position;  
-pos += transform.forward*frontSensorStartPoint;  
-pos -= transform.right*frontSensorSideDist;  
-   
-if (Physics.Raycast(pos,transform.forward,hit,sensorLength)){  
-if (hit.transform.tag != "DriveThrough"){  
-flag++;  
-avoidSensitivity += 1;   
-////Debug.Log("Avoiding");  
-Debug.DrawLine(pos,hit.point,Color.red);  
-}  
-}  
-else if (Physics.Raycast(pos,leftAngle,hit,sensorLength)){  //angle(LEFT)
-if (hit.transform.tag != "DriveThrough"){  
-flag++;  
-avoidSensitivity += 0.5;  
-Debug.DrawLine(pos,hit.point,Color.red);  
-}  
-}  
-else if (Physics.Raycast(pos,leftAngle2,hit,sensorLength)){  //angle2(LEFT)
-if (hit.transform.tag != "DriveThrough"){  
-flag++;  
-avoidSensitivity += 0.5;  
-Debug.DrawLine(pos,hit.point,Color.blue);  
-}  
-}  
-   
-//Right SideWay Sensor  
-if (Physics.Raycast(transform.position,transform.right,hit,sidewaySensorLength)){  
-if (hit.transform.tag != "DriveThrough"){  
-flag++;  
-avoidSensitivity -= 0.5;  
-Debug.DrawLine(transform.position,hit.point,Color.red);  
-}  
-}  
-   
-   
-//Left SideWay Sensor  
-if (Physics.Raycast(transform.position,-transform.right,hit,sidewaySensorLength)){  
-if (hit.transform.tag != "DriveThrough"){  
-flag++;  
-avoidSensitivity += 0.5;  
-Debug.DrawLine(transform.position,hit.point,Color.red);  
-}  
-}  
- 
-pos = transform.position;
-pos += transform.forward*frontSensorStartPoint;  
-//Front Mid Sensor  
-if (avoidSensitivity == 0){  
-   
-if (Physics.Raycast(pos,transform.forward,hit,sensorLength)){  
-if (hit.transform.tag == "AI")
-{
-//Debug.Log("CAR!!!!");  
-//if(EngineTorque>0)
-//{
-    //EngineTorque -= 10; //Slow down if car in front of you. (Fixa så att hastigheten inte blir negativ!)
-    BrakePower = 200; //TODO: fix function för när en bil är framför - det här funkar ej!
-//}
-}
-if (hit.transform.tag != "DriveThrough"){  
-if (hit.normal.x < 0 )  
-avoidSensitivity = -1;  
-else  
-avoidSensitivity = 1;  
-Debug.DrawLine(pos,hit.point,Color.red);  
-}  
-}  
-}  
- 
- 
-if (flag != 0)  
-AvoidSteer (avoidSensitivity); 
- 
-}
+	if(SENSORS == true)
+	{
+		flag = 0;
+		 
+		var pos : Vector3;
+		var hit : RaycastHit;
+		var rightAngle = Quaternion.AngleAxis(frontSensorAngle, transform.up)*transform.forward;
+		var rightAngle2 = Quaternion.AngleAxis((frontSensorAngle+20), transform.up)*transform.forward;
+		var leftAngle = Quaternion.AngleAxis(-frontSensorAngle, transform.up)*transform.forward;
+		var leftAngle2 = Quaternion.AngleAxis((-frontSensorAngle-20), transform.up)*transform.forward;
+		var avoidSensitivity : float = 0;
+		 
+		pos = transform.position;  
+		pos += transform.forward*frontSensorStartPoint;  
+		   
+		//BRAKING SENSOR  
+		if (Physics.Raycast(pos,transform.forward,hit,sensorLength))
+		{  
+			if (hit.transform.tag == "AI")
+			{
+				setCloseCar(true);
+			}
+			if (hit.transform.tag != "DriveThrough")
+			{  
+				flag++;  
+				RearLeftWheel.brakeTorque = decellarationSpeed;  
+				RearRightWheel.brakeTorque = decellarationSpeed;  
+				Debug.DrawLine(pos,hit.point,Color.red);  
+			}  
+		}  
+		else 
+		{  
+			RearLeftWheel.brakeTorque = 0;  
+			RearRightWheel.brakeTorque = 0;  
+		}
+		 	   
+		//Front Straight Right Sensor  
+		pos += transform.right*frontSensorSideDist;  
+		   
+		if (Physics.Raycast(pos,transform.forward,hit,sensorLength))
+		{  
+			if (hit.transform.tag != "DriveThrough")
+			{
+				if (hit.transform.tag == "AI")
+				{
+					setCloseCar(true);
+				}  
+				flag++;  
+				avoidSensitivity -= 1;    
+				Debug.DrawLine(pos,hit.point,Color.red);  
+			}  
+		}  
+		else if (Physics.Raycast(pos,rightAngle,hit,sensorLength)) //angle(RIGHT)
+		{ 
+			if (hit.transform.tag != "DriveThrough")
+			{  
+				if (hit.transform.tag == "AI")
+				{
+					setCloseCar(true);
+				}
+				avoidSensitivity -= 0.5;   
+				flag++;  
+				Debug.DrawLine(pos,hit.point,Color.red);  
+			}  
+		}  
+		else if (Physics.Raycast(pos,rightAngle2,hit,sensorLength)) //angle2(RIGHT)
+		{  
+			if (hit.transform.tag != "DriveThrough")
+			{  
+				avoidSensitivity -= 0.5;   
+				flag++;  
+				Debug.DrawLine(pos,hit.point,Color.blue);  
+				if (hit.transform.tag == "AI")
+				{
+					setCloseCar(true);
+				}
+			}  
+		} 
+		   
+		//Front Straight left Sensor  
+		pos = transform.position;  
+		pos += transform.forward*frontSensorStartPoint;  
+		pos -= transform.right*frontSensorSideDist;  
+		   
+		if (Physics.Raycast(pos,transform.forward,hit,sensorLength))
+		{  
+			if (hit.transform.tag != "DriveThrough")
+			{  
+				flag++;  
+				avoidSensitivity += 1;   
+				Debug.DrawLine(pos,hit.point,Color.red);  
+				if (hit.transform.tag == "AI")
+				{
+					setCloseCar(true);
+				}
+			}  
+
+		}  
+		else if (Physics.Raycast(pos,leftAngle,hit,sensorLength))//angle(LEFT)
+		{  
+			if (hit.transform.tag != "DriveThrough")
+			{  
+				if (hit.transform.tag == "AI")
+				{
+					setCloseCar(true);
+				}
+				flag++;  
+				avoidSensitivity += 0.5;  
+				Debug.DrawLine(pos,hit.point,Color.red);  
+			}  
+		}  
+		else if (Physics.Raycast(pos,leftAngle2,hit,sensorLength))//angle2(LEFT)
+		{  
+			if (hit.transform.tag != "DriveThrough")
+			{  
+				if (hit.transform.tag == "AI")
+				{
+					setCloseCar(true);
+				}
+				flag++;  
+				avoidSensitivity += 0.5;  
+				Debug.DrawLine(pos,hit.point,Color.blue);  
+			}  
+		}  
+		   
+		//Right SideWay Sensor  
+		if (Physics.Raycast(transform.position,transform.right,hit,sidewaySensorLength))
+		{  
+			if (hit.transform.tag != "DriveThrough")
+			{  
+				flag++;  
+				avoidSensitivity -= 0.5;  
+				Debug.DrawLine(transform.position,hit.point,Color.red);  
+			}  
+		}  
+		   
+		//Left SideWay Sensor  
+		if (Physics.Raycast(transform.position,-transform.right,hit,sidewaySensorLength))
+		{  
+			if (hit.transform.tag != "DriveThrough")
+			{  
+				flag++;  
+				avoidSensitivity += 0.5;  
+				Debug.DrawLine(transform.position,hit.point,Color.red);  
+			}  
+		}  
+		 
+		pos = transform.position;
+		pos += transform.forward*frontSensorStartPoint;  
+		//Front Mid Sensor  
+		if (avoidSensitivity == 0)
+		{  
+			if (Physics.Raycast(pos,transform.forward,hit,sensorLength))
+			{  
+				if (hit.transform.tag == "AI")
+				{
+					setCloseCar(true);
+				}
+				if (hit.transform.tag != "DriveThrough")
+				{  
+					if (hit.normal.x < 0 )  
+						avoidSensitivity = -1;  
+					else  
+						avoidSensitivity = 1;  
+						Debug.DrawLine(pos,hit.point,Color.red);  
+				}  
+			}  
+		}  
+	 
+		if (flag != 0)  
+			AvoidSteer (avoidSensitivity); 
+	}
 }
  
 function AvoidSteer(sensitivity : float)
@@ -372,6 +407,16 @@ function GetPoints()
 	}					
 }
 
+function setCloseCar(b : boolean)
+{  
+	Debug.Log("car close");
+	carClose = b;
+}
+
+function getCloseCar()
+{
+	return carClose;
+}
 
 function getRigidbody()
 {
@@ -465,4 +510,25 @@ function getLightDistance()
 function getDotProduct()
 {
 	return dotProduct;
+}
+function getZoneEntered()
+{
+	
+	return inBrakeZone;
+}
+
+function setZoneEntered(z)
+{
+	 inBrakeZone = z;
+}
+
+function getActiveZone()
+{
+	
+	return activeBrakeZone;
+}
+
+function setActiveZone(z)
+{
+	activeBrakeZone = z;
 }
