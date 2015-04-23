@@ -46,7 +46,7 @@ function OnTriggerExit (other : Collider) {
 	
 	car.setActiveZone(null);
 	car.setZoneEntered(false);
-	
+	Debug.Log(car.name + " left zone!");
 	//Debug.Log(car.getZoneEntered());
 	
 }
