@@ -45,7 +45,8 @@ private var inputTorque : float = 0.0;
  
 //Viariables for the sensors
 var SENSORS : boolean = false;
-var sensorLength : float = 5;  
+var sensorLength : float = 10;  
+var longerSensorLength : float = sensorLength + 3;  
 private var frontSensorStartPoint : float = 2.8;
 private var frontSensorSideDist : float = 1;  
 var frontSensorAngle : float = 30;
@@ -66,7 +67,7 @@ function Start ()
 	
 }
  
-function FixedUpdate () 
+function Update () 
 {    
     var mph = rigidbody.velocity.magnitude * 2.237;
     mphDisplay.text = mph.ToString("F0") + " : MPH"; // displays one digit after the dot
@@ -82,14 +83,6 @@ function FixedUpdate ()
     // Compute the engine RPM based on the average RPM of the two wheels, then call the shift gear function
     EngineRPM = (FrontLeftWheel.rpm + FrontRightWheel.rpm)/2 * GearRatio[CurrentGear];
     ShiftGears();
- 
-    // set the audio pitch to the percentage of RPM to the maximum RPM plus one, this makes the sound play
-    // up to twice it's pitch, where it will suddenly drop when it switches gears.
-//    audio.pitch = Mathf.Abs(EngineRPM / MaxEngineRPM) + 1.0 ;
-//    // this line is just to ensure that the pitch does not reach a value higher than is desired.
-//    if ( audio.pitch > 2.0 ) { //TODO remove audio? finns det ens nåt ljud?
-//        audio.pitch = 2.0;
-//    }
      
     // finally, apply the values to the wheels. The torque applied is divided by the current gear, and
     // multiplied by the calculated AI input variable.
@@ -120,8 +113,7 @@ function ShiftGears() {
                 AppropriateGear = i;
                 break;
             }
-        }
-         
+        } 
         CurrentGear = AppropriateGear;
     }
      
@@ -134,7 +126,6 @@ function ShiftGears() {
                 break;
             }
         }
-         
         CurrentGear = AppropriateGear;
     }
 }
@@ -173,24 +164,28 @@ function Sensors()
 		 
 		var pos : Vector3;
 		var hit : RaycastHit;
-		var rightAngle = Quaternion.AngleAxis(frontSensorAngle, transform.up)*transform.forward;
-		var rightAngle2 = Quaternion.AngleAxis((frontSensorAngle+20), transform.up)*transform.forward;
-		var leftAngle = Quaternion.AngleAxis(-frontSensorAngle, transform.up)*transform.forward;
-		var leftAngle2 = Quaternion.AngleAxis((-frontSensorAngle-20), transform.up)*transform.forward;
+		var rightAngles : Array = new Array();
+		var leftAngles : Array = new Array();
+		for(var I=0; I<10; I++)
+		{
+			rightAngles.push(Quaternion.AngleAxis((7*I), transform.up)*transform.forward);
+			leftAngles.push(Quaternion.AngleAxis((-7*I), transform.up)*transform.forward);
+		}
+		
 		var avoidSensitivity : float = 0;
 		 
 		pos = transform.position;  
 		pos += transform.forward*frontSensorStartPoint;  
 		   
 		//BRAKING SENSOR  
-		if (Physics.Raycast(pos,transform.forward,hit,sensorLength))
+		if (Physics.Raycast(pos,transform.forward,hit,longerSensorLength))
 		{  
-			if (hit.transform.tag == "AI")
-			{
-				setCloseCar(true);
-			}
 			if (hit.transform.tag != "DriveThrough")
 			{  
+				if (hit.transform.tag == "AI")
+				{
+					setCloseCar(true, hit.transform.gameObject);
+				}
 				flag++;  
 				RearLeftWheel.brakeTorque = decellarationSpeed;  
 				RearRightWheel.brakeTorque = decellarationSpeed;  
@@ -203,55 +198,46 @@ function Sensors()
 			RearRightWheel.brakeTorque = 0;  
 		}
 		 	   
-		//Front Straight Right Sensor  
+		//Front Straight Right Sensor 
 		pos += transform.right*frontSensorSideDist;  
-		   
-		if (Physics.Raycast(pos,transform.forward,hit,sensorLength))
+		if (Physics.Raycast(pos,transform.forward,hit,longerSensorLength))
 		{  
 			if (hit.transform.tag != "DriveThrough")
 			{
 				if (hit.transform.tag == "AI")
 				{
-					setCloseCar(true);
+					setCloseCar(true, hit.transform.gameObject);
 				}  
 				flag++;  
 				avoidSensitivity -= 1;    
 				Debug.DrawLine(pos,hit.point,Color.red);  
 			}  
 		}  
-		else if (Physics.Raycast(pos,rightAngle,hit,sensorLength)) //angle(RIGHT)
-		{ 
-			if (hit.transform.tag != "DriveThrough")
-			{  
-				if (hit.transform.tag == "AI")
-				{
-					setCloseCar(true);
-				}
-				avoidSensitivity -= 0.5;   
-				flag++;  
-				Debug.DrawLine(pos,hit.point,Color.red);  
-			}  
-		}  
-		else if (Physics.Raycast(pos,rightAngle2,hit,sensorLength)) //angle2(RIGHT)
-		{  
-			if (hit.transform.tag != "DriveThrough")
-			{  
-				avoidSensitivity -= 0.5;   
-				flag++;  
-				Debug.DrawLine(pos,hit.point,Color.blue);  
-				if (hit.transform.tag == "AI")
-				{
-					setCloseCar(true);
-				}
-			}  
-		} 
-		   
+		
+		for(I=0; I<10; I++)
+		{
+			var someAngle = rightAngles[I];
+			if (Physics.Raycast(pos,someAngle,hit,sensorLength))
+			{
+				if (hit.transform.tag != "DriveThrough")
+				{  
+					if (hit.transform.tag == "AI")
+					{
+						setCloseCar(true, hit.transform.gameObject);
+					}
+					avoidSensitivity -= 0.1;   
+					flag++;  
+					Debug.DrawLine(pos,hit.point,Color.red);  
+				} 
+			}
+		}
+				   
 		//Front Straight left Sensor  
 		pos = transform.position;  
 		pos += transform.forward*frontSensorStartPoint;  
 		pos -= transform.right*frontSensorSideDist;  
 		   
-		if (Physics.Raycast(pos,transform.forward,hit,sensorLength))
+		if (Physics.Raycast(pos,transform.forward,hit,longerSensorLength))
 		{  
 			if (hit.transform.tag != "DriveThrough")
 			{  
@@ -260,37 +246,28 @@ function Sensors()
 				Debug.DrawLine(pos,hit.point,Color.red);  
 				if (hit.transform.tag == "AI")
 				{
-					setCloseCar(true);
+					setCloseCar(true, hit.transform.gameObject);
 				}
 			}  
 
 		}  
-		else if (Physics.Raycast(pos,leftAngle,hit,sensorLength))//angle(LEFT)
-		{  
-			if (hit.transform.tag != "DriveThrough")
-			{  
-				if (hit.transform.tag == "AI")
-				{
-					setCloseCar(true);
-				}
-				flag++;  
-				avoidSensitivity += 0.5;  
-				Debug.DrawLine(pos,hit.point,Color.red);  
-			}  
-		}  
-		else if (Physics.Raycast(pos,leftAngle2,hit,sensorLength))//angle2(LEFT)
-		{  
-			if (hit.transform.tag != "DriveThrough")
-			{  
-				if (hit.transform.tag == "AI")
-				{
-					setCloseCar(true);
-				}
-				flag++;  
-				avoidSensitivity += 0.5;  
-				Debug.DrawLine(pos,hit.point,Color.blue);  
-			}  
-		}  
+		for(I=0; I<10; I++)
+		{
+			someAngle = leftAngles[I];
+			if (Physics.Raycast(pos,someAngle,hit,sensorLength))
+			{
+				if (hit.transform.tag != "DriveThrough")
+				{  
+					if (hit.transform.tag == "AI")
+					{
+						setCloseCar(true, hit.transform.gameObject);
+					}
+					avoidSensitivity -= 0.1;   
+					flag++;  
+					Debug.DrawLine(pos,hit.point,Color.red);  
+				} 
+			}
+		}
 		   
 		//Right SideWay Sensor  
 		if (Physics.Raycast(transform.position,transform.right,hit,sidewaySensorLength))
@@ -319,11 +296,12 @@ function Sensors()
 		//Front Mid Sensor  
 		if (avoidSensitivity == 0)
 		{  
-			if (Physics.Raycast(pos,transform.forward,hit,sensorLength))
+			if (Physics.Raycast(pos,transform.forward,hit,longerSensorLength))
 			{  
+			
 				if (hit.transform.tag == "AI")
 				{
-					setCloseCar(true);
+					setCloseCar(true, hit.transform.gameObject);
 				}
 				if (hit.transform.tag != "DriveThrough")
 				{  
@@ -407,10 +385,13 @@ function GetPoints()
 	}					
 }
 
-function setCloseCar(b : boolean)
+function setCloseCar(b : boolean, g : GameObject)
 {  
-	Debug.Log("car close");
-	carClose = b;
+	if(g.name != this.name)
+	{
+		//Debug.Log(this + " close to " + g);
+		carClose = b;
+	}
 }
 
 function getCloseCar()
