@@ -1,22 +1,14 @@
 ﻿<Properties>
-<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Behavior Tree Nodes/Conditions/CloseToLight.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidCollision.js">
     <Files>
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Conditions/YellowLight.js" Line="22" Column="10" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Conditions/CloseToLight.js" Line="44" Column="8" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/StopOrDrive.js" Line="19" Column="6" />
-      <File FileName="Assets/Scripts/TrafficLight.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/AICar_Script.js" Line="468" Column="2" />
-=======
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Behavior Tree Nodes\Conditions\CarClose.js">
-    <Files>
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\CalculatePath.js" Line="142" Column="2" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\CarClose.js" Line="31" Column="36" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidCollision.js" Line="9" Column="29" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\Drive.js" Line="19" Column="6" />
->>>>>>> origin/master
+      <File FileName="Assets\Scripts\AICar_Script.js" Line="79" Column="22" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidCollision.js" Line="29" Column="12" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\CarClose.js" Line="21" Column="25" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\CloseToLight.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\Drive.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\GreenLight.js" Line="38" Column="11" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\RedLight.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
