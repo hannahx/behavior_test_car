@@ -189,7 +189,7 @@ function Sensors()
 				flag++;  
 				RearLeftWheel.brakeTorque = decellarationSpeed;  
 				RearRightWheel.brakeTorque = decellarationSpeed;  
-				Debug.DrawLine(pos,hit.point,Color.red);  
+				Debug.DrawLine(pos,hit.point,Color.yellow);  
 			}  
 		}  
 		else 
@@ -210,7 +210,7 @@ function Sensors()
 				}  
 				flag++;  
 				avoidSensitivity -= 1;    
-				Debug.DrawLine(pos,hit.point,Color.red);  
+				Debug.DrawLine(pos,hit.point,Color.yellow);  
 			}  
 		}  
 		
@@ -227,7 +227,7 @@ function Sensors()
 					}
 					avoidSensitivity -= 0.1;   
 					flag++;  
-					Debug.DrawLine(pos,hit.point,Color.red);  
+					Debug.DrawLine(pos,hit.point,Color.yellow);  
 				} 
 			}
 		}
@@ -243,7 +243,7 @@ function Sensors()
 			{  
 				flag++;  
 				avoidSensitivity += 1;   
-				Debug.DrawLine(pos,hit.point,Color.red);  
+				Debug.DrawLine(pos,hit.point,Color.yellow);  
 				if (hit.transform.tag == "AI")
 				{
 					setCloseCar(true, hit.transform.gameObject);
@@ -264,7 +264,7 @@ function Sensors()
 					}
 					avoidSensitivity -= 0.1;   
 					flag++;  
-					Debug.DrawLine(pos,hit.point,Color.red);  
+					Debug.DrawLine(pos,hit.point,Color.yellow);  
 				} 
 			}
 		}
@@ -276,7 +276,7 @@ function Sensors()
 			{  
 				flag++;  
 				avoidSensitivity -= 0.5;  
-				Debug.DrawLine(transform.position,hit.point,Color.red);  
+				Debug.DrawLine(transform.position,hit.point,Color.yellow);  
 			}  
 		}  
 		   
@@ -287,7 +287,7 @@ function Sensors()
 			{  
 				flag++;  
 				avoidSensitivity += 0.5;  
-				Debug.DrawLine(transform.position,hit.point,Color.red);  
+				Debug.DrawLine(transform.position,hit.point,Color.yellow);  
 			}  
 		}  
 		 
@@ -309,7 +309,7 @@ function Sensors()
 						avoidSensitivity = -1;  
 					else  
 						avoidSensitivity = 1;  
-						Debug.DrawLine(pos,hit.point,Color.red);  
+						Debug.DrawLine(pos,hit.point,Color.yellow);  
 				}  
 			}  
 		}  
