@@ -38,9 +38,20 @@ function Start ()
 				newCar.setNextPoint(points[rand]);
 				newCar.setStartPoint(points[rand]);
 				//Debug.Log("- " + newCar + " -");
+				
+				var chassis : Transform = newCar.transform.Find("Chassis"); //change material for this!
+				
+				if(rand>10)
+					chassis.renderer.material.color = Color.yellow;
+				else if(rand<6 && rand >3)
+					chassis.renderer.material.color = Color.blue;
+				else if(rand<=3)
+					chassis.renderer.material.color	= Color.green;
+					
+				
 				carArray.push(newCar);
 				
-				yield WaitForSeconds (1);
+				yield WaitForSeconds (1.5);
 					
 			}	
 			break;
