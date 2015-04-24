@@ -32,16 +32,20 @@ function OnTriggerEnter (c : Collider) {
 function OnTriggerExit (other : Collider) {
 
 	car.BrakePower = 0;
-	car.EngineTorque = (Mathf.Lerp(enginePower, 600, Time.deltaTime));
+	//car.EngineTorque = (Mathf.Lerp(enginePower, 600, Time.deltaTime));
 	//Debug.Log("What is this for?");
 	
 	for(var k : int = 0; k < insideZone.length; k++)
 	{
 		var someCar : AICar_Script = insideZone[k] as AICar_Script ;
+		
 		if(someCar == car)
 		{
+			Debug.Log("Array before: " +insideZone);
 			insideZone.RemoveAt(k);
+			Debug.Log("Array after: " + insideZone);
 		}
+		
 	}
 	
 	car.setActiveZone(null);
