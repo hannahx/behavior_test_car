@@ -13,11 +13,12 @@ function Start ()
 	I = 0; // I = 1 if pointarray is filled :)
 	carArray = new Array();
 	carArray.push(car);
-	
+	var p : int = 0;
+
 	while (I==0)
 	{
 		points = Array(car.getPointArray());
-		if(points.length>1)// && I == 0) //if points.length>1 pga att kolla om vektorn med punkterna är fylld!
+		if(points.length>1) //if points.length>1 pga att kolla om vektorn med punkterna är fylld!
 		{
 			I = 1;
 			
@@ -29,22 +30,28 @@ function Start ()
 				//Generate car on a random point in the network
 				var rand : int = Mathf.Floor(Random.Range(0,max+1));
 				
-				var point = points[rand] as Point;
-				//var startPos : Vector3 = point.transform.position;
+				var point = points[p] as Point;
 				var startPos : Vector3 = getStartPos(point.transform.position);
 				
 				var newCar = Instantiate(car, startPos, Quaternion.identity);
 				newCar.name = "car" + i;
 				newCar.setNextPoint(points[rand]);
 				newCar.setStartPoint(points[rand]);
-				//Debug.Log("- " + newCar + " -");
-				carArray.push(newCar);
+				
+				var chassis : Transform = newCar.transform.Find("Chassis"); 			
+				chassis.renderer.material.color = Color(Random.Range(0.0,1.0),Random.Range(0.0,1.0),Random.Range(0.0,1.0)); //random color for the car
 				
 				yield WaitForSeconds (1);
-					
+				
+				p++;	
+				if(p==points.length)
+				{
+					p=0;
+				}
 			}	
 			break;
 		}
+		
 	}	
 }
 

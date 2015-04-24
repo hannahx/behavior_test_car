@@ -49,6 +49,7 @@ function OnTriggerExit (other : Collider) {
 //	for(var k = 0; k < insideZone.length; k++)
 	for(var k = 0; k < list.Count; k++)
 	{
+<<<<<<< HEAD
 //		var someCar : AICar_Script = insideZone[k] as AICar_Script ;
 		var someCar : AICar_Script = list[k] as AICar_Script ;
 		if(someCar == car && car.getZoneEntered() == false)
@@ -65,6 +66,17 @@ function OnTriggerExit (other : Collider) {
 		}
 		
 			
+=======
+		var someCar : AICar_Script = insideZone[k] as AICar_Script ;
+		
+		if(someCar == car)
+		{
+			Debug.Log("Array before: " +insideZone);
+			insideZone.RemoveAt(k);
+			Debug.Log("Array after: " + insideZone);
+		}
+		
+>>>>>>> origin/master
 	}
 	list.Remove(car);
 	Debug.Log(car.name + " " + car.getZoneEntered());

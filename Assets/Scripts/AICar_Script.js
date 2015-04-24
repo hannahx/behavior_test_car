@@ -46,7 +46,7 @@ private var inputTorque : float = 0.0;
 //Viariables for the sensors
 var SENSORS : boolean = false;
 var sensorLength : float = 10;  
-var longerSensorLength : float = sensorLength + 3;  
+var longerSensorLength : float = sensorLength + 5;  
 private var frontSensorStartPoint : float = 2.8;
 private var frontSensorSideDist : float = 1;  
 var frontSensorAngle : float = 30;
@@ -160,172 +160,174 @@ function Sensors()
 {
 	if(SENSORS == true)
 	{
-		flag = 0;
-		 
-		var pos : Vector3;
-		var hit : RaycastHit;
-		var rightAngles : Array = new Array();
-		var leftAngles : Array = new Array();
-		for(var I=0; I<10; I++)
+		var ypos = [0.5, 1.5];
+		for(y in ypos)
 		{
-			rightAngles.push(Quaternion.AngleAxis((7*I), transform.up)*transform.forward);
-			leftAngles.push(Quaternion.AngleAxis((-7*I), transform.up)*transform.forward);
-		}
-		
-		var avoidSensitivity : float = 0;
-		 
-		pos = transform.position;  
-		pos += transform.forward*frontSensorStartPoint;  
-		   
-		//BRAKING SENSOR  
-		if (Physics.Raycast(pos,transform.forward,hit,longerSensorLength))
-		{  
-			if (hit.transform.tag != "DriveThrough")
-			{  
-				if (hit.transform.tag == "AI")
-				{
-					setCloseCar(true, hit.transform.gameObject);
-				}
-				flag++;  
-				RearLeftWheel.brakeTorque = decellarationSpeed;  
-				RearRightWheel.brakeTorque = decellarationSpeed;  
-				Debug.DrawLine(pos,hit.point,Color.red);  
-			}  
-		}  
-		else 
-		{  
-			RearLeftWheel.brakeTorque = 0;  
-			RearRightWheel.brakeTorque = 0;  
-		}
-		 	   
-		//Front Straight Right Sensor 
-		pos += transform.right*frontSensorSideDist;  
-		if (Physics.Raycast(pos,transform.forward,hit,longerSensorLength))
-		{  
-			if (hit.transform.tag != "DriveThrough")
+			flag = 0;
+			 
+			var pos : Vector3;
+			var hit : RaycastHit;
+			var rightAngles : Array = new Array();
+			var leftAngles : Array = new Array();
+			for(var I=0; I<20; I++)
 			{
-				if (hit.transform.tag == "AI")
-				{
-					setCloseCar(true, hit.transform.gameObject);
-				}  
-				flag++;  
-				avoidSensitivity -= 1;    
-				Debug.DrawLine(pos,hit.point,Color.red);  
-			}  
-		}  
-		
-		for(I=0; I<10; I++)
-		{
-			var someAngle = rightAngles[I];
-			if (Physics.Raycast(pos,someAngle,hit,sensorLength))
-			{
-				if (hit.transform.tag != "DriveThrough")
-				{  
-					if (hit.transform.tag == "AI")
-					{
-						setCloseCar(true, hit.transform.gameObject);
-					}
-					avoidSensitivity -= 0.1;   
-					flag++;  
-					Debug.DrawLine(pos,hit.point,Color.red);  
-				} 
+				rightAngles.push(Quaternion.AngleAxis((3*I), transform.up)*transform.forward);
+				leftAngles.push(Quaternion.AngleAxis((-3*I), transform.up)*transform.forward);
 			}
-		}
-				   
-		//Front Straight left Sensor  
-		pos = transform.position;  
-		pos += transform.forward*frontSensorStartPoint;  
-		pos -= transform.right*frontSensorSideDist;  
-		   
-		if (Physics.Raycast(pos,transform.forward,hit,longerSensorLength))
-		{  
-			if (hit.transform.tag != "DriveThrough")
-			{  
-				flag++;  
-				avoidSensitivity += 1;   
-				Debug.DrawLine(pos,hit.point,Color.red);  
-				if (hit.transform.tag == "AI")
-				{
-					setCloseCar(true, hit.transform.gameObject);
-				}
-			}  
-
-		}  
-		for(I=0; I<10; I++)
-		{
-			someAngle = leftAngles[I];
-			if (Physics.Raycast(pos,someAngle,hit,sensorLength))
-			{
-				if (hit.transform.tag != "DriveThrough")
-				{  
-					if (hit.transform.tag == "AI")
-					{
-						setCloseCar(true, hit.transform.gameObject);
-					}
-					avoidSensitivity -= 0.1;   
-					flag++;  
-					Debug.DrawLine(pos,hit.point,Color.red);  
-				} 
-			}
-		}
-		   
-		//Right SideWay Sensor  
-		if (Physics.Raycast(transform.position,transform.right,hit,sidewaySensorLength))
-		{  
-			if (hit.transform.tag != "DriveThrough")
-			{  
-				flag++;  
-				avoidSensitivity -= 0.5;  
-				Debug.DrawLine(transform.position,hit.point,Color.red);  
-			}  
-		}  
-		   
-		//Left SideWay Sensor  
-		if (Physics.Raycast(transform.position,-transform.right,hit,sidewaySensorLength))
-		{  
-			if (hit.transform.tag != "DriveThrough")
-			{  
-				flag++;  
-				avoidSensitivity += 0.5;  
-				Debug.DrawLine(transform.position,hit.point,Color.red);  
-			}  
-		}  
-		 
-		pos = transform.position;
-		pos += transform.forward*frontSensorStartPoint;  
-		//Front Mid Sensor  
-		if (avoidSensitivity == 0)
-		{  
+			
+			var avoidSensitivity : float = 0;
+			 
+			pos = transform.position;  
+			pos += transform.forward*frontSensorStartPoint;
+			pos.y += y;
+			  
+			   
+			//BRAKING SENSOR  
 			if (Physics.Raycast(pos,transform.forward,hit,longerSensorLength))
 			{  
-			
-				if (hit.transform.tag == "AI")
-				{
-					setCloseCar(true, hit.transform.gameObject);
-				}
 				if (hit.transform.tag != "DriveThrough")
 				{  
-					if (hit.normal.x < 0 )  
-						avoidSensitivity = -1;  
-					else  
-						avoidSensitivity = 1;  
-						Debug.DrawLine(pos,hit.point,Color.red);  
+					if (hit.transform.tag == "AI")
+					{
+						setCloseCar(true, hit.transform.gameObject);
+					}
+					flag++;  
+					RearLeftWheel.brakeTorque = decellarationSpeed;  
+					RearRightWheel.brakeTorque = decellarationSpeed;  
+					Debug.DrawLine(pos,hit.point,Color.yellow);  
 				}  
 			}  
-		}  
-	 
-		if (flag != 0)  
-			AvoidSteer (avoidSensitivity); 
+			else 
+			{  
+				RearLeftWheel.brakeTorque = 0;  
+				RearRightWheel.brakeTorque = 0;  
+			}
+			 	   
+			//Front Straight Right Sensor 
+			pos += transform.right*frontSensorSideDist;  
+			if (Physics.Raycast(pos,transform.forward,hit,longerSensorLength))
+			{  
+				if (hit.transform.tag != "DriveThrough")
+				{
+					if (hit.transform.tag == "AI")
+					{
+						setCloseCar(true, hit.transform.gameObject);
+					}  
+					flag++;  
+					avoidSensitivity -= 1;    
+					Debug.DrawLine(pos,hit.point,Color.yellow);  
+				}  
+			}  
+			
+			for(I=0; I<20; I++)
+			{
+				var someAngle = rightAngles[I];
+				if (Physics.Raycast(pos,someAngle,hit,sensorLength))
+				{
+					if (hit.transform.tag != "DriveThrough")
+					{  
+						if (hit.transform.tag == "AI")
+						{
+							setCloseCar(true, hit.transform.gameObject);
+						}
+						avoidSensitivity -= 0.1;   
+						flag++;  
+						Debug.DrawLine(pos,hit.point,Color.yellow);  
+					} 
+				}
+			}
+					   
+			//Front Straight left Sensor  
+			pos = transform.position;  
+			pos += transform.forward*frontSensorStartPoint;  
+			pos -= transform.right*frontSensorSideDist;  
+			pos.y += y;
+			   
+			if (Physics.Raycast(pos,transform.forward,hit,longerSensorLength))
+			{  
+				if (hit.transform.tag != "DriveThrough")
+				{  
+					flag++;  
+					avoidSensitivity += 1;   
+					Debug.DrawLine(pos,hit.point,Color.yellow);  
+					if (hit.transform.tag == "AI")
+					{
+						setCloseCar(true, hit.transform.gameObject);
+					}
+				}  
+
+			}  
+			for(I=0; I<20; I++)
+			{
+				someAngle = leftAngles[I];
+				if (Physics.Raycast(pos,someAngle,hit,sensorLength))
+				{
+					if (hit.transform.tag != "DriveThrough")
+					{  
+						if (hit.transform.tag == "AI")
+						{
+							setCloseCar(true, hit.transform.gameObject);
+						}
+						avoidSensitivity -= 0.1;   
+						flag++;  
+						Debug.DrawLine(pos,hit.point,Color.yellow);  
+					} 
+				}
+			}
+			   
+			//Right SideWay Sensor  
+			if (Physics.Raycast(transform.position,transform.right,hit,sidewaySensorLength))
+			{  
+				if (hit.transform.tag != "DriveThrough")
+				{  
+					flag++;  
+					avoidSensitivity -= 0.5;  
+					Debug.DrawLine(transform.position,hit.point,Color.yellow);  
+				}  
+			}  
+			   
+			//Left SideWay Sensor  
+			if (Physics.Raycast(transform.position,-transform.right,hit,sidewaySensorLength))
+			{  
+				if (hit.transform.tag != "DriveThrough")
+				{  
+					flag++;  
+					avoidSensitivity += 0.5;  
+					Debug.DrawLine(transform.position,hit.point,Color.yellow);  
+				}  
+			}  
+			
+			//Front Mid Sensors  
+			for(I=0; I<5; I++)
+			{  
+				pos += transform.right*frontSensorSideDist/3; 
+				if (Physics.Raycast(pos,transform.forward,hit,longerSensorLength))
+				{  
+				
+					if (hit.transform.tag == "AI")
+					{
+						setCloseCar(true, hit.transform.gameObject);
+					}
+					if (hit.transform.tag != "DriveThrough")
+					{  
+						if (hit.normal.x < 0 )  
+							avoidSensitivity = -1;  
+						else  
+							avoidSensitivity = 1;  
+							Debug.DrawLine(pos,hit.point,Color.yellow);  
+					}  
+				}  
+			}  
+		 
+			if (flag != 0)  
+				AvoidSteer (avoidSensitivity); 
+		}
 	}
 }
  
 function AvoidSteer(sensitivity : float)
 {  
-    ////Debug.Log("Sensitivity:");
-    ////Debug.Log(sensitivity);
-    inputSteer = sensitivity*steeringSharpness;
-    //FrontLeftWheel.steerAngle = steeringSharpness*sensitivity*10;  
-    //FrontRightWheel.steerAngle = steeringSharpness*sensitivity*10;
+    //inputSteer = sensitivity*steeringSharpness;
 }  
 
 function GetPoints()
