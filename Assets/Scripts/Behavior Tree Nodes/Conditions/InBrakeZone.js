@@ -22,8 +22,8 @@ public class InBrakeZone extends ConditionNode {
 	function Update () : Status {
  		zones = brakeZoneContainer.GetComponentsInChildren( BrakeZone );
  			
- 		for (zone in zones)
- 		{
+// 		for (zone in zones)
+// 		{
  			if (car.getZoneEntered() == true)
  			{
  				i = 1;
@@ -33,7 +33,7 @@ public class InBrakeZone extends ConditionNode {
 				i = -1;
 			}
  	
- 		}
+// 		}
  		if (i > 0) {
             // Send event?
             
