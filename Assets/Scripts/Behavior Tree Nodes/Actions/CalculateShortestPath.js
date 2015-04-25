@@ -4,7 +4,7 @@ import BehaviourMachine;
 
 /** The class/action node is supposed to calculate SHORTEST path (maybe with A*?) 
 *   but calculates a "random" path for now... */
-public class CalculatePath extends ActionNode {
+public class CalculateStortestPath extends ActionNode {
      
 	var car : AICar_Script;
  	private var startPoint : Point;

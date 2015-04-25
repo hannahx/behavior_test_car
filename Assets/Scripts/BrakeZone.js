@@ -1,9 +1,10 @@
-#pragma strict
+//#pragma strict
 import System.Collections.Generic;
-var AICar : GameObject;
+//var AICar : GameObject;
 var brakingPower : float = 1120;
 var enginePower : float = 0;
-var car : AICar_Script; 
+private var enterCar : AICar_Script; 
+private var exitCar : AICar_Script; 
 var insideZone : Array;
 var list : List.<AICar_Script>;
 
@@ -15,71 +16,52 @@ function Start() {
 
 }
 
-function Update() {
-	insideZone = list.ToArray();
-
-}
-
-
 // Hit the brakes when the AI enters the trigger
 function OnTriggerEnter (c : Collider) {
 	var parentparent = c.gameObject.transform.parent.gameObject;
-	car = parentparent.GetComponent(AICar_Script);
-	Debug.Log(car.name + "  enters!");
+	enterCar = parentparent.GetComponent(AICar_Script);
+	Debug.Log(enterCar.name + "  enters!");
 
 	
-	car.setActiveZone(this);
-	car.setZoneEntered(true);
-	Debug.Log(car.name + " " + car.getZoneEntered());
+	enterCar.setActiveZone(this);
+	enterCar.setZoneEntered(true);
+	Debug.Log(enterCar.name + " " + enterCar.getZoneEntered());
 
 	//insideZone.Push(car);
-	list.Add(car);
+	list.Add(enterCar);
 	
 	
 	
 }
 
-function OnTriggerExit (other : Collider) {
-
-	car.BrakePower = 0;
-	//car.EngineTorque = (Mathf.Lerp(enginePower, 600, Time.deltaTime));
-	//Debug.Log("What is this for?");
-			car.setActiveZone(null);
-			car.setZoneEntered(false);
-//	for(var k = 0; k < insideZone.length; k++)
+function OnTriggerExit (c : Collider) {
+	var parentparent = c.gameObject.transform.parent.gameObject;
+	exitCar = parentparent.GetComponent(AICar_Script);
+	exitCar.BrakePower = 0;
+	exitCar.setActiveZone(null);
+	exitCar.setZoneEntered(false);
 	for(var k = 0; k < list.Count; k++)
 	{
-//		var someCar : AICar_Script = insideZone[k] as AICar_Script ;
 		var someCar : AICar_Script = list[k] as AICar_Script ;
-		if(someCar == car && car.getZoneEntered() == false)
+		if(someCar == exitCar && exitCar.getZoneEntered() == false)
 		{	
-			//Debug.Log(insideZone);
-			//insideZone.RemoveAt(k);
-			//insideZone[k] = null;
-			car.setActiveZone(null);
-			car.setZoneEntered(false);
+			exitCar.setActiveZone(null);
+			exitCar.setZoneEntered(false);
 			list.RemoveAt(k);		
 
-			Debug.Log(car.name + " removed");
-//			Debug.Log(list);
+			Debug.Log(exitCar.name + " removed");
 		}
 		
-
 	}
-	list.Remove(car);
-	Debug.Log(car.name + " " + car.getZoneEntered());
-	Debug.Log(car.name + " left zone, " + list.Count + " cars left");
-	
-	//Debug.Log(car.getZoneEntered());
-	
+	list.Remove(exitCar);
+	Debug.Log(exitCar.name + " " + exitCar.getZoneEntered());
+	Debug.Log(exitCar.name + " left zone, " + list.Count + " cars left");	
 }
 
 function getCarsInZone()
 {
-//	list.Reverse();
-	
+	insideZone = list.ToArray();
 	Debug.Log("Car array:  " + insideZone);
-	//Debug.Log("gciz: " + car.name + " " + car.getZoneEntered());
 
 	return insideZone;
 }

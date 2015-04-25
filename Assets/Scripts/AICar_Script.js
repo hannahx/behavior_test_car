@@ -160,7 +160,7 @@ function Sensors()
 {
 	if(SENSORS == true)
 	{
-		var ypos = [0.5, 1.5];
+		var ypos = [0.5, 1.0, 1.5];
 		for(y in ypos)
 		{
 			flag = 0;
