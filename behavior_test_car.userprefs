@@ -1,10 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Behavior Tree Nodes\Actions\UpdateNextPoint.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AICar_Script.js">
     <Files>
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\HandleBrakeZone.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BrakeZone.js" Line="18" Column="1" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\UpdateNextPoint.js" Line="32" Column="1" />
+      <File FileName="Assets\Scripts\AICar_Script.js" Line="317" Column="26" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\CalculateShortestPath.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\CalculatePath.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\RotateCar.js" Line="31" Column="45" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

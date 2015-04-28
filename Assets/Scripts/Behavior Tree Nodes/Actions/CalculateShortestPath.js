@@ -1,22 +1,21 @@
-﻿//#pragma strict
-
+﻿
 import BehaviourMachine;
 
 /** The class/action node is supposed to calculate SHORTEST path (maybe with A*?) 
 *   but calculates a "random" path for now... */
-public class CalculateStortestPath extends ActionNode {
+public class CalculateShortestPath extends ActionNode {
      
 	var car : AICar_Script;
  	private var startPoint : Point;
     private var destinationPoint : Point;
+	private var startPointIndex : int;
+    private var destinationPointIndex : int;
     private var path : Array;
     private var points;
-    private var pointMatrix;
-    private var destinationFound; //1 if found, 0 if not	
-    
-    private var dist : Array;
-    private var prev : Array;
-
+    private var pointMatrix;   
+    private var Infinity = float.PositiveInfinity;
+	private var PathLengths;
+	private var Predecessors;
      
     // Called once when the node is created
     function Awake () {}
@@ -35,110 +34,97 @@ public class CalculateStortestPath extends ActionNode {
 		startPoint = car.getStartPoint();
 		path.push(startPoint);
     	
-    	destinationFound = 0;
+    	for(var p=0; p<points.length; p++)
+    	{	
+			if(points[p]==startPoint)
+			{
+				startPointIndex = p;
+			}
+			if(points[p]==destinationPoint)
+			{
+				destinationPointIndex = p;
+			}
+    	}
     	
-   		dist = new Array(points.length);
-    	prev = new Array(points.length);
-    	
+    	// Compute the shortest paths from startPointIndex to each other vertex in the graph.
+    	shortestPath(pointMatrix, points.length, startPointIndex);
+    	// Get the shortest path from startPoint to destinationPointIndex.
+		constructPath(destinationPointIndex);
+		//Debug.Log("PATH from " + startPoint.name + " to " + destinationPoint.name);
+		//Debug.Log(path);
     }
      
     // This function is called when the node is in execution
-    function Update () : Status {
-        //Debug.Log("path?");
-        findPath();     
-        
+    function Update () : Status 
+    {  
 		car.setPath(path);
-		//Debug.Log("Path found:");	
-		var pathString = "";	
-		for(p in path)
-		{
-			pathString = pathString + p + " ";
-		}
-		//Debug.Log(pathString);
 		return Status.Success;
-
-
-        // Never forget to set the node status
-        //return Status.Running;
     }
- 
-    // Called when the node ends its execution
-    function End () {}
- 
-    // Called when the owner (BehaviourTree or ActionState) is disabled
-    function OnDisable () {}
- 
-    // This function is called to reset the default values of the node
-    function Reset () {}
- 
-    // Called when the script is loaded or a value is changed in the inspector (Called in the editor only)
-    function OnValidate () {}
-    
-    function findPath()
-    {
-    	var x : int = 0;
-		var y : int;
-		var possiblePaths : Array;
-        for(p in pointMatrix)
+
+	/** Dijkstra's Algorithm finds the shortest path 
+	  * Source: http://mcc.id.au/2004/10/shortest-path-js.html */
+	function shortestPath(edges, numVertices, startVertex) 
+	{
+		var done : Array = new Array();
+		for(var d=0; d<numVertices; d++)
 		{
-			y = 0;
-			possiblePaths = new Array();
-			for(P in p)
-			{
-				if(points[x]==path[path.length-1])
-				{
-					if(P!=0)
-					{
-						if(points[y] == destinationPoint)
-						{
-							path.push(points[y]);
-							destinationFound = 1;
-							break;
-						}
-						else
-						{
-							possiblePaths.push(points[y]);
-						}					
-					}
-				}
-				
-				y++;
-			}			
-			if(destinationFound == 1)
-				break;			
+			done.push(false);
 			
-			if(possiblePaths.length==1)
-			{
-				path.push(possiblePaths[0]);
-			}
-			else if (possiblePaths.length>1)
-			{
-				var max : int = possiblePaths.length - 1;
-				var rand : int = Mathf.Floor(Random.Range(0,max+1));
-				if(rand != possiblePaths.length)
-				{
-					path.push(possiblePaths[rand]);
-				}
-				else
-				{
-					path.push(possiblePaths[rand-1]);
-				}
-			}
-			x++;
 		}
-		
-		if(destinationFound == 0)
+		done[startVertex] = true;
+		var pathLengths = new Array(numVertices);
+		var predecessors = new Array(numVertices);
+		for (var i = 0; i < numVertices; i++) 
 		{
-			//Debug.Log("Path not found :(");
-			findPath();
+			pathLengths[i] = edges[startVertex][i];
+		    if (edges[startVertex][i] != Infinity) 
+		    {
+		      predecessors[i] = startVertex;
+		    }
 		}
-//		else
-//		{
-//			//Debug.Log("Path found :)");
-//		}
-    }
-    
-    
+		pathLengths[startVertex] = 0;
+		for (i = 0; i < numVertices - 1; i++) 
+		{
+		    var closest = -1;
+		    var closestDistance = Infinity;
+		    for (var j = 0; j < numVertices; j++) 
+		    {
+				if (!done[j] && pathLengths[j] < closestDistance) 
+				{
+					closestDistance = pathLengths[j];
+		        	closest = j;
+				}
+		    }
+		    done[closest] = true;
+		    for (j = 0; j < numVertices; j++) 
+		    {
+				if (!done[j]) 
+				{
+		        	var possiblyCloserDistance = pathLengths[closest] + edges[closest][j];
+		        	if (possiblyCloserDistance < pathLengths[j]) 
+		        	{
+		          		pathLengths[j] = possiblyCloserDistance;
+		          		predecessors[j] = closest;
+		        	}
+		      	}
+		    }
+		}
+	   	PathLengths = pathLengths;
+	   	Predecessors = predecessors;
+	}
+
+	function constructPath(endVertex) 
+	{
+	  	var indexPath = new Array();
+	  	while (endVertex != startPointIndex) 
+	  	{
+		    indexPath.unshift(endVertex);
+		    endVertex = Predecessors[endVertex]; 
+	  	}
+	  	for(p in indexPath)
+	  	{
+	  		if(p!=null)
+	  			path.push(points[p]);
+	  	}
+	}             
 }
-
-

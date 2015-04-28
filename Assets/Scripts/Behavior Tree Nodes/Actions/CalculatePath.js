@@ -14,8 +14,7 @@ public class CalculatePath extends ActionNode {
     private var pointMatrix;
     private var destinationFound; //1 if found, 0 if not	
     
-    private var dist : Array;
-    private var prev : Array;
+    private var Infinity = float.PositiveInfinity;
 
      
     // Called once when the node is created
@@ -62,17 +61,6 @@ public class CalculatePath extends ActionNode {
         //return Status.Running;
     }
  
-    // Called when the node ends its execution
-    function End () {}
- 
-    // Called when the owner (BehaviourTree or ActionState) is disabled
-    function OnDisable () {}
- 
-    // This function is called to reset the default values of the node
-    function Reset () {}
- 
-    // Called when the script is loaded or a value is changed in the inspector (Called in the editor only)
-    function OnValidate () {}
     
     function findPath()
     {
@@ -87,7 +75,7 @@ public class CalculatePath extends ActionNode {
 			{
 				if(points[x]==path[path.length-1])
 				{
-					if(P!=0)
+					if(P!=Infinity)
 					{
 						if(points[y] == destinationPoint)
 						{

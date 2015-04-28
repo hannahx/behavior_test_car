@@ -59,6 +59,12 @@ private var carClose : boolean = false;
 private var inBrakeZone : boolean = false;
 private var activeBrakeZone : BrakeZone;
 
+private var Infinity = float.PositiveInfinity;
+
+private var StopSign : boolean = false;
+private var rightRule : boolean;
+private var triangleSign : boolean = false;
+
 function Start () 
 {
     // I usually alter the center of mass to make the car more stable. I'ts less likely to flip this way.
@@ -67,7 +73,7 @@ function Start ()
 	
 }
  
-function Update () 
+function FixedUpdate () 
 {    
     var mph = rigidbody.velocity.magnitude * 2.237;
     mphDisplay.text = mph.ToString("F0") + " : MPH"; // displays one digit after the dot
@@ -169,10 +175,10 @@ function Sensors()
 			var hit : RaycastHit;
 			var rightAngles : Array = new Array();
 			var leftAngles : Array = new Array();
-			for(var I=0; I<20; I++)
+			for(var I=0; I<25; I++)
 			{
-				rightAngles.push(Quaternion.AngleAxis((3*I), transform.up)*transform.forward);
-				leftAngles.push(Quaternion.AngleAxis((-3*I), transform.up)*transform.forward);
+				rightAngles.push(Quaternion.AngleAxis((2*I), transform.up)*transform.forward);
+				leftAngles.push(Quaternion.AngleAxis((-2*I), transform.up)*transform.forward);
 			}
 			
 			var avoidSensitivity : float = 0;
@@ -211,6 +217,7 @@ function Sensors()
 				{
 					if (hit.transform.tag == "AI")
 					{
+						setRightCar(true); 
 						setCloseCar(true, hit.transform.gameObject);
 					}  
 					flag++;  
@@ -219,7 +226,7 @@ function Sensors()
 				}  
 			}  
 			
-			for(I=0; I<20; I++)
+			for(I=0; I<25; I++)
 			{
 				var someAngle = rightAngles[I];
 				if (Physics.Raycast(pos,someAngle,hit,sensorLength))
@@ -228,6 +235,7 @@ function Sensors()
 					{  
 						if (hit.transform.tag == "AI")
 						{
+							setRightCar(true); 
 							setCloseCar(true, hit.transform.gameObject);
 						}
 						avoidSensitivity -= 0.1;   
@@ -257,7 +265,7 @@ function Sensors()
 				}  
 
 			}  
-			for(I=0; I<20; I++)
+			for(I=0; I<25; I++)
 			{
 				someAngle = leftAngles[I];
 				if (Physics.Raycast(pos,someAngle,hit,sensorLength))
@@ -306,6 +314,7 @@ function Sensors()
 				
 					if (hit.transform.tag == "AI")
 					{
+						setRightCar(true); 
 						setCloseCar(true, hit.transform.gameObject);
 					}
 					if (hit.transform.tag != "DriveThrough")
@@ -342,7 +351,7 @@ function GetPoints()
 	{
 		points[i] = p;
 		////Debug.Log(points[i].transform.position);
-		zeroArray[i] = 0;		
+		zeroArray[i] = Infinity;		
 		i++;
 	}
 	
@@ -353,7 +362,7 @@ function GetPoints()
 		pointMatrix[i] = new Array();
 		for(j=0; j<POINTS.length; j++)
 		{
-			pointMatrix[i][j] = 0;
+			pointMatrix[i][j] = Infinity;
 		}
 		
 	}
@@ -375,8 +384,8 @@ function GetPoints()
 				{
 					if(points[y]==Next)
 					{
-						//P = 1;
-						P = Vector3.Distance(points[x].transform.position, Next.transform.position);
+						P = 1;
+						//P = Vector3.Distance(points[x].transform.position, Next.transform.position);
 					}
 					////Debug.Log(P);
 					y++;
@@ -514,4 +523,28 @@ function getActiveZone()
 function setActiveZone(z)
 {
 	activeBrakeZone = z;
+}
+
+function setStopSign(s){
+	StopSign = s;
+}
+
+function getStopSign(){
+	return StopSign;
+}
+
+function setRightCar(h){
+	rightRule = h;
+}
+
+function getRightCar(){
+	return rightRule;
+}
+
+function setTriangleSign(s){
+	triangleSign = s;
+}
+
+function getTriangleSign(){
+	return triangleSign;
 }
