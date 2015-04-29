@@ -5,13 +5,11 @@ import BehaviourMachine;
 public class GreenLight extends ConditionNode {
      
     private var i:int;
-//    var lightInfo : CloseToLight;
     private var light : TrafficLight;
     var car : AICar_Script;
  
     function Update () : Status {
     	// To keep track of the closest traffic light.
-//    	light = lightInfo.getCurrentLight();
     	if(car.getClosestTrafficLight() != null)
     	{
     		light = car.getClosestTrafficLight();
@@ -33,10 +31,10 @@ public class GreenLight extends ConditionNode {
 	        }
 	        else {
 	            // Update status
-	            return Status.Failure;
+	            return Status.Running;
 	        }
          }
-         return Status.Failure;
+         return Status.Running;
     }
  
     function Reset () {

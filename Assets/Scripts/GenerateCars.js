@@ -7,13 +7,14 @@ private var points : Array = new Array();
 private var max : int;
 private var I;
 private var carArray : Array;
+private var p : int;
 
 function Start ()
 {
 	I = 0; // I = 1 if pointarray is filled :)
 	carArray = new Array();
 	carArray.push(car);
-	var p : int = 0;
+	p = 0;
 
 	while (I==0)
 	{
@@ -28,15 +29,15 @@ function Start ()
 			for(i=0; i<NumberOfCars; i++)
 			{	
 				//Generate car on a random point in the network
-				var rand : int = Mathf.Floor(Random.Range(0,max+1));
-				
+				//var rand : int = Mathf.Floor(Random.Range(0,max+1));
+				getP();
 				var point = points[p] as Point;
 				var startPos : Vector3 = getStartPos(point.transform.position);
 				
 				var newCar = Instantiate(car, startPos, Quaternion.identity);
 				newCar.name = "car" + i;
-				newCar.setNextPoint(points[rand]);
-				newCar.setStartPoint(points[rand]);
+				newCar.setNextPoint(points[p]);
+				newCar.setStartPoint(points[p]);
 				
 				var chassis : Transform = newCar.transform.Find("Chassis"); 			
 				chassis.renderer.material.color = Color(Random.Range(0.0,1.0),Random.Range(0.0,1.0),Random.Range(0.0,1.0)); //random color for the car
@@ -55,6 +56,20 @@ function Start ()
 	}	
 }
 
+/** Don not generate a car in an intersection */
+function getP()
+{
+	var po : Point = points[p] as Point;
+	if(po.InIntersection()==true)
+	{
+		p++;
+		if(p==points.length)
+		{
+			p=0;
+		}
+		getP();
+	}
+}
 
 function getCars()
 {

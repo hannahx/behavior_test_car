@@ -5,6 +5,8 @@ var next1 : Point;
 var next2 : Point;
 var next3 : Point;
 
+var inIntersection : boolean;
+
 /** Draw the point lines only when you connect two points
   * You go from light grey to dark grey (can't go the other direction) */
 function OnDrawGizmos() 
@@ -25,17 +27,7 @@ function OnDrawGizmos()
 
 }
 
-//function OnTriggerEnter(c : Collider)
-//{
-//	var parentparent = c.gameObject.transform.parent.gameObject;
-//	var car : AICar_Script = parentparent.GetComponent(AICar_Script);
-//	//Debug.Log(car.getPath());
-//	
-//	//Debug.Log(this);
-//	
-//	//updatera nästa punkt OM punkten finns i bilens path.
-//	//car.setNextPoint(this);
-//	
-//	car.setUpdatePoint(1);
-//	//Debug.Log(1);
-//}
+function InIntersection()
+{
+	return inIntersection;
+}

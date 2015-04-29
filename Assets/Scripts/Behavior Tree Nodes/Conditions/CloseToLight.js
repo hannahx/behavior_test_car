@@ -6,7 +6,6 @@ public class CloseToLight extends ConditionNode {
     private var i : int;
     var car : AICar_Script;
     var trafficLightContainer : GameObject; //this is an object that contains all the traffic lights!
-    var gos : TrafficLight[];
 		
     private var carPos : Vector3;
     private var trafficLights : Array;

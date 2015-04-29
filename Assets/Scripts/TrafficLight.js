@@ -8,17 +8,32 @@ private var colorGreen : Color = Color.green;
 private var colorYellow : Color = Color.yellow;
 private var currentColor : Color;
 var StartTimerLater : boolean;
+var TimeDelay : float;
+var RandomLight : boolean;
+private var randomDelay : float;
+private var delay : float;
+private var slack : boolean;
+
+
 
 function Start() {
 	rend = GetComponent.<Renderer>();
 	
 	if(StartTimerLater==true)
-	{
-		yield new WaitForSeconds(3.5);
+	{	
+		delay = TimeDelay * 3.5;
+		yield new WaitForSeconds(delay);
+		
 	}
-	
-	var i = 1;
-	while (i==1)
+	ChangeLight();
+}
+
+function Update()
+{	
+}
+
+function ChangeLight() {
+	while (true)
 	{
 		rend.material.color = colorGreen;
 		currentColor = colorGreen;
@@ -29,12 +44,21 @@ function Start() {
 		rend.material.color = colorRed;
 		currentColor = colorRed;
 		yield new WaitForSeconds(3);
+		if (RandomLight == true)
+		{
+			if (slack == true){
+			
+				randomDelay = Random.value;	
+				yield new WaitForSeconds(randomDelay*3);	
+			}
+		}
 		rend.material.color = colorYellow;
 		currentColor = colorYellow;
 		yield new WaitForSeconds(0.5);
+		slack = randomBoolean();
 	}
-
 }
+
 
 function getCurrentColor()
 {
@@ -44,4 +68,9 @@ function getCurrentColor()
 function getMaterial()
 {
 	return material;
+}
+
+function randomBoolean() :boolean
+{
+   return (Random.value > 0.5f);
 }
