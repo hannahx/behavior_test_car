@@ -76,7 +76,9 @@ function Start ()
 function FixedUpdate () 
 {    
     var mph = rigidbody.velocity.magnitude * 2.237;
-    mphDisplay.text = mph.ToString("F0") + " : MPH"; // displays one digit after the dot
+    var kmh = mph*1.609;
+    //mphDisplay.text = mph.ToString("F0") + " : MPH"; // displays one digit after the dot
+    mphDisplay.text = kmh.ToString("F0") + " : km/h"; // displays one digit after the dot
      
     // This is to limith the maximum speed of the car, adjusting the drag probably isn't the best way of doing it,
     // but it's easy, and it doesn't interfere with the physics processing.
