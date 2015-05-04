@@ -50,7 +50,7 @@ var longerSensorLength : float = sensorLength + 5;
 private var frontSensorStartPoint : float = 2.8;
 private var frontSensorSideDist : float = 1;  
 var frontSensorAngle : float = 30;
-var sidewaySensorLength : float = 5;
+var sidewaySensorLength : float = 20;
 private var flag : int = 0;
  
 var decellarationSpeed : float = 2000; 
@@ -169,7 +169,7 @@ function Sensors()
 {
 	if(SENSORS == true)
 	{
-		var ypos = [0.5, 1.0, 1.5];
+		var ypos = [0.3, 1.0, 1.5];
 		for(y in ypos)
 		{
 			flag = 0;
@@ -242,7 +242,7 @@ function Sensors()
 							setRightCar(true); 
 							setCloseCar(true, hit.transform.gameObject);
 						}
-						avoidSensitivity -= 0.1; 
+						avoidSensitivity -= 0.01; 
 						setCloseObject(avoidSensitivity, hit.transform.gameObject);  
 						flag++;  
 						Debug.DrawLine(pos,hit.point,Color.yellow);  
@@ -282,7 +282,7 @@ function Sensors()
 						{
 							setCloseCar(true, hit.transform.gameObject);
 						}
-						avoidSensitivity += 0.1;   
+						avoidSensitivity += 0.01;   
 						setCloseObject(avoidSensitivity, hit.transform.gameObject);
 						flag++;  
 						Debug.DrawLine(pos,hit.point,Color.yellow);  
@@ -344,9 +344,6 @@ function Sensors()
 			}  
 		 
 		}
-//		if (flag != 0)  
-//			objectClose = avoidSensitivity/10;
-//			//AvoidSteer (avoidSensitivity); 
 	}
 }
  
