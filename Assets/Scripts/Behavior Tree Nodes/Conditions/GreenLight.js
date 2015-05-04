@@ -31,10 +31,10 @@ public class GreenLight extends ConditionNode {
 	        }
 	        else {
 	            // Update status
-	            return Status.Running;
+	            return Status.Failure;
 	        }
          }
-         return Status.Running;
+         return Status.Failure;
     }
  
     function Reset () {
