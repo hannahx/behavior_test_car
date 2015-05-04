@@ -313,18 +313,18 @@ function Sensors()
 			//TODO add more sensors on the sides, and sensors that can sense cars as well :)
 			//Right SideWay Sensor  
 			var Pos : Vector3 = transform.position;
-			Pos.x -= 2;
-			Pos.y = y;
+			Pos.z -= 2;
+			Pos.y = y-0.5;
 			for(I=0; I<3; I++)
 			{
-				Pos.x += 2;
+				Pos.z += 2;
 				
 				if (Physics.Raycast(Pos,transform.right,hit,sidewaySensorLength))
 				{  
 					if (hit.transform.tag != "DriveThrough" && hit.transform.tag != "AI")
 					{  
 						//flag++;  
-						avoidSensitivity -= 0.1;  
+						avoidSensitivity -= 0.2;  
 						setCloseObject(avoidSensitivity, hit.transform.gameObject);
 						Debug.DrawLine(transform.position,hit.point,Color.white);  
 					}  
@@ -336,7 +336,7 @@ function Sensors()
 					if (hit.transform.tag != "DriveThrough" && hit.transform.tag != "AI")
 					{  
 						//flag++;  
-						avoidSensitivity += 0.1;  
+						avoidSensitivity += 0.2;  
 						setCloseObject(avoidSensitivity, hit.transform.gameObject);
 						Debug.DrawLine(transform.position,hit.point,Color.white);  
 					}  

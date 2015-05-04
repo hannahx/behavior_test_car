@@ -91,7 +91,7 @@ function getStartPos(pos : Vector3)
 		for (c in carArray)
 		{		
 			//Debug.Log("" + c + "  " + c.transform.position);
-			if(Vector3.Distance(pos, c.transform.position)< 1)
+			if(Vector3.Distance(pos, c.transform.position)< 10)
 			{
 				Debug.Log("Same position as " + c);
 				pos.x -= 50;
