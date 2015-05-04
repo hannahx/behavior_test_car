@@ -1,10 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GenerateCars.js">
     <Files>
-      <File FileName="Assets\Scripts\AICar_Script.js" Line="322" Column="54" />
-      <File FileName="Assets\Scripts\GenerateCars.js" Line="94" Column="54" />
+      <File FileName="Assets\Scripts\GenerateCars.js" Line="49" Column="5" />
+      <File FileName="Assets\Scripts\AICar_Script.js" Line="617" Column="28" />
       <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidCollision.js" Line="27" Column="44" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\RotateCar.js" Line="32" Column="37" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

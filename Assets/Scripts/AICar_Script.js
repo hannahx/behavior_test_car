@@ -66,6 +66,8 @@ private var StopSign : boolean = false;
 private var rightRule : boolean;
 private var triangleSign : boolean = false;
 
+private var generatesOnTakenPosition = false;
+
 function Start () 
 {
     // I usually alter the center of mass to make the car more stable. I'ts less likely to flip this way.
@@ -605,4 +607,14 @@ function setTriangleSign(s){
 
 function getTriangleSign(){
 	return triangleSign;
+}
+
+function setTakenPosition(b : boolean)
+{
+	generatesOnTakenPosition = b;
+}
+
+function getTakenPosition()
+{
+	return generatesOnTakenPosition;
 }

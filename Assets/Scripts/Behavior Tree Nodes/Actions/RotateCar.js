@@ -26,6 +26,12 @@ public class RotateCar extends ActionNode {
     	var dir : Vector3 = (nextPoint.transform.position - startPoint.transform.position).normalized;
     	car.transform.rotation = Quaternion.LookRotation(dir);
     	
+    	if(car.getTakenPosition())
+    	{
+    		Debug.Log("Change pos...");
+    		car.transform.position += car.transform.forward*2;// + 50; //TODO if no other car is there!!
+    	}
+    	
     }
      
     // This function is called when the node is in execution
