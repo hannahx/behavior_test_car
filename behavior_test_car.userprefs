@@ -1,12 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AICar_Script.js">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidCollision.js">
     <Files>
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\GreenLight.js" Line="20" Column="11" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\RedLight.js" Line="22" Column="15" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\ObjectClose.js" Line="13" Column="34" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidObject.js" Line="12" Column="43" />
-      <File FileName="Assets\Scripts\AICar_Script.js" Line="355" Column="54" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidCollision.js" Line="7" Column="41" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

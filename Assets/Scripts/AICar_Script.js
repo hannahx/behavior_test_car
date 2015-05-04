@@ -282,7 +282,7 @@ function Sensors()
 						{
 							setCloseCar(true, hit.transform.gameObject);
 						}
-						avoidSensitivity -= 0.1;   
+						avoidSensitivity += 0.1;   
 						setCloseObject(avoidSensitivity, hit.transform.gameObject);
 						flag++;  
 						Debug.DrawLine(pos,hit.point,Color.yellow);  
@@ -352,7 +352,7 @@ function Sensors()
  
 function AvoidSteer(sensitivity : float)
 {  
-    inputSteer += sensitivity*steeringSharpness/100000;
+    inputSteer += sensitivity/3;//*steeringSharpness/1000;
 }  
 
 function GetPoints()
@@ -424,6 +424,7 @@ function setCloseCar(b : boolean, g : GameObject)
 function setCloseObject(f : float, g : GameObject)
 {  
 	//if(g.name != this.name)
+	if(g.tag != "AI")
 	{
 		//Debug.Log(this + " close to " + g);
 		objectClose = f;

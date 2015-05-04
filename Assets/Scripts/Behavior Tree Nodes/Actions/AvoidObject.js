@@ -10,20 +10,12 @@ public class AvoidObject extends ActionNode {
     function Start () 
     {
     	car.AvoidSteer(car.getCloseObject());
+    	car.steeringSharpness = 70;
     }
      
     // This function is called when the node is in execution
     function Update () : Status 
     {
-		if(car.getCloseCar()==false)
-		{
-			car.setBrakePower(0);
-			return Status.Success;
-		}
-		else
-		{
-			car.setBrakePower(car.getBrakePower()+20);
-			return Status.Running;
-		}
+		return Status.Success;
     }
 }

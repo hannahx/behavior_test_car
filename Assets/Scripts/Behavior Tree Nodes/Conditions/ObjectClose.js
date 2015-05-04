@@ -29,7 +29,8 @@ public class ObjectClose extends ConditionNode {
             // Update status
             return Status.Success;
         }
-        else {
+        else 
+        {
             // Update status
             return Status.Failure;
         }
