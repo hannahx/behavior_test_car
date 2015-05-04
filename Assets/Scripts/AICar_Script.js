@@ -312,28 +312,36 @@ function Sensors()
 			   
 			//TODO add more sensors on the sides, and sensors that can sense cars as well :)
 			//Right SideWay Sensor  
-			if (Physics.Raycast(transform.position,transform.right,hit,sidewaySensorLength))
-			{  
-				if (hit.transform.tag != "DriveThrough" && hit.transform.tag != "AI")
+			var Pos : Vector3 = transform.position;
+			Pos.x -= 2;
+			Pos.y = y;
+			for(I=0; I<3; I++)
+			{
+				Pos.x += 2;
+				
+				if (Physics.Raycast(Pos,transform.right,hit,sidewaySensorLength))
 				{  
-					//flag++;  
-					avoidSensitivity -= 0.5;  
-					setCloseObject(avoidSensitivity, hit.transform.gameObject);
-					Debug.DrawLine(transform.position,hit.point,Color.white);  
+					if (hit.transform.tag != "DriveThrough" && hit.transform.tag != "AI")
+					{  
+						//flag++;  
+						avoidSensitivity -= 0.1;  
+						setCloseObject(avoidSensitivity, hit.transform.gameObject);
+						Debug.DrawLine(transform.position,hit.point,Color.white);  
+					}  
 				}  
-			}  
-			   
-			//Left SideWay Sensor  
-			if (Physics.Raycast(transform.position,-transform.right,hit,sidewaySensorLength))
-			{  
-				if (hit.transform.tag != "DriveThrough" && hit.transform.tag != "AI")
+				   
+				//Left SideWay Sensor  
+				if (Physics.Raycast(Pos,-transform.right,hit,sidewaySensorLength))
 				{  
-					//flag++;  
-					avoidSensitivity += 0.5;  
-					setCloseObject(avoidSensitivity, hit.transform.gameObject);
-					Debug.DrawLine(transform.position,hit.point,Color.white);  
+					if (hit.transform.tag != "DriveThrough" && hit.transform.tag != "AI")
+					{  
+						//flag++;  
+						avoidSensitivity += 0.1;  
+						setCloseObject(avoidSensitivity, hit.transform.gameObject);
+						Debug.DrawLine(transform.position,hit.point,Color.white);  
+					}  
 				}  
-			}  
+			}
 			
 			//Front Mid Sensors  
 			for(I=0; I<5; I++)
