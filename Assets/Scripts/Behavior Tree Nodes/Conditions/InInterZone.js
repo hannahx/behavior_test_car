@@ -2,7 +2,7 @@
 
 import BehaviourMachine;
  
-public class InBrakeZone extends ConditionNode {
+public class InInterZone extends ConditionNode {
 
 	var brakeZoneContainer : GameObject;
 	private var i : int;

@@ -1,7 +1,7 @@
 ﻿#pragma strict
 import BehaviourMachine;
 
-public class FudgeBrakeZone extends ActionNode {
+public class HandleInterZone extends ActionNode {
 
 	var car : AICar_Script;
     //private var brakePower : float;
@@ -23,7 +23,7 @@ public class FudgeBrakeZone extends ActionNode {
 	function Start () 
 	{
 		zones = new Array();
-		insideZone = new Array();
+		insideZone = new Array();	
 	}
 
 	// This function is called when the node is in execution
@@ -43,33 +43,36 @@ public class FudgeBrakeZone extends ActionNode {
 			// Stop the car.
 //			if (car.stopCounter < 1){
 				car.BrakePower = (brakingPower);
+				
 //				car.stopCounter ++;
 //				Debug.Log("stopCounter " + car.stopCounter);
 	//		}
-			
+			//Debug.Log("time: " + Time.time + " start time: " + car.getStopTimer());
+
 			//car.EngineTorque = (enginePower);
 				if (car.getStopSign()==true || car.getTriangleSign() == true)
 				{
-					if (insideZone.length == 1)
+					if (insideZone.length == 1 && Time.time > car.getStopTimer()+1)
 					{	
-						
+						Debug.Log("OK!");
 						if (car.getStopSign()==true && car.getTriangleSign() == false)
 						{
-							if (car.rigidbody.velocity.magnitude == 0) {
+							Debug.Log("Stop sign!");
+							//if (car.rigidbody.velocity.magnitude == 0) {
 								car.BrakePower = 0;
-								//var blah = Time.time;
-								//car.EngineTorque = (Mathf.Lerp(enginePower, 600, Time.deltaTime));
-								Debug.Log(car.name + "stopped och can drive again");
-							}
+								car.setStopSign(false);
+								//Debug.Log(car.name + "stopped och can drive again");
+							//}
 						}
 						else if (car.getTriangleSign()==true && car.getStopSign() == false)
 						{
+							Debug.Log("Triangle sign!");
 							car.BrakePower = 0;
 						}
-						Debug.Log("Foxes  " + car.name );
+						//Debug.Log("Foxes  " + car.name );
 					}
 
-					else if (insideZone.length > 1 && car.getCloseCar() == false)
+					else if (insideZone.length > 1 && car.getCloseCar() == false && Time.time > car.getStopTimer()+1)
 					{
 						if (car.getStopSign()==true)
 						{	
@@ -83,12 +86,14 @@ public class FudgeBrakeZone extends ActionNode {
 							car.BrakePower = 0;
 							//car.EngineTorque = (Mathf.Lerp(enginePower, 600, Time.deltaTime));
 						}
-							Debug.Log("Kobras  " + car.name);
+							//Debug.Log("Kobras  " + car.name);
 						
 					}
 				}
 				else
 				{
+					Debug.Log("No sign...");
+					
 					//Debug.Log("Right rule applies!");
 					// Priority to the right 
 					if (insideZone.length == 1)

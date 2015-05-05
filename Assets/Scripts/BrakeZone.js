@@ -20,7 +20,7 @@ function Start() {
 function OnTriggerEnter (c : Collider) {
 	var parentparent = c.gameObject.transform.parent.gameObject;
 	enterCar = parentparent.GetComponent(AICar_Script);
-	Debug.Log(enterCar.name + "  enters!");
+	Debug.Log(enterCar.name + "  enters inter zone!");
 
 	
 	enterCar.setActiveZone(this);
@@ -28,6 +28,7 @@ function OnTriggerEnter (c : Collider) {
 	Debug.Log(enterCar.name + " " + enterCar.getZoneEntered());
 	enterCar.sensorLength = 15;
 	enterCar.longerSensorLength = 22;
+	enterCar.setStopTimer(Time.time);
 	//insideZone.Push(car);
 	list.Add(enterCar);
 	

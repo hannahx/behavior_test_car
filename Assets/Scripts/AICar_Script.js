@@ -69,6 +69,9 @@ var stopCounter : int = 0;
 
 private var generatesOnTakenPosition = false;
 
+private var stopTimer : float;
+
+
 function Start () 
 {
     // I usually alter the center of mass to make the car more stable. I'ts less likely to flip this way.
@@ -614,9 +617,6 @@ function setTriangleSign(s){
 function getTriangleSign(){
 	return triangleSign;
 }
-<<<<<<< HEAD
-=======
-
 function setTakenPosition(b : boolean)
 {
 	generatesOnTakenPosition = b;
@@ -626,4 +626,13 @@ function getTakenPosition()
 {
 	return generatesOnTakenPosition;
 }
->>>>>>> origin/master
+
+function setStopTimer(f : float)
+{
+	stopTimer = f;
+}
+
+function getStopTimer()
+{
+	return stopTimer;
+}

@@ -34,11 +34,6 @@ public class GreenLight extends ConditionNode {
 	            return Status.Failure;
 	        }
          }
-<<<<<<< HEAD
-        // return Status.Failure;
-=======
-         return Status.Failure;
->>>>>>> origin/master
     }
  
     function Reset () {
