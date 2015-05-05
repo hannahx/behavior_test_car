@@ -12,7 +12,7 @@ public class InInterZone extends ConditionNode {
 	//var insideZone : Array;
 	 
 	private var zones : Array;
-	var inBrakeZone : boolean;
+	private var inBrakeZone : boolean;
 
 
 	function Start () {

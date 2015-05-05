@@ -11,7 +11,7 @@ public class HandleInterZone extends ActionNode {
 	private var insideZone : Array;
 	var brakeZoneContainer : GameObject; 
 	private var zones : Array;
-	var inBrakeZone : boolean;
+	private var inBrakeZone : boolean;
 	
 	// Called once when the node is created
     function Awake () {}
@@ -42,7 +42,8 @@ public class HandleInterZone extends ActionNode {
 			//Debug.Log(insideZone + "  inside zone");
 			// Stop the car.
 //			if (car.stopCounter < 1){
-				car.BrakePower = (brakingPower);
+				if(car.getStopSign()==true ||  car.getTriangleSign() == true && insideZone.length > 1)
+					car.BrakePower = (brakingPower);
 				
 //				car.stopCounter ++;
 //				Debug.Log("stopCounter " + car.stopCounter);
@@ -54,36 +55,42 @@ public class HandleInterZone extends ActionNode {
 				{
 					if (insideZone.length == 1 && Time.time > car.getStopTimer()+1)
 					{	
-						Debug.Log("OK!");
+						if(car.longerSensorLength-10>0)
+						{
+							//car.sensorLength -= 10;
+							car.longerSensorLength -= 10;
+						}
 						if (car.getStopSign()==true && car.getTriangleSign() == false)
 						{
-							Debug.Log("Stop sign!");
-							//if (car.rigidbody.velocity.magnitude == 0) {
-								car.BrakePower = 0;
-								car.setStopSign(false);
-								//Debug.Log(car.name + "stopped och can drive again");
-							//}
+							car.BrakePower = 0;
+							car.setStopSign(false);
 						}
 						else if (car.getTriangleSign()==true && car.getStopSign() == false)
 						{
 							Debug.Log("Triangle sign!");
 							car.BrakePower = 0;
+							car.setTriangleSign(false);
 						}
-						//Debug.Log("Foxes  " + car.name );
 					}
-
 					else if (insideZone.length > 1 && car.getCloseCar() == false && Time.time > car.getStopTimer()+1)
 					{
+						if(car.longerSensorLength-10>0)
+						{
+							//car.sensorLength -= 10;
+							car.longerSensorLength -= 10;
+						}
 						if (car.getStopSign()==true)
 						{	
 							Debug.Log("Cars in zone:  " + insideZone.length);
 							car.BrakePower = 0;
+							car.setStopSign(false);
 							//car.EngineTorque = (Mathf.Lerp(enginePower, 600, Time.deltaTime));
 						}
 						else if (car.getTriangleSign()==true)
 						{	
 							Debug.Log("Cars in zone:  " + insideZone.length);
 							car.BrakePower = 0;
+							car.setTriangleSign(false);
 							//car.EngineTorque = (Mathf.Lerp(enginePower, 600, Time.deltaTime));
 						}
 							//Debug.Log("Kobras  " + car.name);
