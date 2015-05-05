@@ -26,7 +26,8 @@ function OnTriggerEnter (c : Collider) {
 	enterCar.setActiveZone(this);
 	enterCar.setZoneEntered(true);
 	Debug.Log(enterCar.name + " " + enterCar.getZoneEntered());
-
+	enterCar.sensorLength = 15;
+	enterCar.longerSensorLength = 22;
 	//insideZone.Push(car);
 	list.Add(enterCar);
 	
@@ -47,21 +48,25 @@ function OnTriggerExit (c : Collider) {
 		{	
 			exitCar.setActiveZone(null);
 			exitCar.setZoneEntered(false);
+			exitCar.setStopSign(false);
+			exitCar.setTriangleSign(false);
+			exitCar.rightRule = false;
+			enterCar.sensorLength = 10;
 			list.RemoveAt(k);		
 
-			Debug.Log(exitCar.name + " removed");
+			//Debug.Log(exitCar.name + " removed");
 		}
 		
 	}
 	list.Remove(exitCar);
-	Debug.Log(exitCar.name + " " + exitCar.getZoneEntered());
+//	Debug.Log(exitCar.name + " " + exitCar.getZoneEntered());
 	Debug.Log(exitCar.name + " left zone, " + list.Count + " cars left");	
 }
 
 function getCarsInZone()
 {
 	insideZone = list.ToArray();
-	Debug.Log("Car array:  " + insideZone);
+//	Debug.Log("Car array:  " + insideZone);
 
 	return insideZone;
 }
