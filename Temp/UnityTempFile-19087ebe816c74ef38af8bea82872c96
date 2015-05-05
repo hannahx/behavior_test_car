@@ -1,0 +1,85 @@
+-debug
+-target:library
+-i:UnityEngine
+-i:System.Collections
+-base:UnityEngine.MonoBehaviour
+-nowarn:BCW0016
+-nowarn:BCW0003
+-method:Main
+-out:Temp/Assembly-UnityScript.dll
+-x-type-inference-rule-attribute:UnityEngineInternal.TypeInferenceRuleAttribute
+-define:UNITY_4_6_3
+-define:UNITY_4_6
+-define:UNITY_STANDALONE_WIN
+-define:ENABLE_MICROPHONE
+-define:ENABLE_TEXTUREID_MAP
+-define:ENABLE_UNITYEVENTS
+-define:ENABLE_NEW_HIERARCHY 
+-define:ENABLE_AUDIO_FMOD
+-define:UNITY_STANDALONE
+-define:ENABLE_TERRAIN
+-define:ENABLE_SUBSTANCE
+-define:ENABLE_GENERICS
+-define:INCLUDE_IL2CPP
+-define:INCLUDE_WP8SUPPORT
+-define:ENABLE_MOVIES
+-define:ENABLE_WWW
+-define:ENABLE_IMAGEEFFECTS
+-define:ENABLE_4_6_FEATURES
+-define:INCLUDE_WP_BLUE_SUPPORT
+-define:ENABLE_WEBCAM
+-define:INCLUDE_METROSUPPORT
+-define:RENDER_SOFTWARE_CURSOR
+-define:ENABLE_NETWORK
+-define:ENABLE_PHYSICS
+-define:UNITY5_SCRIPTING_IN_UNITY4
+-define:ENABLE_CACHING
+-define:ENABLE_CLOTH
+-define:ENABLE_2D_PHYSICS
+-define:ENABLE_SHADOWS
+-define:ENABLE_AUDIO
+-define:ENABLE_NAVMESH_CARVING
+-define:ENABLE_DUCK_TYPING
+-define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
+-define:ENABLE_MONO
+-define:ENABLE_PROFILER
+-define:UNITY_EDITOR
+-define:UNITY_EDITOR_OSX
+-r:'/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll'
+-r:'Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll'
+-r:'/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll'
+-r:'Assets/Plugins/BehaviourMachine/BehaviourMachineRuntime.dll'
+-r:'/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll'
+-i:UnityEditor
+'Assets/Scripts/AICar_Script.js'
+'Assets/Scripts/Antiroll_Bar.js'
+'Assets/Scripts/Behavior Tree Nodes/Actions/AvoidCollision.js'
+'Assets/Scripts/Behavior Tree Nodes/Actions/CalculatePath.js'
+'Assets/Scripts/Behavior Tree Nodes/Actions/CalculateShortestPath.js'
+'Assets/Scripts/Behavior Tree Nodes/Actions/Drive.js'
+'Assets/Scripts/Behavior Tree Nodes/Actions/HandleBrakeZone.js'
+'Assets/Scripts/Behavior Tree Nodes/Actions/HandleZone_m.js'
+'Assets/Scripts/Behavior Tree Nodes/Actions/MoveTowardsNextPoint.js'
+'Assets/Scripts/Behavior Tree Nodes/Actions/RotateCar.js'
+'Assets/Scripts/Behavior Tree Nodes/Actions/SetDestination.js'
+'Assets/Scripts/Behavior Tree Nodes/Actions/Stop.js'
+'Assets/Scripts/Behavior Tree Nodes/Actions/StopOrDrive.js'
+'Assets/Scripts/Behavior Tree Nodes/Actions/UpdateNextPoint.js'
+'Assets/Scripts/Behavior Tree Nodes/Conditions/CarClose.js'
+'Assets/Scripts/Behavior Tree Nodes/Conditions/CloseToLight.js'
+'Assets/Scripts/Behavior Tree Nodes/Conditions/CloseToNextPoint.js'
+'Assets/Scripts/Behavior Tree Nodes/Conditions/CloseToTrafficLight.js'
+'Assets/Scripts/Behavior Tree Nodes/Conditions/GreenLight.js'
+'Assets/Scripts/Behavior Tree Nodes/Conditions/InBrakeZone.js'
+'Assets/Scripts/Behavior Tree Nodes/Conditions/ReachedDestination.js'
+'Assets/Scripts/Behavior Tree Nodes/Conditions/RedLight.js'
+'Assets/Scripts/Behavior Tree Nodes/Conditions/YellowLight.js'
+'Assets/Scripts/BrakeZone.js'
+'Assets/Scripts/GenerateCars.js'
+'Assets/Scripts/PlayerCar.js'
+'Assets/Scripts/Point.js'
+'Assets/Scripts/SimpleVelocityLimiter.js'
+'Assets/Scripts/StopSignTrigger.js'
+'Assets/Scripts/TrafficLight.js'
+'Assets/Scripts/TriangleSignTrigger.js'
+'Assets/Scripts/WheelAlignScript.js'

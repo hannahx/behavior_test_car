@@ -32,6 +32,7 @@ public class CloseToLight extends ConditionNode {
             	var carDir = carPos.forward.normalized;
             	crossProd = Vector3.Cross(dir,carDir);
             	dotProduct = Vector3.Dot(-dir,carDir);
+            	var ang = Vector3.Angle(-dir, carDir);
     			//Debug.Log("" + light + crossProd.y);
             	//Debug.Log("Dot:  " + light + dotProduct);
             	distToLight = Vector3.Distance(carPos, trafficLightPos);
@@ -45,7 +46,7 @@ public class CloseToLight extends ConditionNode {
 					i = 1;
 					break;
 				}
-				else if (distToLight < car.distance+9 && dotProduct < 0.97 && dotProduct > -0.97)
+				else if (distToLight < car.distance+7 && dotProduct < 0.97 && dotProduct > -0.97 ) //&& ang < 25)
 				{
 					//Debug.Log("Closest lightQ:   " + closestTrafficLight + " in  " + distToLight);
 					car.setClosestTrafficLight(closestTrafficLight);

@@ -4,14 +4,17 @@ import BehaviourMachine;
  
 public class RedLight extends ConditionNode {
      
-    private var i:int;
+      private var i : int;
+//    var lightInfo : CloseToLight;
     private var light : TrafficLight;
     var car : AICar_Script;
  
     function Update () : Status {
+    
     	// To keep track of the closest traffic light.
-    	//if(car.getClosestTrafficLight() != null)
-    	//{
+//    	light = lightInfo.getCurrentLight();
+    	if(car.getClosestTrafficLight() != null)
+    	{
     		light = car.getClosestTrafficLight();
 	    	if(light.getCurrentColor() == Color.red)
 	    	{
@@ -33,7 +36,7 @@ public class RedLight extends ConditionNode {
 	            // Update status
 	            return Status.Failure;
 	        }
-       // }
+        }
         //return Status.Failure;
     }
  

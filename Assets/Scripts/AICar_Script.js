@@ -62,8 +62,9 @@ private var activeBrakeZone : BrakeZone;
 private var Infinity = float.PositiveInfinity;
 
 private var StopSign : boolean = false;
-private var rightRule : boolean;
+var rightRule : boolean;
 private var triangleSign : boolean = false;
+var stopCounter : int = 0;
 
 function Start () 
 {
@@ -219,7 +220,7 @@ function Sensors()
 				{
 					if (hit.transform.tag == "AI")
 					{
-						setRightCar(true); 
+						setRightCar(true, hit.transform.gameObject); 
 						setCloseCar(true, hit.transform.gameObject);
 					}  
 					flag++;  
@@ -237,7 +238,7 @@ function Sensors()
 					{  
 						if (hit.transform.tag == "AI")
 						{
-							setRightCar(true); 
+							setRightCar(true, hit.transform.gameObject); 
 							setCloseCar(true, hit.transform.gameObject);
 						}
 						avoidSensitivity -= 0.1;   
@@ -316,7 +317,7 @@ function Sensors()
 				
 					if (hit.transform.tag == "AI")
 					{
-						setRightCar(true); 
+						setRightCar(true, hit.transform.gameObject); 
 						setCloseCar(true, hit.transform.gameObject);
 					}
 					if (hit.transform.tag != "DriveThrough")
@@ -535,8 +536,13 @@ function getStopSign(){
 	return StopSign;
 }
 
-function setRightCar(h){
-	rightRule = h;
+function setRightCar(b : boolean, g : GameObject)
+{  
+	if(g.name != this.name)
+	{
+		//Debug.Log(this + " close to " + g);
+		rightRule = b;
+	}
 }
 
 function getRightCar(){
