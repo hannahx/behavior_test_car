@@ -1,4 +1,5 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Behavior Tree Nodes/Actions/FudgeBrakeZone.js">
     <Files>
@@ -8,6 +9,15 @@
       <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/HandleZones_beta.js" Line="66" Column="9" />
       <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/HandleBrakeZone.js" Line="19" Column="47" />
       <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/FudgeBrakeZone.js" Line="48" Column="4" />
+=======
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GenerateCars.js">
+    <Files>
+      <File FileName="Assets\Scripts\GenerateCars.js" Line="49" Column="5" />
+      <File FileName="Assets\Scripts\AICar_Script.js" Line="617" Column="28" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidCollision.js" Line="27" Column="44" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\RotateCar.js" Line="32" Column="37" />
+>>>>>>> origin/master
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

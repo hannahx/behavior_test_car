@@ -21,7 +21,7 @@ function Start() {
 	
 	if(StartTimerLater==true)
 	{	
-		delay = TimeDelay * 3.5;
+		delay = TimeDelay * 4;
 		yield new WaitForSeconds(delay);
 		
 	}

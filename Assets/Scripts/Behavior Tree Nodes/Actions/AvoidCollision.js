@@ -5,11 +5,13 @@ public class AvoidCollision extends ActionNode {
      
     var car : AICar_Script;
     private var closeCar : AICar_Script;
+    private var startBrakePower;
      
     // Called when the node starts its execution
     function Start () 
     {
-    	car.setBrakePower(car.getBrakePower()+50);
+    	startBrakePower = car.getBrakePower();
+    	car.setBrakePower(startBrakePower+10);
     }
      
     // This function is called when the node is in execution
@@ -17,12 +19,12 @@ public class AvoidCollision extends ActionNode {
     {
 		if(car.getCloseCar()==false)
 		{
-			car.setBrakePower(0);
+			car.setBrakePower(startBrakePower);
 			return Status.Success;
 		}
 		else
 		{
-			car.setBrakePower(car.getBrakePower()+20);
+			car.setBrakePower(car.getBrakePower()+10);
 			return Status.Running;
 		}
     }

@@ -8,6 +8,7 @@ private var max : int;
 private var I;
 private var carArray : Array;
 private var p : int;
+private var posTaken : boolean;
 
 function Start ()
 {
@@ -38,6 +39,15 @@ function Start ()
 				newCar.name = "car" + i;
 				newCar.setNextPoint(points[p]);
 				newCar.setStartPoint(points[p]);
+				
+				
+				if(posTaken==true)
+				{
+					newCar.setTakenPosition(true);
+					Debug.Log(newCar.name);
+				}
+				
+				posTaken = false;
 				
 				var chassis : Transform = newCar.transform.Find("Chassis"); 			
 				chassis.renderer.material.color = Color(Random.Range(0.0,1.0),Random.Range(0.0,1.0),Random.Range(0.0,1.0)); //random color for the car
@@ -91,10 +101,11 @@ function getStartPos(pos : Vector3)
 		for (c in carArray)
 		{		
 			//Debug.Log("" + c + "  " + c.transform.position);
-			if(Vector3.Distance(pos, c.transform.position)< 1)
+			if(Vector3.Distance(pos, c.transform.position)< 10)
 			{
-				Debug.Log("Same position as " + c);
-				pos.x -= 50;
+				posTaken = true;
+				Debug.Log("Same position as " + c.name);
+				//pos.x -= 50;
 			}
 		}
 	}
