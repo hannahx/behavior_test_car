@@ -65,7 +65,10 @@ function FixedUpdate(){
 	var v = rb.velocity;
 	// We use sqrMagnitude instead of magnitude for performance reasons.
 	var vSqr = v.sqrMagnitude;
-
+	
+	//Initializing new velocity values if the speed limit changes.
+	Initialize(dragStartVelocity, dragMaxVelocity, maxVelocity, maxDrag);
+	
 	if(vSqr > sqrDragStartVelocity){
 		if(sqrDragVelocityRange == 0)
 			sqrDragVelocityRange = 1;

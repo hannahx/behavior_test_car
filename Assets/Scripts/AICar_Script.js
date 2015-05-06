@@ -65,8 +65,8 @@ private var Infinity = float.PositiveInfinity;
 private var StopSign : boolean = false;
 var rightRule : boolean;
 private var triangleSign : boolean = false;
-var stopCounter : int = 0;
-
+private var SpeedLimit : int;
+private var LimiterEntered : boolean = false;
 private var generatesOnTakenPosition = false;
 
 function Start () 
@@ -614,8 +614,7 @@ function setTriangleSign(s){
 function getTriangleSign(){
 	return triangleSign;
 }
-<<<<<<< HEAD
-=======
+
 
 function setTakenPosition(b : boolean)
 {
@@ -626,4 +625,23 @@ function getTakenPosition()
 {
 	return generatesOnTakenPosition;
 }
->>>>>>> origin/master
+
+function setSpeedLimit(s : int)
+{
+	SpeedLimit = s;
+}
+
+function getSpeedLimit()
+{
+	return SpeedLimit;
+}
+
+function getLimiterEntered()
+{
+	return LimiterEntered;
+}
+
+function setLimiterEntered(l : boolean)
+{
+	LimiterEntered = l;
+}
