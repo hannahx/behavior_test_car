@@ -37,7 +37,6 @@ public class RedLight extends ConditionNode {
 	            return Status.Failure;
 	        }
         }
-        //return Status.Failure;
     }
  
     function Reset () {

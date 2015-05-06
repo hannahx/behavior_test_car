@@ -69,6 +69,9 @@ private var SpeedLimit : int;
 private var LimiterEntered : boolean = false;
 private var generatesOnTakenPosition = false;
 
+private var stopTimer : float;
+
+
 function Start () 
 {
     // I usually alter the center of mass to make the car more stable. I'ts less likely to flip this way.
@@ -614,8 +617,11 @@ function setTriangleSign(s){
 function getTriangleSign(){
 	return triangleSign;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/master
 function setTakenPosition(b : boolean)
 {
 	generatesOnTakenPosition = b;
@@ -626,6 +632,7 @@ function getTakenPosition()
 	return generatesOnTakenPosition;
 }
 
+<<<<<<< HEAD
 function setSpeedLimit(s : int)
 {
 	SpeedLimit = s;
@@ -644,4 +651,14 @@ function getLimiterEntered()
 function setLimiterEntered(l : boolean)
 {
 	LimiterEntered = l;
+=======
+function setStopTimer(f : float)
+{
+	stopTimer = f;
+}
+
+function getStopTimer()
+{
+	return stopTimer;
+>>>>>>> origin/master
 }

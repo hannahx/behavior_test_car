@@ -2,7 +2,7 @@
 
 import BehaviourMachine;
  
-public class InBrakeZone extends ConditionNode {
+public class InInterZone extends ConditionNode {
 
 	var brakeZoneContainer : GameObject;
 	private var i : int;
@@ -12,7 +12,7 @@ public class InBrakeZone extends ConditionNode {
 	//var insideZone : Array;
 	 
 	private var zones : Array;
-	var inBrakeZone : boolean;
+	private var inBrakeZone : boolean;
 
 
 	function Start () {
