@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\HandleInterZone.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\HandleZones_beta.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\MoveTowardsNextPoint.js" />
+     <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\ObeySpeedLimit.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\RotateCar.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\SetDestination.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\Stop.js" />
@@ -67,8 +68,14 @@
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\CloseToNextPoint.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\CloseToTrafficLight.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\GreenLight.js" />
+<<<<<<< HEAD
+     <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\InBrakeZone.js" />
+     <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\NewSpeedLimit.js" />
+     <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\ObjectClose.js" />
+=======
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\InInterZone.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\ObjectClose1.js" />
+>>>>>>> origin/master
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\ReachedDestination.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\RedLight.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\YellowLight.js" />
@@ -77,6 +84,10 @@
      <Compile Include="Assets\Scripts\PlayerCar.js" />
      <Compile Include="Assets\Scripts\Point.js" />
      <Compile Include="Assets\Scripts\SimpleVelocityLimiter.js" />
+     <Compile Include="Assets\Scripts\SpeedLimit_30.js" />
+     <Compile Include="Assets\Scripts\SpeedLimit_50.js" />
+     <Compile Include="Assets\Scripts\SpeedLimit_70.js" />
+     <Compile Include="Assets\Scripts\SpeedLimit_90.js" />
      <Compile Include="Assets\Scripts\StopSignTrigger.js" />
      <Compile Include="Assets\Scripts\TrafficLight.js" />
      <Compile Include="Assets\Scripts\TriangleSignTrigger.js" />
