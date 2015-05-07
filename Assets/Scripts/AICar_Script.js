@@ -617,11 +617,7 @@ function setTriangleSign(s){
 function getTriangleSign(){
 	return triangleSign;
 }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> origin/master
 function setTakenPosition(b : boolean)
 {
 	generatesOnTakenPosition = b;
@@ -632,7 +628,6 @@ function getTakenPosition()
 	return generatesOnTakenPosition;
 }
 
-<<<<<<< HEAD
 function setSpeedLimit(s : int)
 {
 	SpeedLimit = s;
@@ -651,7 +646,7 @@ function getLimiterEntered()
 function setLimiterEntered(l : boolean)
 {
 	LimiterEntered = l;
-=======
+}
 function setStopTimer(f : float)
 {
 	stopTimer = f;
@@ -660,5 +655,4 @@ function setStopTimer(f : float)
 function getStopTimer()
 {
 	return stopTimer;
->>>>>>> origin/master
 }

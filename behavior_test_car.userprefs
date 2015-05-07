@@ -1,28 +1,12 @@
 ﻿<Properties>
-<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Behavior Tree Nodes/Conditions/NewSpeedLimit.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GenerateCars.js">
     <Files>
-      <File FileName="Assets/Scripts/AICar_Script.js" Line="630" Column="2" />
-      <File FileName="Assets/Scripts/SimpleVelocityLimiter.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/StopSignTrigger.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SpeedLimit_50.js" Line="14" Column="2" />
-      <File FileName="Assets/Scripts/SpeedLimit_70.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SpeedLimit_30.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SpeedLimit_90.js" Line="15" Column="2" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Conditions/NewSpeedLimit.js" Line="14" Column="30" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Conditions/InBrakeZone.js" Line="14" Column="28" />
-=======
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BrakeZone.js">
-    <Files>
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\HandleInterZone.js" Line="77" Column="10" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\InInterZone.js" Line="15" Column="10" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidCollision.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\StopSignTrigger.js" Line="15" Column="30" />
-      <File FileName="Assets\Scripts\BrakeZone.js" Line="29" Column="4" />
+      <File FileName="Assets\Scripts\SimpleVelocityLimiter.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Point.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\AICar_Script.js" Line="1" Column="1" />
->>>>>>> origin/master
+      <File FileName="Assets\Scripts\GenerateCars.js" Line="41" Column="7" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\RotateCar.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

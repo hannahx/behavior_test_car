@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\Antiroll_Bar.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidCollision.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidObject1.js" />
+     <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidObject2.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\CalculatePath.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\CalculateShortestPath.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\Drive.js" />
@@ -68,14 +69,10 @@
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\CloseToNextPoint.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\CloseToTrafficLight.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\GreenLight.js" />
-<<<<<<< HEAD
-     <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\InBrakeZone.js" />
-     <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\NewSpeedLimit.js" />
-     <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\ObjectClose.js" />
-=======
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\InInterZone.js" />
+     <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\NewSpeedLimit.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\ObjectClose1.js" />
->>>>>>> origin/master
+     <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\ObjectClose2.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\ReachedDestination.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\RedLight.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\YellowLight.js" />
