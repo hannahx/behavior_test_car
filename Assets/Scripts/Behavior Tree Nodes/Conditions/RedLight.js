@@ -45,4 +45,6 @@ public class RedLight extends ConditionNode {
         // My Reset
         i = -1;
     }
+    
+    private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
 }

@@ -17,7 +17,7 @@ public class CloseToTrafficLight extends ConditionNode {
             
             for(light in trafficLights)
             {
-            	closestTrafficLight = light;
+            	closestTrafficLight = light as TrafficLight;
             	var trafficLightPos = closestTrafficLight.transform.position;
 	            if (Vector3.Distance(carPos, trafficLightPos)< car.distance-3)	
 				{
@@ -51,4 +51,6 @@ public class CloseToTrafficLight extends ConditionNode {
         // My Reset
         i = -1;
     }
+    
+    private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
 }

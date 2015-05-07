@@ -53,4 +53,6 @@ public class RotateCar extends ActionNode {
     // Called when the script is loaded or a value is changed in the inspector (Called in the editor only)
     function OnValidate () {}
     
+    private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
+    
 }

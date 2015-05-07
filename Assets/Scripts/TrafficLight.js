@@ -37,13 +37,13 @@ function ChangeLight() {
 	{
 		rend.material.color = colorGreen;
 		currentColor = colorGreen;
-		yield new WaitForSeconds(3);
+		yield new WaitForSeconds(4);
 		rend.material.color = colorYellow;
 		currentColor = colorYellow;
-		yield new WaitForSeconds(0.5);
+		yield new WaitForSeconds(2);
 		rend.material.color = colorRed;
 		currentColor = colorRed;
-		yield new WaitForSeconds(3);
+		yield new WaitForSeconds(4);
 		if (RandomLight == true)
 		{
 			if (slack == true){
@@ -54,7 +54,7 @@ function ChangeLight() {
 		}
 		rend.material.color = colorYellow;
 		currentColor = colorYellow;
-		yield new WaitForSeconds(0.5);
+		yield new WaitForSeconds(2);
 		slack = randomBoolean();
 	}
 }
@@ -74,3 +74,5 @@ function randomBoolean() :boolean
 {
    return (Random.value > 0.5f);
 }
+
+private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 

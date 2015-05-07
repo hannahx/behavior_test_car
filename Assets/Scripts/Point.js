@@ -17,7 +17,7 @@ function OnDrawGizmos()
 	{
 		if (n) 
 		{
-		 	var Next : Point = n;
+		 	var Next : Point = n as Point;
 			Gizmos.color = Color.gray;
 			Gizmos.DrawLine (transform.position, Next.transform.position);
 			Gizmos.color = Vector4(0.4,0.4,0.4,1);
@@ -31,3 +31,5 @@ function InIntersection()
 {
 	return inIntersection;
 }
+
+private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 

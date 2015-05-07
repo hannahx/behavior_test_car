@@ -38,8 +38,7 @@ public class HandleBrakeZone extends ActionNode {
 			{
 			var zone2 : BrakeZone = zone as BrakeZone;
 			insideZone = zone2.getCarsInZone();
-			//Debug.Log(insideZone);
-			//Debug.Log(insideZone + "  inside zone");
+
 			// Stop the car.
 			car.BrakePower = (brakingPower);
 			//car.EngineTorque = (enginePower);
@@ -47,19 +46,16 @@ public class HandleBrakeZone extends ActionNode {
 				if (insideZone.length == 1)
 				{
 				// If the car is alone in the zone, then it can drive away.
-					//Debug.Log("Cars in zone:  " + insideZone.length);
 					car.BrakePower = 0;
 					//car.EngineTorque = (Mathf.Lerp(enginePower, 600, Time.deltaTime));
-					//Debug.Log("Häst  " + car.name );
 				}
 				// If the car was the first to enter the zone, then it can drive away first.
 				else if (insideZone.length > 1 && car == insideZone[0])
 				{
-						Debug.Log("Cars in zone:  " + insideZone.length);
+						//Debug.Log("Cars in zone:  " + insideZone.length);
 						//Debug.Log("Car array:  " + insideZone);
 						car.BrakePower = 0;
 						//car.EngineTorque = (Mathf.Lerp(enginePower, 600, Time.deltaTime));
-						Debug.Log("Kobra  " + car.name);
 					
 				}				
 			}				
@@ -80,5 +76,7 @@ public class HandleBrakeZone extends ActionNode {
  
     // Called when the script is loaded or a value is changed in the inspector (Called in the editor only)
     function OnValidate () {}
+    
+    private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
     
 }

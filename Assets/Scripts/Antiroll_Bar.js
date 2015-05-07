@@ -28,3 +28,5 @@ function FixedUpdate ()
         rigidbody.AddForceAtPosition(WheelR.transform.up * antiRollForce,
                WheelR.transform.position);	
     }
+    
+private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 

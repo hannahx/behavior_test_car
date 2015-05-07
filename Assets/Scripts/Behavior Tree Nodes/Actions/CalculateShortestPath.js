@@ -126,5 +126,7 @@ public class CalculateShortestPath extends ActionNode {
 	  		if(p!=null)
 	  			path.push(points[p]);
 	  	}
-	}             
+	} 
+	
+	            private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); }             
 }

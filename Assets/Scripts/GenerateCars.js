@@ -115,3 +115,5 @@ function getStartPos(pos : Vector3)
 	}
 	return pos;
 }
+
+private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 

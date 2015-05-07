@@ -19,13 +19,16 @@ public class StopOrDrive extends ActionNode {
     	brakePower = car.getBrakePower();
     	if (brakePower == 0)
     	{
-    		Debug.Log("Break power shifted up");
+			// If the car has no brake power, set break power and slow down.		
+    		car.setBrakePower(15);
+    		//car.EngineTorque = 50;
     	}
     	else
     	{
-    	    Debug.Log("Break power shifted down");
+    	    // If the car is standing still, begin to drive slowly.
+    	    car.setBrakePower(15);
+    		//car.EngineTorque = 100;
     	}
-    	car.setBrakePower(60);
     }
      
     // This function is called when the node is in execution
@@ -47,4 +50,6 @@ public class StopOrDrive extends ActionNode {
  
     // Called when the script is loaded or a value is changed in the inspector (Called in the editor only)
     function OnValidate () {}
+    
+    private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
 }

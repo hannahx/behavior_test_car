@@ -36,9 +36,6 @@ public class CalculatePath extends ActionNode {
     	
     	destinationFound = 0;
     	
-   		dist = new Array(points.length);
-    	prev = new Array(points.length);
-    	
     }
      
     // This function is called when the node is in execution
@@ -125,6 +122,8 @@ public class CalculatePath extends ActionNode {
 //			//Debug.Log("Path found :)");
 //		}
     }
+    
+    private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
     
     
 }

@@ -11,7 +11,7 @@ public class ReachedDestination extends ConditionNode {
  
     function Update () : Status {
 		path = car.getPath();
-    	destinationPoint = path[path.length-1];	
+    	destinationPoint = path[path.length-1] as Point;	
             
 	    if (Vector3.Distance(car.getRigidbody().transform.position, destinationPoint.transform.position)< car.distance+2)
 		{
@@ -44,4 +44,6 @@ public class ReachedDestination extends ConditionNode {
         // My Reset
         i = -1;//2;
     }
+    
+    private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
 }

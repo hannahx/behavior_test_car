@@ -42,4 +42,6 @@ public class ObjectClose1 extends ConditionNode {
         // My Reset
         i = 0;
     }
+    
+    private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
 }

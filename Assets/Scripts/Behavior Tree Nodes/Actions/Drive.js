@@ -1,7 +1,8 @@
 ﻿#pragma strict
- 
+/* Silence MonoBehaviour Warnings*/ 
+
 import BehaviourMachine;
- 
+
 public class Drive extends ActionNode {
      
     var car : AICar_Script;
@@ -22,4 +23,6 @@ public class Drive extends ActionNode {
         // Never forget to set the node status
         return Status.Success;
     }
+    
+private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
 }

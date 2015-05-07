@@ -14,3 +14,5 @@ function OnTriggerEnter (c : Collider) {
 	Debug.Log(enterCar.name + "  has stop sign!");
 	enterCar.setStopSign(true);	
 }
+
+private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 

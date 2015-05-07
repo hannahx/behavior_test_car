@@ -20,14 +20,14 @@ function Start() {
 function OnTriggerEnter (c : Collider) {
 	var parentparent = c.gameObject.transform.parent.gameObject;
 	enterCar = parentparent.GetComponent(AICar_Script);
-	Debug.Log(enterCar.name + "  enters inter zone!");
+	//Debug.Log(enterCar.name + "  enters inter zone!");
 
 	
 	enterCar.setActiveZone(this);
 	enterCar.setZoneEntered(true);
-	Debug.Log(enterCar.name + " " + enterCar.getZoneEntered());
+//	Debug.Log(enterCar.name + " " + enterCar.getZoneEntered());
 	//enterCar.sensorLength += 10;
-	enterCar.longerSensorLength += 10;
+	//enterCar.longerSensorLength += 10;
 	enterCar.setStopTimer(Time.time);
 	//insideZone.Push(car);
 	list.Add(enterCar);
@@ -61,14 +61,14 @@ function OnTriggerExit (c : Collider) {
 		
 	}
 	list.Remove(exitCar);
-//	Debug.Log(exitCar.name + " " + exitCar.getZoneEntered());
-	Debug.Log(exitCar.name + " left zone, " + list.Count + " cars left");	
+//	Debug.Log(exitCar.name + " left zone, " + list.Count + " cars left");	
 }
 
 function getCarsInZone()
 {
 	insideZone = list.ToArray();
-//	Debug.Log("Car array:  " + insideZone);
 
 	return insideZone;
 }
+
+private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 

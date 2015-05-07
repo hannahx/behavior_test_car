@@ -20,3 +20,5 @@ function OnTriggerExit (c : Collider) {
 	exitCar = parentparent.GetComponent(AICar_Script);
 	exitCar.setLimiterEntered(false);
 }
+
+private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
