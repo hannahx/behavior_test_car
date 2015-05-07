@@ -4,8 +4,8 @@
 var next1 : Point;
 var next2 : Point;
 var next3 : Point;
+var startOK = true;
 
-var inIntersection : boolean;
 
 /** Draw the point lines only when you connect two points
   * You go from light grey to dark grey (can't go the other direction) */
@@ -25,6 +25,7 @@ function OnDrawGizmos()
 		}
 	}
 
+<<<<<<< HEAD
 }
 
 function InIntersection()
@@ -33,3 +34,6 @@ function InIntersection()
 }
 
 private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
+=======
+}
+>>>>>>> origin/master

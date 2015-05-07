@@ -628,7 +628,10 @@ function getTakenPosition()
 	return generatesOnTakenPosition;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 function setSpeedLimit(s : int)
 {
 	SpeedLimit = s;
@@ -648,7 +651,10 @@ function setLimiterEntered(l : boolean)
 {
 	LimiterEntered = l;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 function setStopTimer(f : float)
 {
 	stopTimer = f;
@@ -657,7 +663,11 @@ function setStopTimer(f : float)
 function getStopTimer()
 {
 	return stopTimer;
+<<<<<<< HEAD
 
 }
 // Silence the System.Collection warning.
 private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
+=======
+}
+>>>>>>> origin/master

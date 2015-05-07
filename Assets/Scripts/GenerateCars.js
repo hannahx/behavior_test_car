@@ -15,7 +15,6 @@ function Start ()
 	I = 0; // I = 1 if pointarray is filled :)
 	carArray = new Array();
 	carArray.push(car);
-	p = 0;
 
 	while (I==0)
 	{
@@ -30,15 +29,22 @@ function Start ()
 			for(i=0; i<NumberOfCars; i++)
 			{	
 				//Generate car on a random point in the network
-				//var rand : int = Mathf.Floor(Random.Range(0,max+1));
-				getP();
-				var point = points[p] as Point;
+				var rand : int = Mathf.Floor(Random.Range(0,max+1));				
+				var point = points[rand] as Point;
+				
+				//Don't generate the car on points you don't want to! (apparently this doesn't apply to Red_Car...)
+				while (point.startOK==false)
+				{
+					rand = Mathf.Floor(Random.Range(0,max+1));	
+					point = points[rand] as Point;
+				}
+				//Debug.Log(i);
 				var startPos : Vector3 = getStartPos(point.transform.position);
 				
 				var newCar = Instantiate(car, startPos, Quaternion.identity);
 				newCar.name = "car" + i;
-				newCar.setNextPoint(points[p]);
-				newCar.setStartPoint(points[p]);
+				newCar.setNextPoint(points[rand]);
+				newCar.setStartPoint(points[rand]);
 				
 				
 				if(posTaken==true)
@@ -53,32 +59,11 @@ function Start ()
 				chassis.renderer.material.color = Color(Random.Range(0.0,1.0),Random.Range(0.0,1.0),Random.Range(0.0,1.0)); //random color for the car
 				
 				yield WaitForSeconds (1);
-				
-				p++;	
-				if(p==points.length)
-				{
-					p=0;
-				}
 			}	
 			break;
 		}
 		
 	}	
-}
-
-/** Don not generate a car in an intersection */
-function getP()
-{
-	var po : Point = points[p] as Point;
-	if(po.InIntersection()==true)
-	{
-		p++;
-		if(p==points.length)
-		{
-			p=0;
-		}
-		getP();
-	}
 }
 
 function getCars()
@@ -101,11 +86,10 @@ function getStartPos(pos : Vector3)
 		for (c in carArray)
 		{		
 			//Debug.Log("" + c + "  " + c.transform.position);
-			if(Vector3.Distance(pos, c.transform.position)< 10)
+			if(Vector3.Distance(pos, c.transform.position)< 30)
 			{
 				posTaken = true;
 				Debug.Log("Same position as " + c.name);
-				//pos.x -= 50;
 			}
 		}
 	}

@@ -21,15 +21,14 @@ public class RotateCar extends ActionNode {
     {
     	path = car.getPath();
     	startPoint = path[0];
-    	nextPoint = path[1];
-    	
+    	nextPoint = path[1];   	
     	var dir : Vector3 = (nextPoint.transform.position - startPoint.transform.position).normalized;
     	car.transform.rotation = Quaternion.LookRotation(dir);
     	
     	if(car.getTakenPosition())
     	{
     		Debug.Log("Change pos...");
-    		car.transform.position += car.transform.forward*2;// + 50; //TODO if no other car is there!!
+    		car.transform.position -= car.transform.forward*30;//TODO if no other car is there!!
     	}
     	
     }
