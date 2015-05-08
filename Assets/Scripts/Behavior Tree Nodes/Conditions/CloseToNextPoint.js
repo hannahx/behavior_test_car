@@ -13,7 +13,7 @@ public class CloseToNextPoint extends ConditionNode {
 		carPos = car.getRigidbody().transform.position;
     	nextPoint = car.getNextPoint();
     
-    	if(Vector3.Distance(carPos, nextPoint.transform.position)< car.distance)	
+    	if(Vector3.Distance(carPos, nextPoint.transform.position)< 3)//car.distance)	
 		{
 			//Debug.Log("CLOSE to next point: " + nextPoint);
 			i = 1;

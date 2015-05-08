@@ -1,67 +1,19 @@
 ﻿<Properties>
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TrafficLight.js">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Zone scripts\RoundaboutZone.js">
     <Files>
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/ObeySpeedLimit.js" Line="70" Column="147" />
-      <File FileName="Assets/Scripts/AICar_Script.js" Line="2" Column="36" />
-      <File FileName="Assets/Scripts/SimpleVelocityLimiter.js" Line="91" Column="1" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Conditions/NewSpeedLimit.js" Line="46" Column="144" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/StopOrDrive.js" Line="54" Column="147" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/HandleBrakeZone.js" Line="59" Column="6" />
-      <File FileName="Assets/Scripts/BrakeZone.js" Line="74" Column="143" />
-      <File FileName="Assets/Scripts/Point.js" Line="35" Column="143" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Conditions/CloseToTrafficLight.js" Line="55" Column="147" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Conditions/ReachedDestination.js" Line="48" Column="147" />
-      <File FileName="Assets/Scripts/GenerateCars.js" Line="101" Column="16" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Conditions/CloseToLight.js" Line="94" Column="147" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/Drive.js" Line="3" Column="1" />
-      <File FileName="Assets/Scripts/TrafficLight.js" Line="26" Column="3" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/CalculatePath.js" Line="126" Column="147" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/CalculateShortestPath.js" Line="131" Column="156" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/HandleInterZone.js" Line="142" Column="147" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/HandleZones_beta.js" Line="139" Column="147" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/MoveTowardsNextPoint.js" Line="53" Column="147" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/RotateCar.js" Line="1" Column="3" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/SetDestination.js" Line="91" Column="147" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/Stop.js" Line="42" Column="147" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/UpdateNextPoint.js" Line="57" Column="147" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Conditions/CarClose.js" Line="50" Column="147" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Conditions/CloseToNextPoint.js" Line="49" Column="5" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Conditions/GreenLight.js" Line="46" Column="147" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Conditions/InInterZone.js" Line="58" Column="144" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Conditions/ObjectClose.js" Line="46" Column="147" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Conditions/ObjectClose1.js" Line="46" Column="147" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Conditions/RedLight.js" Line="49" Column="147" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Conditions/YellowLight.js" Line="52" Column="147" />
-      <File FileName="Assets/Scripts/PlayerCar.js" Line="82" Column="143" />
-      <File FileName="Assets/Scripts/SpeedLimit_30.js" Line="24" Column="143" />
-      <File FileName="Assets/Scripts/SpeedLimit_50.js" Line="24" Column="143" />
-      <File FileName="Assets/Scripts/SpeedLimit_70.js" Line="24" Column="143" />
-      <File FileName="Assets/Scripts/SpeedLimit_90.js" Line="24" Column="143" />
-      <File FileName="Assets/Scripts/StopSignTrigger.js" Line="18" Column="143" />
-      <File FileName="Assets/Scripts/TriangleSignTrigger.js" Line="19" Column="143" />
-      <File FileName="Assets/Scripts/WheelAlignScript.js" Line="50" Column="143" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/AvoidCollision.js" Line="32" Column="147" />
-      <File FileName="Assets/Scripts/Antiroll_Bar.js" Line="32" Column="143" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/AvoidObject.js" Line="22" Column="147" />
-      <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/AvoidObject1.js" Line="11" Column="6" />
-=======
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GenerateCars.js">
-    <Files>
-      <File FileName="Assets\Scripts\SimpleVelocityLimiter.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Point.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\AICar_Script.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GenerateCars.js" Line="41" Column="7" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\RotateCar.js" Line="1" Column="1" />
->>>>>>> origin/master
+      <File FileName="Assets\Scripts\Zone scripts\RoundaboutZone.js" Line="57" Column="25" />
+      <File FileName="Assets\Scripts\Zone scripts\BrakeZone.js" Line="21" Column="1" />
+      <File FileName="Assets\Scripts\Point.js" Line="7" Column="24" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\CloseToNextPoint.js" Line="18" Column="17" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\CalculateShortestPath.js" Line="121" Column="36" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\UpdateNextPoint.js" Line="22" Column="6" />
+      <File FileName="Assets\Scripts\AICar_Script.js" Line="34" Column="55" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\ReachedDestination.js" Line="33" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Catchpoint exceptionName="UnityEditorInternal.JSONTypeException" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
