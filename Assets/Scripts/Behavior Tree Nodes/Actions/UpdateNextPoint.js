@@ -29,6 +29,7 @@ public class UpdateNextPoint extends ActionNode {
         indexInPath = car.getIndexInPath();
         carPos = car.getRigidbody().transform.position;
         currentNextPoint = car.getNextPoint();
+        //Debug.Log(indexInPath + " " + path.length);
 		nextPoint = path[indexInPath];
 		car.setNextPoint(nextPoint);
 		if(indexInPath+1<=path.length)
@@ -54,5 +55,5 @@ public class UpdateNextPoint extends ActionNode {
     // Called when the script is loaded or a value is changed in the inspector (Called in the editor only)
     function OnValidate () {}
     
-    private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
+    //private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
 }

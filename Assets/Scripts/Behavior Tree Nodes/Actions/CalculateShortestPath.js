@@ -58,7 +58,9 @@ public class CalculateShortestPath extends ActionNode {
     function Update () : Status 
     {  
 		car.setPath(path);
+		Debug.Log(path);
 		return Status.Success;
+		
     }
 
 	/** Dijkstra's Algorithm finds the shortest path 
@@ -128,5 +130,5 @@ public class CalculateShortestPath extends ActionNode {
 	  	}
 	} 
 	
-	            private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); }             
+	private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); }             
 }

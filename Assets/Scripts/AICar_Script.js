@@ -65,9 +65,12 @@ private var Infinity = float.PositiveInfinity;
 private var StopSign : boolean = false;
 var rightRule : boolean;
 private var triangleSign : boolean = false;
+private var huvudledSign : boolean = false;
 private var SpeedLimit : int;
 private var LimiterEntered : boolean = false;
 private var generatesOnTakenPosition = false;
+private var turningRight : boolean = false;
+private var turningLeft : boolean = false;
 
 private var stopTimer : float;
 
@@ -628,10 +631,6 @@ function getTakenPosition()
 	return generatesOnTakenPosition;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 function setSpeedLimit(s : int)
 {
 	SpeedLimit = s;
@@ -651,10 +650,7 @@ function setLimiterEntered(l : boolean)
 {
 	LimiterEntered = l;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
 function setStopTimer(f : float)
 {
 	stopTimer = f;
@@ -663,11 +659,32 @@ function setStopTimer(f : float)
 function getStopTimer()
 {
 	return stopTimer;
-<<<<<<< HEAD
+}
 
+function setHuvudledSign(s){
+	huvudledSign = s;
+}
+
+function getHuvudledSign(){
+	return huvudledSign;
+}
+
+function setTurningRight(g : boolean){
+	turningRight = g ;
+}
+
+function getTurningRight(){
+	return turningRight;
+}
+
+function setTurningLeft(p : boolean){
+	turningLeft = p ;
+}
+
+function getTurningLeft(){
+	return turningLeft;
 }
 // Silence the System.Collection warning.
 private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
-=======
-}
->>>>>>> origin/master
+
+

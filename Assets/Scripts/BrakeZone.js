@@ -26,8 +26,8 @@ function OnTriggerEnter (c : Collider) {
 	enterCar.setActiveZone(this);
 	enterCar.setZoneEntered(true);
 //	Debug.Log(enterCar.name + " " + enterCar.getZoneEntered());
-	//enterCar.sensorLength += 10;
-	//enterCar.longerSensorLength += 10;
+//	enterCar.sensorLength += 10;
+//	enterCar.longerSensorLength += 10;
 	enterCar.setStopTimer(Time.time);
 	//insideZone.Push(car);
 	list.Add(enterCar);
@@ -51,9 +51,9 @@ function OnTriggerExit (c : Collider) {
 		{	
 			exitCar.setActiveZone(null);
 			exitCar.setZoneEntered(false);
-			exitCar.setStopSign(false);
-			exitCar.setTriangleSign(false);
-			exitCar.rightRule = false;	
+//			exitCar.setStopSign(false);
+//			exitCar.setTriangleSign(false);
+//			exitCar.rightRule = false;	
 			list.RemoveAt(k);		
 
 			//Debug.Log(exitCar.name + " removed");
