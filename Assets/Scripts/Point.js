@@ -4,6 +4,8 @@
 var next1 : Point;
 var next2 : Point;
 var next3 : Point;
+var innerPoint = false;
+var outerPoint = false;
 var startOK = true;
 
 
@@ -24,6 +26,7 @@ function OnDrawGizmos()
 			Gizmos.DrawLine ((transform.position+Next.transform.position)/2, Next.transform.position);
 		}
 	}
+<<<<<<< HEAD
 
 
 }
@@ -32,3 +35,13 @@ function OnDrawGizmos()
 private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
 
 
+=======
+}
+
+private function SilenceWarnings() : void 
+{ 
+var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); 
+} 
+
+
+>>>>>>> origin/master

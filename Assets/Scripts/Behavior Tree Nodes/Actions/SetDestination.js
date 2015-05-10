@@ -26,8 +26,9 @@ public class SetDestination extends ActionNode {
 		{
 			var max : int = points.length - 1;
 			var rand : int;
+			var destPoint : Point;
 			I = 1;
-	    	if(car.getDestinationPoint()==null && car.getStartPoint()==null)//this means the "original car"
+	    	if(car.getDestinationPoint()==null && car.getStartPoint()==null)//this means the "original car" TODO: this is RedCar!!!
 	    	{	
 	    		//Debug.Log("case 1");    		
 				rand = Mathf.Floor(Random.Range(0,max+1));
@@ -44,7 +45,13 @@ public class SetDestination extends ActionNode {
 	    	{
 	    		//Debug.Log("case 2");    
 	    		rand = Mathf.Floor(Random.Range(0,max+1));
-	    		car.setDestinationPoint(points[rand]);
+	    		destPoint = points[rand] as Point;
+				while (destPoint.startOK==false)
+				{
+					rand = Mathf.Floor(Random.Range(0,max+1));	
+					destPoint = points[rand] as Point;
+				}
+	    		car.setDestinationPoint(destPoint);
 	    		//Debug.Log(car.getStartPoint().transform.position);
 	    		car.transform.position = car.getStartPoint().transform.position;
 	    	}
@@ -53,6 +60,13 @@ public class SetDestination extends ActionNode {
 	    		//Debug.Log("case 3");    
 	    		car.setStartPoint(car.getDestinationPoint());
 				rand = Mathf.Floor(Random.Range(0,max+1)); //TODO: should not be same as startpoint or destination - fix!
+	    		destPoint = points[rand] as Point;
+				while (destPoint.startOK==false)
+				{
+					rand = Mathf.Floor(Random.Range(0,max+1));	
+					destPoint = points[rand] as Point;
+				}
+	    		car.setDestinationPoint(destPoint);
 	    		car.setDestinationPoint(points[rand]);
 	    	}
 	    	//car.getRigidbody().transform.position = car.getStartpoint();//

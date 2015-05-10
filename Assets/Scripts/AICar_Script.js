@@ -73,7 +73,7 @@ private var turningRight : boolean = false;
 private var turningLeft : boolean = false;
 
 private var stopTimer : float;
-
+private var reachedDest : float;
 
 function Start () 
 {
@@ -661,6 +661,7 @@ function getStopTimer()
 	return stopTimer;
 }
 
+<<<<<<< HEAD
 function setHuvudledSign(s){
 	huvudledSign = s;
 }
@@ -688,3 +689,19 @@ function getTurningLeft(){
 private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
 
 
+=======
+function getReachedDestion()
+{
+	return reachedDest;
+}
+
+function setReachedDestion(f : float)
+{
+	reachedDest = f;
+}
+// Silence the System.Collection warning.
+private function SilenceWarnings() : void 
+{ 
+	var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); 
+} 
+>>>>>>> origin/master

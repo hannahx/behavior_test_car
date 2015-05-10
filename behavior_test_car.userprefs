@@ -1,16 +1,28 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/StopSignTrigger.js">
     <Files>
       <File FileName="Assets/Scripts/Behavior Tree Nodes/Actions/HandleInterZone.js" Line="104" Column="9" />
       <File FileName="Assets/Scripts/HuvudledSignTrigger.js" Line="1" Column="1" />
       <File FileName="Assets/Scripts/StopSignTrigger.js" Line="1" Column="1" />
+=======
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Zone scripts\RoundaboutZone.js">
+    <Files>
+      <File FileName="Assets\Scripts\Zone scripts\RoundaboutZone.js" Line="57" Column="25" />
+      <File FileName="Assets\Scripts\Zone scripts\BrakeZone.js" Line="21" Column="1" />
+      <File FileName="Assets\Scripts\Point.js" Line="7" Column="24" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\CloseToNextPoint.js" Line="18" Column="17" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\CalculateShortestPath.js" Line="121" Column="36" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\UpdateNextPoint.js" Line="22" Column="6" />
+      <File FileName="Assets\Scripts\AICar_Script.js" Line="34" Column="55" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\ReachedDestination.js" Line="33" Column="10" />
+>>>>>>> origin/master
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Catchpoint exceptionName="UnityEditorInternal.JSONTypeException" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
