@@ -28,10 +28,14 @@ public class SetDestination extends ActionNode {
 			var rand : int;
 			var destPoint : Point;
 			I = 1;
-	    	if(car.getDestinationPoint()==null && car.getStartPoint()==null)//this means the "original car" TODO: this is RedCar!!!
+	    	if(car.getDestinationPoint()==null && car.getStartPoint()==null)//this means the "original car"
 	    	{	
 	    		//Debug.Log("case 1");    		
 				rand = Mathf.Floor(Random.Range(0,max+1));
+				while(points[rand].startOK==false)
+				{
+					rand = Mathf.Floor(Random.Range(0,max+1));
+				}
 				car.setStartPoint(points[rand]);
 				rand = Mathf.Floor(Random.Range(0,max+1));
 				car.setDestinationPoint(points[rand]);

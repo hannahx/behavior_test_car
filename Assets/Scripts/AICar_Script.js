@@ -661,7 +661,6 @@ function getStopTimer()
 	return stopTimer;
 }
 
-<<<<<<< HEAD
 function setHuvudledSign(s){
 	huvudledSign = s;
 }
@@ -686,10 +685,8 @@ function getTurningLeft(){
 	return turningLeft;
 }
 // Silence the System.Collection warning.
-private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
+//private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
 
-
-=======
 function getReachedDestion()
 {
 	return reachedDest;
@@ -704,4 +701,3 @@ private function SilenceWarnings() : void
 { 
 	var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); 
 } 
->>>>>>> origin/master
