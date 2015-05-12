@@ -95,6 +95,7 @@
      <Compile Include="Assets\Scripts\Zone scripts\SpeedLimit_90.js" />
      <Compile Include="Assets\Scripts\Zone scripts\StopSignTrigger.js" />
      <Compile Include="Assets\Scripts\Zone scripts\TriangleSignTrigger.js" />
+     <Compile Include="Assets\Scripts\rapper.js" />
      <None Include="Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
