@@ -75,6 +75,8 @@ private var turningLeft : boolean = false;
 private var stopTimer : float;
 private var reachedDest : float;
 
+private var activeRoundZone : RoundaboutZone;
+
 function Start () 
 {
     // I usually alter the center of mass to make the car more stable. I'ts less likely to flip this way.
@@ -704,6 +706,17 @@ function setReachedDestion(f : float)
 {
 	reachedDest = f;
 }
+
+function getRoundZone() : RoundaboutZone
+{
+	return activeRoundZone;
+}
+
+function setRoundZone(z)
+{
+	activeRoundZone = z;
+}
+
 // Silence the System.Collection warning.
 private function SilenceWarnings() : void 
 { 
