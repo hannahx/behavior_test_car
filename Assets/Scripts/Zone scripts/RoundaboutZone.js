@@ -31,23 +31,29 @@ function Start ()
 	}	
 }
 
-
 function OnTriggerEnter (c : Collider) 
 {
 	chassis = c;
 	var parentparent = c.gameObject.transform.parent.gameObject;
 	car = parentparent.GetComponent(AICar_Script);
 	
-	car.steeringSharpness -= 10;
+	//car.steeringSharpness -= 10;
 	
 	carColor = chassis.renderer.material.GetColor("_Color");
 		
 	var extraPath : Array = new Array();
-	//var directions : Array = new Array();
 	var oldPath : Array = car.getPath();
 	
-	enter = oldPath[car.getIndexInPath()-1];
-	exit = oldPath[car.getIndexInPath()]; //out of range ibland :/
+	if(car.getIndexInPath()<oldPath.length)
+	{
+		enter = oldPath[car.getIndexInPath()-1];
+		exit = oldPath[car.getIndexInPath()]; //out of range ibland :/
+	}
+	else
+	{
+		enter = oldPath[car.getIndexInPath()-2];
+		exit = oldPath[car.getIndexInPath()-1]; //out of range ibland :/
+	}
 	
 	//random temp variables:
 	var currentPoint : Point;
@@ -133,13 +139,13 @@ function OnTriggerEnter (c : Collider)
 		
 }
 
-function OnTriggerExit (c : Collider) 
-{
-	var parentparent = c.gameObject.transform.parent.gameObject;
-	car = parentparent.GetComponent(AICar_Script);
-	
-	car.steeringSharpness += 10;
-}
+//function OnTriggerExit (c : Collider) 
+//{
+//	var parentparent = c.gameObject.transform.parent.gameObject;
+//	car = parentparent.GetComponent(AICar_Script);
+//	
+//	car.steeringSharpness += 10;
+//}
 
 function turningDirection (enter, exit) 
 {
@@ -169,7 +175,7 @@ function turningDirection (enter, exit)
 		ret = 1;
 	}
 				
-	if(ret == -1 && Vector3.Distance(currentPoint.transform.position,nextPoint.transform.position) < 5)
+	if(ret == -1 && Vector3.Distance(currentPoint.transform.position,nextPoint.transform.position) < 10)
 	{
 		ret = -2;
 	}
@@ -179,35 +185,40 @@ function turningDirection (enter, exit)
 
 function sortPoints(startPoint : Point, path : Array)
 {
-	Debug.Log("startPoint: " + startPoint);
+	//Debug.Log("startPoint: " + startPoint);
 	
 	var retPath = new Array();
 	
 	var leftPoints = new Array();
 	var rightPoints = new Array();
+	var centerPoints = new Array();
 	
 	for(p in path)
 	{
-		//split path into left and right points
+		//split path into left, center and right points
 		var dir = turningDirection(startPoint, p);
-		if(dir >= 0)
+		if(dir == 0 && Vector3.Distance(startPoint.transform.position, p.transform.position) > 80)
+		{
+			centerPoints.push(p);
+		}
+		else if(dir >= 0)
 		{
 			rightPoints.push(p);
 		}
-		else
+		else if(dir < 0)
 		{
 			leftPoints.push(p);
 		}
 	}
 	//Debug.Log("rightPoints " + rightPoints);
+	//Debug.Log("centerPoints " + centerPoints);
 	//Debug.Log("leftPoints " + leftPoints);
 	
-	//sort right points (shortest distance --> longest)
-	
-
-	
+	//sort right points (shortest distance --> longest)	
 	var part1 = new Array();
+	var partCenter = new Array();
 	var part2 = new Array();
+	
 	var spliced : boolean;
 	for(var i=0; i<rightPoints.length; i++)
 	{
@@ -215,6 +226,7 @@ function sortPoints(startPoint : Point, path : Array)
 		var temp : Array = part1;
 		var dist_startToPoint = Vector3.Distance(startPoint.transform.position, rightPoints[i].transform.position);
 		var point = rightPoints[i] as Point;
+		//Debug.Log("dist to " + point + ": " + dist_startToPoint);
 		if(part1.length==0)
 		{
 			part1.push(rightPoints[i]);
@@ -239,22 +251,70 @@ function sortPoints(startPoint : Point, path : Array)
 		}
 	}
 	
+	if(centerPoints.length<=1)
+	{
+		partCenter = centerPoints;
+	}
+	else
+	{
+		for(i=0; i<centerPoints.length; i++)
+		{
+			spliced = false;
+			temp = partCenter;
+			point = centerPoints[i] as Point;
+			if(partCenter.length==0)
+			{
+				partCenter.push(centerPoints[i]);
+			}
+			else
+			{
+				for(j=0; j<partCenter.length; j++)
+				{
+					//kolla om point till höger om partCenter[j]
+					if(turningDirection(point, partCenter[j])<0)
+					{						
+						temp.splice(j,0, point);
+						spliced = true;
+						break;
+					}
+				}
+				if(spliced==false)
+					temp.push(point);
+			
+				partCenter = temp;
+			}
+		}
+	}
+	
+	var firstPart = part1.Concat(partCenter);
+	
+	var endRightPoint = firstPart[firstPart.length-1];
+	//Debug.Log("endpoint: " + endRightPoint);
+	//sort left points (longest distance --> shortest)	
+	//Debug.Log("------- left -------");
 	for(i=0; i<leftPoints.length; i++)
 	{
 		spliced = false;
 		temp = part2;
-		dist_startToPoint = Vector3.Distance(startPoint.transform.position, leftPoints[i].transform.position);
+		var dist_rightEndToPoint = Vector3.Distance(endRightPoint.transform.position, leftPoints[i].transform.position);
+		//dist_startToPoint = Vector3.Distance(startPoint.transform.position, leftPoints[i].transform.position);
 		point = leftPoints[i] as Point;
+		//Debug.Log("dist to " + point + ": " + dist_rightEndToPoint);
 		if(part2.length==0)
 		{
 			part2.push(leftPoints[i]);
 		}
 		else
 		{
-			for(j=0; j<part1.length; j++)
+			for(j=0; j<part2.length; j++)
 			{
-				dist_startToThis = Vector3.Distance(startPoint.transform.position, part2[j].transform.position);
-				if(dist_startToPoint > dist_startToThis)
+				//var dir1 : Vector3 = (part2[j].transform.position - startPoint.transform.position);
+				//var dir2 : Vector3 = (point.transform.position - startPoint.transform.position);
+				
+				dist_startToThis = Vector3.Distance(endRightPoint.transform.position, part2[j].transform.position);
+				//if(Vector3.Angle(dir1, car.transform.forward) < Vector3.Angle(dir2, car.transform.forward))
+				//if(dist_startToPoint > dist_startToThis)
+				if(dist_rightEndToPoint < dist_startToThis)
 				{
 					temp.splice(j,0, point);
 					spliced = true;
@@ -269,7 +329,7 @@ function sortPoints(startPoint : Point, path : Array)
 		}
 	}
 	
-	retPath = part1.Concat(part2);
+	retPath = firstPart.Concat(part2);
 
 	return retPath;	
 }

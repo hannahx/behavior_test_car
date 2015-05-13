@@ -240,7 +240,7 @@ function Sensors()
 					else
 					{
 						//flag++;  
-						avoidSensitivity -= 1;    
+						avoidSensitivity -= 0.5;//1;    
 						setCloseObject(avoidSensitivity, hit.transform.gameObject);
 						Debug.DrawLine(pos,hit.point,Color.white);  
 					}
@@ -289,7 +289,7 @@ function Sensors()
 					else
 					{
 						//flag++;  
-						avoidSensitivity += 1;   
+						avoidSensitivity += 0.5;//1;   
 						setCloseObject(avoidSensitivity, hit.transform.gameObject);
 						Debug.DrawLine(pos,hit.point,Color.white);  
 					}
@@ -332,7 +332,7 @@ function Sensors()
 				{  
 					if (hit.transform.tag != "DriveThrough" && hit.transform.tag != "AI")
 					{  
-						//flag++;  
+//						//flag++;  
 						avoidSensitivity -= 0.2;  
 						setCloseObject(avoidSensitivity, hit.transform.gameObject);
 						Debug.DrawLine(transform.position,hit.point,Color.white);  
@@ -344,7 +344,7 @@ function Sensors()
 				{  
 					if (hit.transform.tag != "DriveThrough" && hit.transform.tag != "AI")
 					{  
-						//flag++;  
+//						//flag++;  
 						avoidSensitivity += 0.2;  
 						setCloseObject(avoidSensitivity, hit.transform.gameObject);
 						Debug.DrawLine(transform.position,hit.point,Color.white);  
@@ -367,17 +367,17 @@ function Sensors()
 					}
 					else if (hit.transform.tag != "DriveThrough")
 					{  
-						if (hit.normal.x < 0 )
-						{  
-							avoidSensitivity = -1;  
-							setCloseObject(avoidSensitivity, hit.transform.gameObject);
-						}
-						else  
-						{
-							avoidSensitivity = 1;  
-							setCloseObject(avoidSensitivity, hit.transform.gameObject);
-						}
-						Debug.DrawLine(pos,hit.point,Color.white);  
+//						if (hit.normal.x < 0 )
+//						{  
+//							avoidSensitivity = -1;  
+//							setCloseObject(avoidSensitivity, hit.transform.gameObject);
+//						}
+//						else  
+//						{
+//							avoidSensitivity = 1;  
+//							setCloseObject(avoidSensitivity, hit.transform.gameObject);
+//						}
+//						Debug.DrawLine(pos,hit.point,Color.white);  
 					}  
 				}  
 			}  
@@ -388,7 +388,10 @@ function Sensors()
  
 function AvoidSteer(sensitivity : float)
 {  
-    inputSteer += sensitivity/3;//*steeringSharpness/1000;
+    inputSteer += sensitivity/20;//3;//*steeringSharpness/1000;
+    if(inputSteer>steeringSharpness)
+    	inputSteer = steeringSharpness;
+    	
 }  
 
 function GetPoints()
@@ -465,6 +468,11 @@ function setCloseObject(f : float, g : GameObject)
 		//Debug.Log(this + " close to " + g);
 		objectClose = f;
 	}
+}
+
+function resetCloseObject()
+{
+	objectClose = 0;
 }
 
 function getCloseCar()
