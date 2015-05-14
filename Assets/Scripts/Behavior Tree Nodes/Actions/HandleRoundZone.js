@@ -260,9 +260,9 @@ public class HandleRoundZone extends ActionNode {
 		var firstPart = part1.Concat(partCenter);
 		
 		var endRightPoint = firstPart[firstPart.length-1] as Point;
-		//Debug.Log("endpoint: " + endRightPoint);
+		Debug.Log("endpoint: " + endRightPoint);
+		
 		//sort left points (longest distance --> shortest)	
-		//Debug.Log("------- left -------");
 		for(i=0; i<leftPoints.length; i++)
 		{
 			spliced = false;
@@ -283,12 +283,19 @@ public class HandleRoundZone extends ActionNode {
 					//var dir1 : Vector3 = (part2[j].transform.position - startPoint.transform.position);
 					//var dir2 : Vector3 = (point.transform.position - startPoint.transform.position);
 					currPoint = part2[j] as Point;
-					dist_startToThis = Vector3.Distance(endRightPoint.transform.position, currPoint.transform.position);
+					var dist_endRightToThis = Vector3.Distance(endRightPoint.transform.position, currPoint.transform.position);
+					dist_startToThis = Vector3.Distance(startPoint.transform.position, currPoint.transform.position);
 					//if(Vector3.Angle(dir1, car.transform.forward) < Vector3.Angle(dir2, car.transform.forward))
 					//if(dist_startToPoint > dist_startToThis)
-					if(dist_rightEndToPoint < dist_startToThis)
+					if(dist_rightEndToPoint < dist_endRightToThis && dist_startToThis > 50)
 					{
 						temp.splice(j,0, point);
+						spliced = true;
+						break;
+					}
+					else if (dist_startToThis <= 50)
+					{
+						temp.push(point);
 						spliced = true;
 						break;
 					}
@@ -334,7 +341,7 @@ public class HandleRoundZone extends ActionNode {
 			ret = 1;
 		}
 					
-		if(ret == -1 && Vector3.Distance(currentPoint.transform.position,nextPoint.transform.position) < 10)
+		if(ret == -1 && Vector3.Distance(currentPoint.transform.position,nextPoint.transform.position) < 50)
 		{
 			ret = -2;
 		}

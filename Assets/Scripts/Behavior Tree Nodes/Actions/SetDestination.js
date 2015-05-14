@@ -6,6 +6,8 @@ import BehaviourMachine;
 public class SetDestination extends ActionNode {
      
 	var car : AICar_Script;
+	var pointA : Point;
+	var pointB : Point;
     //private var path : Array;
     private var points;
     var I : int;
@@ -30,16 +32,30 @@ public class SetDestination extends ActionNode {
 			I = 1;
 	    	if(car.getDestinationPoint()==null && car.getStartPoint()==null)//this means the "original car"
 	    	{	
-	    		//Debug.Log("case 1");    		
-				rand = Mathf.Floor(Random.Range(0,max+1));
-				while(points[rand].startOK==false)
-				{
+	    		if(pointA != null)
+	    		{
+	    			car.setStartPoint(pointA);
+	    		}
+	    		else
+	    		{
 					rand = Mathf.Floor(Random.Range(0,max+1));
-				}
-				car.setStartPoint(points[rand]);
-				rand = Mathf.Floor(Random.Range(0,max+1));
-				car.setDestinationPoint(points[rand]);
-				
+					while(points[rand].startOK==false)
+					{
+						rand = Mathf.Floor(Random.Range(0,max+1));
+					}
+					car.setStartPoint(points[rand]);
+	    		}
+	    		
+	    		if(pointB != null)
+	    		{
+	    			car.setDestinationPoint(pointB);
+	    		}
+	    		else
+	    		{
+					rand = Mathf.Floor(Random.Range(0,max+1));
+					car.setDestinationPoint(points[rand]);
+	    		}
+	    		
 				car.transform.position = car.getStartPoint().transform.position;
 				//Debug.Log(car.getStartPoint().transform.position);
 				car.transform.rotation = Quaternion.identity;
