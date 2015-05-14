@@ -10,7 +10,9 @@ public class SetDestination extends ActionNode {
 	var pointB : Point;
     //private var path : Array;
     private var points;
-    var I : int;
+    private var I : int;
+    private var startTime : float;
+    private var endTime : float;
      
     // Called once when the node is created
     function Awake () {}
@@ -35,6 +37,7 @@ public class SetDestination extends ActionNode {
 	    		if(pointA != null)
 	    		{
 	    			car.setStartPoint(pointA);
+	    			startTime = Time.time;
 	    		}
 	    		else
 	    		{
@@ -77,7 +80,13 @@ public class SetDestination extends ActionNode {
 	    	}
 	    	else //this means that the car has reached its destination
 	    	{
-	    		//Debug.Log("case 3");    
+				if(car.name == "Red_Car")
+				{
+					endTime = Time.time;
+					var resultTime : float = endTime - startTime;
+					Debug.Log("Time: " + resultTime + " s");
+				}
+	    		      
 	    		car.setStartPoint(car.getDestinationPoint());
 				rand = Mathf.Floor(Random.Range(0,max+1)); //TODO: should not be same as startpoint or destination - fix!
 	    		destPoint = points[rand] as Point;

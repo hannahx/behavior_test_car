@@ -17,7 +17,7 @@ public class HandleRoundZone extends ActionNode {
     // Called when the node starts its execution
 	function Start () 
 	{
-		Debug.Log(car.name + " in " + car.getRoundZone());		
+		//Debug.Log(car.name + " in " + car.getRoundZone());		
 		Rzone = car.getRoundZone() as RoundaboutZone;
 		car.setRoundZone(null);
 		//rPointContainer = Rzone.getRpointContainer();
@@ -52,7 +52,7 @@ public class HandleRoundZone extends ActionNode {
 	    
 	    if(dir==1)//if right
 	    {
-	    	Debug.Log(car.name + " Turning Right - follow outer");
+	    	//Debug.Log(car.name + " Turning Right - follow outer");
 			for(p in outer_points)
 			{
 				currentPoint = p as Point;
@@ -69,7 +69,7 @@ public class HandleRoundZone extends ActionNode {
 	    }			
 		else if(dir==0)//if straight forward
 		{
-			Debug.Log(car.name + " Straight ahead - follow outer");
+			//Debug.Log(car.name + " Straight ahead - follow outer");
 			for(p in outer_points)
 			{
 				currentPoint = p as Point;
@@ -86,7 +86,7 @@ public class HandleRoundZone extends ActionNode {
 		}
 		else if(dir==-1)//if left 
 		{
-			Debug.Log(car.name + " Turning Left - follow inner");
+			//Debug.Log(car.name + " Turning Left - follow inner");
 			for(p in inner_points)
 			{
 				currentPoint = p as Point;
@@ -103,7 +103,7 @@ public class HandleRoundZone extends ActionNode {
 		}
 		else if(dir==-2)//if U-turn 
 		{
-			Debug.Log(car.name + " U-turn - follow inner");
+			//Debug.Log(car.name + " U-turn - follow inner");
 			for(p in inner_points)
 			{
 				currentPoint = p as Point;
@@ -117,12 +117,12 @@ public class HandleRoundZone extends ActionNode {
 		}
 		
 		//remove all elements in path up to getIndexInPath()-1
-		////Debug.Log(car.name + " - Old Path: " + oldPath);
+		//////Debug.Log(car.name + " - Old Path: " + oldPath);
 		for(var i=0; i<car.getIndexInPath(); i++)
 		{
 			oldPath.shift();
 		}
-		////Debug.Log(car.name + " - Extra Path: " + extraPath);
+		//////Debug.Log(car.name + " - Extra Path: " + extraPath);
 		
 		var extraPathSorted = sortPoints(enter, extraPath);
 		var newPath = extraPathSorted.concat(oldPath);
@@ -135,7 +135,7 @@ public class HandleRoundZone extends ActionNode {
 			//var ren = currentPoint.GetComponent.<Renderer>();
 			//ren.material.color = carColor;
 		}
-		Debug.Log(car.name + " - New Path: " + newPath);
+		//Debug.Log(car.name + " - New Path: " + newPath);
 
 	}
 
@@ -153,7 +153,7 @@ public class HandleRoundZone extends ActionNode {
 
 	function sortPoints(startPoint : Point, path : Array)
 	{
-		//Debug.Log("startPoint: " + startPoint);
+		////Debug.Log("startPoint: " + startPoint);
 	
 		var retPath = new Array();
 		
@@ -179,9 +179,9 @@ public class HandleRoundZone extends ActionNode {
 				leftPoints.push(currPoint);
 			}
 		}
-		//Debug.Log("rightPoints " + rightPoints);
-		//Debug.Log("centerPoints " + centerPoints);
-		//Debug.Log("leftPoints " + leftPoints);
+		////Debug.Log("rightPoints " + rightPoints);
+		////Debug.Log("centerPoints " + centerPoints);
+		////Debug.Log("leftPoints " + leftPoints);
 		
 		//sort right points (shortest distance --> longest)	
 		var part1 = new Array();
@@ -196,7 +196,7 @@ public class HandleRoundZone extends ActionNode {
 			var point = rightPoints[i] as Point;
 			var dist_startToPoint = Vector3.Distance(startPoint.transform.position, point.transform.position);
 			
-			//Debug.Log("dist to " + point + ": " + dist_startToPoint);
+			////Debug.Log("dist to " + point + ": " + dist_startToPoint);
 			if(part1.length==0)
 			{
 				part1.push(point);
@@ -260,7 +260,7 @@ public class HandleRoundZone extends ActionNode {
 		var firstPart = part1.Concat(partCenter);
 		
 		var endRightPoint = firstPart[firstPart.length-1] as Point;
-		Debug.Log("endpoint: " + endRightPoint);
+		//Debug.Log("endpoint: " + endRightPoint);
 		
 		//sort left points (longest distance --> shortest)	
 		for(i=0; i<leftPoints.length; i++)
@@ -271,7 +271,7 @@ public class HandleRoundZone extends ActionNode {
 			var dist_rightEndToPoint = Vector3.Distance(endRightPoint.transform.position, point.transform.position);
 			//dist_startToPoint = Vector3.Distance(startPoint.transform.position, leftPoints[i].transform.position);
 			
-			//Debug.Log("dist to " + point + ": " + dist_rightEndToPoint);
+			////Debug.Log("dist to " + point + ": " + dist_rightEndToPoint);
 			if(part2.length==0)
 			{
 				part2.push(leftPoints[i]);
@@ -327,7 +327,7 @@ public class HandleRoundZone extends ActionNode {
 	    	angle2 = -angle2;
 
 		
-		//Debug.Log(angle2);
+		////Debug.Log(angle2);
 		if (angle2 > -10 && angle2 < 10)
 		{
 			ret = 0;
