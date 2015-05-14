@@ -9,12 +9,14 @@ private var I;
 private var carArray : Array;
 private var p : int;
 private var posTaken : boolean;
+private var aMatrix = new Array();
 
 function Start ()
 {
 	I = 0; // I = 1 if pointarray is filled :)
 	carArray = new Array();
 	carArray.push(car);
+
 
 	while (I==0)
 	{
@@ -57,6 +59,13 @@ function Start ()
 				
 				var chassis : Transform = newCar.transform.Find("Chassis"); 			
 				chassis.renderer.material.color = Color(Random.Range(0.0,1.0),Random.Range(0.0,1.0),Random.Range(0.0,1.0)); //random color for the car
+				
+				
+				var camera : Transform = newCar.transform.Find("Main Camera"); 	
+				camera.GetComponent(Camera).enabled = false;
+				
+				
+				
 				
 				yield WaitForSeconds (1);
 			}	

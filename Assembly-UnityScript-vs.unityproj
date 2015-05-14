@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\Drive.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\HandleBrakeZone.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\HandleInterZone.js" />
+     <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\HandleRoundZone.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\HandleZones_beta.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\MoveTowardsNextPoint.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Actions\ObeySpeedLimit.js" />
@@ -71,6 +72,7 @@
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\CloseToTrafficLight.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\GreenLight.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\InInterZone.js" />
+     <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\InRoundZone.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\NewSpeedLimit.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\ObjectClose.js" />
      <Compile Include="Assets\Scripts\Behavior Tree Nodes\Conditions\ObjectClose1.js" />
@@ -81,7 +83,6 @@
      <Compile Include="Assets\Scripts\GenerateCars.js" />
      <Compile Include="Assets\Scripts\PlayerCar.js" />
      <Compile Include="Assets\Scripts\Point.js" />
-     <Compile Include="Assets\Scripts\ResultCounter.js" />
      <Compile Include="Assets\Scripts\SimpleVelocityLimiter.js" />
      <Compile Include="Assets\Scripts\SpeedLimit_30.js" />
      <Compile Include="Assets\Scripts\TrafficLight.js" />

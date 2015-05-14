@@ -11,6 +11,7 @@ public class AvoidObject2 extends ActionNode {
     {
     	car.AvoidSteer(car.getCloseObject());
     	car.steeringSharpness = 70;
+    	car.resetCloseObject();
     }
      
     // This function is called when the node is in execution

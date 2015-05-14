@@ -29,14 +29,19 @@ public class UpdateNextPoint extends ActionNode {
         indexInPath = car.getIndexInPath();
         carPos = car.getRigidbody().transform.position;
         currentNextPoint = car.getNextPoint();
+        //Debug.Log("currentNextPoint: " + currentNextPoint + " path[indexInPath]: " + path[indexInPath]);
         //Debug.Log(indexInPath + " " + path.length);
 		nextPoint = path[indexInPath];
 		car.setNextPoint(nextPoint);
 		if(indexInPath+1<=path.length)
 		{
 			car.setIndexInPath(indexInPath+1);
-			//Debug.Log("Next point updated: next point is " + car.getNextPoint());
+			//Debug.Log("New next point for " + car.name + ": " + car.getNextPoint().name);
 			return Status.Success;
+		}
+		else
+		{
+			Debug.Log("reaced destination?");
 		}
          
         // Never forget to set the node status

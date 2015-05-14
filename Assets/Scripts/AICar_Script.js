@@ -79,12 +79,13 @@ private var priority : int = 0;
 private var stopTimer : float;
 private var reachedDest : float;
 
+private var activeRoundZone : RoundaboutZone;
+
 function Start () 
 {
     // I usually alter the center of mass to make the car more stable. I'ts less likely to flip this way.
     rigidbody.centerOfMass.y = (vehicleCenterOfMass);
-	GetPoints();
-	
+	GetPoints(pointMatrix);
 }
  
 function FixedUpdate () 
@@ -92,7 +93,7 @@ function FixedUpdate ()
     var mph = rigidbody.velocity.magnitude * 2.237;
     var kmh = mph*1.609;
     //mphDisplay.text = mph.ToString("F0") + " : MPH"; // displays one digit after the dot
-    mphDisplay.text = kmh.ToString("F0") + " : km/h"; // displays one digit after the dot
+    mphDisplay.text = "Speed for " + this.name + ": " + kmh.ToString("F0") + " : km/h"; // displays one digit after the dot
      
     // This is to limith the maximum speed of the car, adjusting the drag probably isn't the best way of doing it,
     // but it's easy, and it doesn't interfere with the physics processing.
@@ -191,7 +192,7 @@ function Sensors()
 			var hit : RaycastHit;
 			var rightAngles : Array = new Array();
 			var leftAngles : Array = new Array();
-			for(var I=0; I<25; I++)
+			for(var I=0; I<22; I++)
 			{
 				rightAngles.push(Quaternion.AngleAxis((2*I), transform.up)*transform.forward);
 				leftAngles.push(Quaternion.AngleAxis((-2*I), transform.up)*transform.forward);
@@ -244,14 +245,14 @@ function Sensors()
 					else
 					{
 						//flag++;  
-						avoidSensitivity -= 1;    
+						avoidSensitivity -= 0.5;//1;    
 						setCloseObject(avoidSensitivity, hit.transform.gameObject);
 						Debug.DrawLine(pos,hit.point,Color.white);  
 					}
 				}  
 			}  
 			
-			for(I=0; I<25; I++)
+			for(I=0; I<22; I++)
 			{
 				var someAngle = rightAngles[I];
 				if (Physics.Raycast(pos,someAngle,hit,sensorLength))
@@ -293,14 +294,14 @@ function Sensors()
 					else
 					{
 						//flag++;  
-						avoidSensitivity += 1;   
+						avoidSensitivity += 0.5;//1;   
 						setCloseObject(avoidSensitivity, hit.transform.gameObject);
 						Debug.DrawLine(pos,hit.point,Color.white);  
 					}
 				}  
 
 			}  
-			for(I=0; I<25; I++)
+			for(I=0; I<22; I++)
 			{
 				someAngle = leftAngles[I];
 				if (Physics.Raycast(pos,someAngle,hit,sensorLength))
@@ -336,7 +337,7 @@ function Sensors()
 				{  
 					if (hit.transform.tag != "DriveThrough" && hit.transform.tag != "AI")
 					{  
-						//flag++;  
+//						//flag++;  
 						avoidSensitivity -= 0.2;  
 						setCloseObject(avoidSensitivity, hit.transform.gameObject);
 						Debug.DrawLine(transform.position,hit.point,Color.white);  
@@ -348,13 +349,45 @@ function Sensors()
 				{  
 					if (hit.transform.tag != "DriveThrough" && hit.transform.tag != "AI")
 					{  
-						//flag++;  
+//						//flag++;  
 						avoidSensitivity += 0.2;  
 						setCloseObject(avoidSensitivity, hit.transform.gameObject);
 						Debug.DrawLine(transform.position,hit.point,Color.white);  
 					}  
 				}  
 			}
+			
+			//Avoid cars!!! 
+			Pos = transform.position;
+			Pos.z -= 2;
+			Pos.y = y-0.5;
+			for(I=0; I<10; I++)
+			{
+				Pos.z += 1;
+				//Right SideWay Sensor  
+				if (Physics.Raycast(Pos,transform.right,hit,sidewaySensorLength+1))
+				{  
+					if(hit.transform.tag == "AI")
+					{
+						avoidSensitivity -= 0.2;  
+						setCloseObject(avoidSensitivity, hit.transform.gameObject);
+						Debug.DrawLine(transform.position,hit.point,Color.red); 
+					}
+				}  
+				   
+				//Left SideWay Sensor  
+				if (Physics.Raycast(Pos,-transform.right,hit,sidewaySensorLength+1))
+				{  
+					if(hit.transform.tag == "AI")
+					{
+						avoidSensitivity += 0.2;  
+						setCloseObject(avoidSensitivity, hit.transform.gameObject);
+						Debug.DrawLine(transform.position,hit.point,Color.red); 
+					}
+				}  
+			}
+			
+			
 			
 			//Front Mid Sensors  
 			for(I=0; I<5; I++)
@@ -392,11 +425,16 @@ function Sensors()
  
 function AvoidSteer(sensitivity : float)
 {  
-    inputSteer += sensitivity/3;//*steeringSharpness/1000;
+    inputSteer += sensitivity/20;//3;//*steeringSharpness/1000;
+    if(inputSteer>steeringSharpness)
+    	inputSteer = steeringSharpness;
+    	
 }  
 
-function GetPoints()
+function GetPoints(m)
 {
+	var matrix = m as Array;
+
 	var POINTS : Array = pointContainer.GetComponentsInChildren( Point );
 	
 	var zeroArray : Array = new Array(POINTS.lenght);
@@ -411,24 +449,24 @@ function GetPoints()
 		i++;
 	}
 	
-	//generate pointMatrix (zeros)
+	//generate matrix (zeros)
 	var j : int;
 	for(i=0; i<POINTS.length; i++)
 	{
-		pointMatrix[i] = new Array();
+		matrix[i] = new Array();
 		for(j=0; j<POINTS.length; j++)
 		{
-			pointMatrix[i][j] = Infinity;
+			matrix[i][j] = Infinity;
 		}
 		
 	}
 	
-	//fill pointMatrix (ones)
+	//fill matrix (ones)
 	var x : int = 0;
 	var y : int;	
-	for(p in pointMatrix)
+	for(p in matrix)
 	{
-		var next = [points[x].next1, points[x].next2, points[x].next3];
+		var next = [points[x].next1, points[x].next2, points[x].next3, points[x].next4];
 		for(n in next)
 		{
 			if(n)
@@ -440,8 +478,8 @@ function GetPoints()
 				{
 					if(points[y]==Next)
 					{
-						P = 1;
-						//P = Vector3.Distance(points[x].transform.position, Next.transform.position);
+						//P = 1;
+						P = Vector3.Distance(points[x].transform.position, Next.transform.position);
 					}
 					////Debug.Log(P);
 					y++;
@@ -469,6 +507,11 @@ function setCloseObject(f : float, g : GameObject)
 		//Debug.Log(this + " close to " + g);
 		objectClose = f;
 	}
+}
+
+function resetCloseObject()
+{
+	objectClose = 0;
 }
 
 function getCloseCar()
@@ -504,6 +547,11 @@ function getPointArray()
 function getPointMatrix()
 {
 	return pointMatrix;
+}
+
+function setPointMatrix(M)
+{
+	pointMatrix = M;
 }
 
 function setPath(p)
@@ -675,6 +723,17 @@ function getStopTimer()
 	return stopTimer;
 }
 
+<<<<<<< HEAD
+=======
+function setHuvudledSign(s){
+	huvudledSign = s;
+}
+
+function getHuvudledSign(){
+	return huvudledSign;
+}
+
+>>>>>>> origin/master
 function setTurningRight(g : boolean){
 	turningRight = g ;
 }
@@ -690,6 +749,7 @@ function setTurningLeft(p : boolean){
 function getTurningLeft(){
 	return turningLeft;
 }
+<<<<<<< HEAD
 
 function setGoingStraight(p : boolean){
 	goingStraight = p ;
@@ -698,6 +758,10 @@ function setGoingStraight(p : boolean){
 function getGoingStraight(){
 	return goingStraight;
 }
+=======
+// Silence the System.Collection warning.
+//private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
+>>>>>>> origin/master
 
 function getReachedDestion()
 {
@@ -709,6 +773,27 @@ function setReachedDestion(f : float)
 	reachedDest = f;
 }
 
+<<<<<<< HEAD
+=======
+function getRoundZone() : RoundaboutZone
+{
+	return activeRoundZone;
+}
+
+function setRoundZone(z)
+{
+	activeRoundZone = z;
+}
+
+function setGoingStraight(p : boolean){
+	goingStraight = p ;
+}
+
+function getGoingStraight(){
+	return goingStraight;
+}
+
+>>>>>>> origin/master
 function setPriority(p : int){
 	priority = p ;
 }
@@ -725,6 +810,11 @@ function getColliderPoint(){
 	return colliderPoint;
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/master
 // Silence the System.Collection warning.
 private function SilenceWarnings() : void 
 { 
