@@ -60,6 +60,13 @@ function Start ()
 				var chassis : Transform = newCar.transform.Find("Chassis"); 			
 				chassis.renderer.material.color = Color(Random.Range(0.0,1.0),Random.Range(0.0,1.0),Random.Range(0.0,1.0)); //random color for the car
 				
+				
+				var camera : Transform = newCar.transform.Find("Main Camera"); 	
+				camera.GetComponent(Camera).enabled = false;
+				
+				
+				
+				
 				yield WaitForSeconds (1);
 			}	
 			break;

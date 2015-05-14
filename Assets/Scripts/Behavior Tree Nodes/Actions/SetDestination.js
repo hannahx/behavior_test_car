@@ -13,16 +13,12 @@ public class SetDestination extends ActionNode {
     private var I : int;
     private var startTime : float;
     private var endTime : float;
-     
-    // Called once when the node is created
-    function Awake () {}
- 
-    // Called when the owner (BehaviourTree or ActionState) is enabled
-    function OnEnable () {}
+    private var times : Array;
      
     // Called when the node starts its execution
     function Start () 
     {
+    	times = new Array();
     	I = 0;
     	//Debug.Log("Set destination for " + car);
 		points = car.getPointArray();
@@ -80,23 +76,36 @@ public class SetDestination extends ActionNode {
 	    	}
 	    	else //this means that the car has reached its destination
 	    	{
-				if(car.name == "Red_Car")
+	    		car.setStartPoint(car.getDestinationPoint());
+				if(car.name == "Red_Car" && pointA != null && pointB != null)
 				{
 					endTime = Time.time;
 					var resultTime : float = endTime - startTime;
-					Debug.Log("Time: " + resultTime + " s");
+					times.push(resultTime);
+					//Debug.Log("Time: " + resultTime + " s");
+					Debug.Log("Times: " + times); //det här funkar inte pga en ny nod kollas varje gång och man kan inte fortsätta lägga in saker i arrayen... 
+					if(car.getDestinationPoint().name==pointB.name)
+					{
+						car.setDestinationPoint(pointA);
+					}
+					else
+					{
+						car.setDestinationPoint(pointB);
+					}
+					startTime = Time.time;
 				}
-	    		      
-	    		car.setStartPoint(car.getDestinationPoint());
-				rand = Mathf.Floor(Random.Range(0,max+1)); //TODO: should not be same as startpoint or destination - fix!
-	    		destPoint = points[rand] as Point;
-				while (destPoint.startOK==false)
-				{
-					rand = Mathf.Floor(Random.Range(0,max+1));	
-					destPoint = points[rand] as Point;
-				}
-	    		car.setDestinationPoint(destPoint);
-	    		car.setDestinationPoint(points[rand]);
+				else
+				{   
+					rand = Mathf.Floor(Random.Range(0,max+1)); //TODO: should not be same as startpoint or destination - fix!
+		    		destPoint = points[rand] as Point;
+					while (destPoint.startOK==false)
+					{
+						rand = Mathf.Floor(Random.Range(0,max+1));	
+						destPoint = points[rand] as Point;
+					}
+		    		car.setDestinationPoint(destPoint);
+		    		car.setDestinationPoint(points[rand]);
+	    		}
 	    	}
 	    	//car.getRigidbody().transform.position = car.getStartpoint();//
 	    	
@@ -118,18 +127,6 @@ public class SetDestination extends ActionNode {
 			return Status.Running;
         
     }
- 
-    // Called when the node ends its execution
-    function End () {}
- 
-    // Called when the owner (BehaviourTree or ActionState) is disabled
-    function OnDisable () {}
- 
-    // This function is called to reset the default values of the node
-    function Reset () {}
- 
-    // Called when the script is loaded or a value is changed in the inspector (Called in the editor only)
-    function OnValidate () {}
     
     private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
     
