@@ -9,12 +9,14 @@ private var I;
 private var carArray : Array;
 private var p : int;
 private var posTaken : boolean;
+private var aMatrix = new Array();
 
 function Start ()
 {
 	I = 0; // I = 1 if pointarray is filled :)
 	carArray = new Array();
 	carArray.push(car);
+
 
 	while (I==0)
 	{

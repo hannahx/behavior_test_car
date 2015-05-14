@@ -1,13 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Behavior Tree Nodes\Actions\HandleRoundZone.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AICar_Script.js">
     <Files>
-      <File FileName="Assets\Scripts\Zone scripts\RoundaboutZone.js" Line="340" Column="27" />
-      <File FileName="Assets\Scripts\AICar_Script.js" Line="713" Column="2" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\AvoidObject2.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\ObjectClose2.js" Line="7" Column="1" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\InRoundZone.js" Line="14" Column="6" />
-      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\HandleRoundZone.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\AICar_Script.js" Line="194" Column="21" />
+      <File FileName="Assets\Scripts\GenerateCars.js" Line="60" Column="66" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\HandleRoundZone.js" Line="104" Column="26" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Actions\HandleInterZone.js" Line="38" Column="47" />
+      <File FileName="Assets\Scripts\Behavior Tree Nodes\Conditions\CloseToLight.js" Line="33" Column="103" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

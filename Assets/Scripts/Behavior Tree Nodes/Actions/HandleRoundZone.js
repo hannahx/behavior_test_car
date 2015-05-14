@@ -4,11 +4,12 @@ import BehaviourMachine;
 public class HandleRoundZone extends ActionNode {
 
 	var car : AICar_Script;
+	var drawColors : boolean;
 	private var Rzone : RoundaboutZone;
 	//private var rPointContainer;
 	private var inner_points : Array;
 	private var outer_points : Array;
-	
+	private var carColor;
 	private var enter : Point;
 	private var exit : Point;
 
@@ -23,8 +24,10 @@ public class HandleRoundZone extends ActionNode {
 		inner_points = Rzone.getInnerPoints();
 		outer_points = Rzone.getOuterPoints();
 
-		//calculate new path here! :)
+		var chassis : Transform = car.transform.Find("Chassis"); 	
+		carColor = chassis.renderer.material.GetColor("_Color");
 		
+		//calculate new path here! :)
 		
 		var extraPath : Array = new Array();
 		var oldPath : Array = car.getPath();
@@ -42,7 +45,7 @@ public class HandleRoundZone extends ActionNode {
 		
 		//random temp variables:
 		var currentPoint : Point;
-		//var rend : Renderer;
+		var rend : Renderer;
 	    
 		//find out of next point is on left, right or straight forward
 		var dir = turningDirection(enter, exit);
@@ -55,9 +58,11 @@ public class HandleRoundZone extends ActionNode {
 				currentPoint = p as Point;
 				if(car.transform.InverseTransformPoint(currentPoint.transform.position).x > 0 && Vector3.Distance(car.transform.position,currentPoint.transform.position) < 100)
 				{
-					
-					//rend = currentPoint.GetComponent.<Renderer>();
-					//rend.material.color = carColor;
+					if(drawColors)
+					{
+						rend = currentPoint.GetComponent.<Renderer>();
+						rend.material.color = carColor;
+					}
 					extraPath.push(currentPoint);
 				}
 			}
@@ -70,9 +75,11 @@ public class HandleRoundZone extends ActionNode {
 				currentPoint = p as Point;
 				if(car.transform.InverseTransformPoint(currentPoint.transform.position).x > 0)
 				{
-					
-					//rend = currentPoint.GetComponent.<Renderer>();
-					//rend.material.color = carColor;
+					if(drawColors)
+					{
+						rend = currentPoint.GetComponent.<Renderer>();
+						rend.material.color = carColor;
+					}
 					extraPath.push(currentPoint);
 				}
 			}
@@ -85,9 +92,11 @@ public class HandleRoundZone extends ActionNode {
 				currentPoint = p as Point;
 				if(car.transform.InverseTransformPoint(currentPoint.transform.position).x > 0 || car.transform.InverseTransformPoint(currentPoint.transform.position).x < 0 && Vector3.Distance(currentPoint.transform.position, car.transform.position) > 100)
 				{
-					
-					//rend = currentPoint.GetComponent.<Renderer>();
-					//rend.material.color = carColor;
+					if(drawColors)
+					{
+						rend = currentPoint.GetComponent.<Renderer>();
+						rend.material.color = carColor;
+					}
 					extraPath.push(currentPoint);
 				}
 			}
@@ -98,8 +107,11 @@ public class HandleRoundZone extends ActionNode {
 			for(p in inner_points)
 			{
 				currentPoint = p as Point;
-				//rend = currentPoint.GetComponent.<Renderer>();
-				//rend.material.color = carColor;
+				if(drawColors)
+				{
+					rend = currentPoint.GetComponent.<Renderer>();
+					rend.material.color = carColor;
+				}
 				extraPath.push(currentPoint);
 			}
 		}
