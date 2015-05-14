@@ -39,3 +39,7 @@ function Update ()
 	}
 
 }
+private function SilenceWarnings() : void 
+{ 
+var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); 
+} 

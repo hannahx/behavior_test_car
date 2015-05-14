@@ -37,13 +37,13 @@ function ChangeLight() {
 	{
 		rend.material.color = colorGreen;
 		currentColor = colorGreen;
-		yield new WaitForSeconds(4);
+		yield new WaitForSeconds(5);
 		rend.material.color = colorYellow;
 		currentColor = colorYellow;
-		yield new WaitForSeconds(2);
+		yield new WaitForSeconds(3);
 		rend.material.color = colorRed;
 		currentColor = colorRed;
-		yield new WaitForSeconds(4);
+		yield new WaitForSeconds(5);
 		if (RandomLight == true)
 		{
 			if (slack == true){

@@ -32,6 +32,10 @@ public class SetDestination extends ActionNode {
 	    	{	
 	    		//Debug.Log("case 1");    		
 				rand = Mathf.Floor(Random.Range(0,max+1));
+				while(points[rand].startOK==false)
+				{
+					rand = Mathf.Floor(Random.Range(0,max+1));
+				}
 				car.setStartPoint(points[rand]);
 				rand = Mathf.Floor(Random.Range(0,max+1));
 				car.setDestinationPoint(points[rand]);

@@ -26,17 +26,9 @@ function OnDrawGizmos()
 			Gizmos.DrawLine ((transform.position+Next.transform.position)/2, Next.transform.position);
 		}
 	}
-<<<<<<< HEAD
-
 
 }
 
-
-private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
-
-
-=======
-}
 
 private function SilenceWarnings() : void 
 { 
@@ -44,4 +36,3 @@ var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) Sil
 } 
 
 
->>>>>>> origin/master

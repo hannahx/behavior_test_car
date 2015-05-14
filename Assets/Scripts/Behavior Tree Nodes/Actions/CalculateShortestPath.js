@@ -58,7 +58,7 @@ public class CalculateShortestPath extends ActionNode {
     function Update () : Status 
     {  
 		car.setPath(path);
-		Debug.Log(path);
+		//Debug.Log(path);
 		return Status.Success;
 		
     }

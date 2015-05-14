@@ -50,7 +50,7 @@ function Start ()
 				if(posTaken==true)
 				{
 					newCar.setTakenPosition(true);
-					Debug.Log(newCar.name);
+					//Debug.Log(newCar.name);
 				}
 				
 				posTaken = false;

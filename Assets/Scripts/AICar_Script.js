@@ -63,14 +63,18 @@ private var activeBrakeZone : BrakeZone;
 private var Infinity = float.PositiveInfinity;
 
 private var StopSign : boolean = false;
-var rightRule : boolean;
+private var rightCar : boolean;
+private var leftCar : boolean;
+private var oppositeCar : boolean;
 private var triangleSign : boolean = false;
-private var huvudledSign : boolean = false;
 private var SpeedLimit : int;
 private var LimiterEntered : boolean = false;
 private var generatesOnTakenPosition = false;
 private var turningRight : boolean = false;
 private var turningLeft : boolean = false;
+private var goingStraight : boolean = false;
+private var colliderPoint : Vector3;
+private var priority : int = 0;
 
 private var stopTimer : float;
 private var reachedDest : float;
@@ -233,7 +237,7 @@ function Sensors()
 				{
 					if (hit.transform.tag == "AI")
 					{
-						setRightCar(true, hit.transform.gameObject); 
+						//setRightCar(true, hit.transform.gameObject); 
 						setCloseCar(true, hit.transform.gameObject);
 						Debug.DrawLine(pos,hit.point,Color.yellow);  
 					}
@@ -256,7 +260,7 @@ function Sensors()
 					{  
 						if (hit.transform.tag == "AI")
 						{
-							setRightCar(true, hit.transform.gameObject); 
+							//setRightCar(true, hit.transform.gameObject); 
 							setCloseCar(true, hit.transform.gameObject);
 							Debug.DrawLine(pos,hit.point,Color.yellow);
 						}
@@ -361,7 +365,7 @@ function Sensors()
 				
 					if (hit.transform.tag == "AI")
 					{
-						setRightCar(true, hit.transform.gameObject); 
+						//setRightCar(true, hit.transform.gameObject); 
 						setCloseCar(true, hit.transform.gameObject);
 						Debug.DrawLine(pos,hit.point,Color.yellow);  
 					}
@@ -566,10 +570,6 @@ function getLightDistance()
 	return distToLight;
 }
 
-function getDotProduct()
-{
-	return dotProduct;
-}
 function getZoneEntered()
 {
 	
@@ -600,17 +600,31 @@ function getStopSign(){
 	return StopSign;
 }
 
-function setRightCar(b : boolean, g : GameObject)
+function setRightCar(b : boolean)
 {  
-	if(g.name != this.name)
-	{
-		//Debug.Log(this + " close to " + g);
-		rightRule = b;
-	}
+	rightCar = b;
 }
 
 function getRightCar(){
-	return rightRule;
+	return rightCar;
+}
+
+function setLeftCar(b : boolean)
+{  
+	leftCar = b;
+}
+
+function getLeftCar(){
+	return leftCar;
+}
+
+function setOppositeCar(o : boolean)
+{  
+	oppositeCar = o;
+}
+
+function getOppositeCar(){
+	return oppositeCar;
 }
 
 function setTriangleSign(s){
@@ -661,15 +675,6 @@ function getStopTimer()
 	return stopTimer;
 }
 
-<<<<<<< HEAD
-function setHuvudledSign(s){
-	huvudledSign = s;
-}
-
-function getHuvudledSign(){
-	return huvudledSign;
-}
-
 function setTurningRight(g : boolean){
 	turningRight = g ;
 }
@@ -685,11 +690,15 @@ function setTurningLeft(p : boolean){
 function getTurningLeft(){
 	return turningLeft;
 }
-// Silence the System.Collection warning.
-private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
 
+function setGoingStraight(p : boolean){
+	goingStraight = p ;
+}
 
-=======
+function getGoingStraight(){
+	return goingStraight;
+}
+
 function getReachedDestion()
 {
 	return reachedDest;
@@ -699,9 +708,25 @@ function setReachedDestion(f : float)
 {
 	reachedDest = f;
 }
+
+function setPriority(p : int){
+	priority = p ;
+}
+
+function getPriority(){
+	return priority;
+}
+
+function setColliderPoint(p : Vector3){
+	colliderPoint = p ;
+}
+
+function getColliderPoint(){
+	return colliderPoint;
+}
+
 // Silence the System.Collection warning.
 private function SilenceWarnings() : void 
 { 
 	var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); 
 } 
->>>>>>> origin/master
