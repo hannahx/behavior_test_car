@@ -83,6 +83,7 @@
      <Compile Include="Assets\Scripts\GenerateCars.js" />
      <Compile Include="Assets\Scripts\PlayerCar.js" />
      <Compile Include="Assets\Scripts\Point.js" />
+     <Compile Include="Assets\Scripts\ResultCounter.js" />
      <Compile Include="Assets\Scripts\SimpleVelocityLimiter.js" />
      <Compile Include="Assets\Scripts\SpeedLimit_30.js" />
      <Compile Include="Assets\Scripts\TrafficLight.js" />

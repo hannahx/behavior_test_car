@@ -28,12 +28,8 @@ public class CloseToLight extends ConditionNode {
             	// Gets a vector that points from the car's position to the light's. 
             	dir = ( carPos - trafficLightPos ).normalized;
             	var crossProd : Vector3 ;
-<<<<<<< HEAD
-            	var carDir = car.getRigidbody().transform.forward.normalized;
-=======
             	var carDir = carPos.forward.normalized;
             	//var carDir = car.getRigidbody().transform.forward.normalized; //<---ändrade detta /Hannah
->>>>>>> origin/master
             	crossProd = Vector3.Cross(dir,carDir);
             	dotProduct = Vector3.Dot(-dir,carDir);
 

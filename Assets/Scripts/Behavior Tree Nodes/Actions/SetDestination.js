@@ -30,7 +30,6 @@ public class SetDestination extends ActionNode {
 			I = 1;
 	    	if(car.getDestinationPoint()==null && car.getStartPoint()==null)//this means the "original car"
 	    	{	
-<<<<<<< HEAD
 	    		//Debug.Log("case 1");    		
 				rand = Mathf.Floor(Random.Range(0,max+1));
 				while(points[rand].startOK==false)
@@ -41,7 +40,6 @@ public class SetDestination extends ActionNode {
 				rand = Mathf.Floor(Random.Range(0,max+1));
 				car.setDestinationPoint(points[rand]);
 				
-=======
 	    		if(pointA != null)
 	    		{
 	    			car.setStartPoint(pointA);
@@ -67,7 +65,6 @@ public class SetDestination extends ActionNode {
 					car.setDestinationPoint(points[rand]);
 	    		}
 	    		
->>>>>>> origin/master
 				car.transform.position = car.getStartPoint().transform.position;
 				//Debug.Log(car.getStartPoint().transform.position);
 				car.transform.rotation = Quaternion.identity;

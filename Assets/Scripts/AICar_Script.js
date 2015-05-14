@@ -723,17 +723,6 @@ function getStopTimer()
 	return stopTimer;
 }
 
-<<<<<<< HEAD
-=======
-function setHuvudledSign(s){
-	huvudledSign = s;
-}
-
-function getHuvudledSign(){
-	return huvudledSign;
-}
-
->>>>>>> origin/master
 function setTurningRight(g : boolean){
 	turningRight = g ;
 }
@@ -749,7 +738,6 @@ function setTurningLeft(p : boolean){
 function getTurningLeft(){
 	return turningLeft;
 }
-<<<<<<< HEAD
 
 function setGoingStraight(p : boolean){
 	goingStraight = p ;
@@ -758,10 +746,6 @@ function setGoingStraight(p : boolean){
 function getGoingStraight(){
 	return goingStraight;
 }
-=======
-// Silence the System.Collection warning.
-//private function SilenceWarnings() : void { var al : ArrayList; if(al == null); var ae : AccelerationEvent; if(ae == 10) SilenceWarnings(); } 
->>>>>>> origin/master
 
 function getReachedDestion()
 {
@@ -773,8 +757,6 @@ function setReachedDestion(f : float)
 	reachedDest = f;
 }
 
-<<<<<<< HEAD
-=======
 function getRoundZone() : RoundaboutZone
 {
 	return activeRoundZone;
@@ -785,15 +767,6 @@ function setRoundZone(z)
 	activeRoundZone = z;
 }
 
-function setGoingStraight(p : boolean){
-	goingStraight = p ;
-}
-
-function getGoingStraight(){
-	return goingStraight;
-}
-
->>>>>>> origin/master
 function setPriority(p : int){
 	priority = p ;
 }
@@ -810,11 +783,6 @@ function getColliderPoint(){
 	return colliderPoint;
 }
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> origin/master
 // Silence the System.Collection warning.
 private function SilenceWarnings() : void 
 { 
